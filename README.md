@@ -14,25 +14,22 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Team Workflows (Please follow all guidelines judiciously!)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Most importantly, **DO NOT PUSH TO MASTER/MAIN/DEV**
+2. Always create a new branch for any new feature you're working on. Branch name format should be `[task-type]/[ticket-number]/[ticket-title]` e.g `feature/ENG-24/home-section`.
+3. Commit your code for every task/sub-task worked on. Commit format should be `[task-type]: [ticket-title]` e.g `feature: build home section screen`. (commit message can be descriptive if feature is large).
+4. Push branch online then make a PR, request review from your team members and **DO NOT MERGE PR** (follow PR template when making one)
+5. PR gets merged into `dev` by team lead after team and code review has passed.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+***NB: Ticket numbers can be found in the project management tool being used e.g Trello, JIRA, Github Boards***
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+***NB: Task types can be***:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- feat/feature
+- chore
+- refactor
+- bug
+- fix/hotfix  
+  
+*See [link](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index) for more conventional commit style.*
