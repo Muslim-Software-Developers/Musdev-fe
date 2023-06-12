@@ -6,7 +6,7 @@ import Button from "../button";
 
 const Navbar = () => {
   return (
-    <header className="h-[95px] flex items-center px-4 shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] ">
+    <header className="h-[95px] flex items-center px-4 shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] z-10">
       <nav className="container mx-auto flex items-center justify-between">
         <Link href="/">
           <NextImage src={Logo} alt="Logo" />

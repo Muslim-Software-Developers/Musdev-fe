@@ -15,7 +15,7 @@ const Layout = ({ title, children }: ILayoutProps) => {
   return (
     <section className={inter.className}>
       <Head>
-        <title>{title || "Login"}</title>
+        <title>{title || "Home"}</title>
         <meta name="description" content="Haastrup Mall Limited" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -23,7 +23,7 @@ const Layout = ({ title, children }: ILayoutProps) => {
 
       <Navbar />
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+        className={`flex min-h-screen flex-col items-center justify-between p-24 z-[1] ${inter.className}`}
       >
         {children}
       </main>
