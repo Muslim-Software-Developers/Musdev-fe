@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Team Workflows (Please follow all guidelines judiciously!)
 
 1. Most importantly, **DO NOT PUSH TO MASTER/MAIN/DEV**
-2. Always create a new branch for any new feature you're working on. Branch name format should be `[task-type]/[ticket-number]/[ticket-title]` e.g `feature/ENG-24/home-section`.
+2. Always create a new branch for any new feature you're working on. Branch name format should be `[task-type]/[ticket-title]` e.g `feature/home-section`.
 3. Commit your code for every task/sub-task worked on. Commit format should be `[task-type]: [ticket-title]` e.g `feature: build home section screen`. (commit message can be descriptive if feature is large).
 4. Push branch online then make a PR, request review from your team members and **DO NOT MERGE PR** (follow PR template when making one)
 5. PR gets merged into `dev` by team lead after team and code review has passed.
