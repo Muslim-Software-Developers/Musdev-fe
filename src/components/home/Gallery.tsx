@@ -13,11 +13,11 @@ const Gallery = () => {
 				photos and videos capturing the moments of collaboration, learning, and
 				celebration that make MusTech Community special
 			</p>
-			<div className='grid md:grid-cols-3 px-8 2xl:grid-cols-4 mt-10 lg:mt-16 gap-x-10 xl:gap-x-8 gap-y-16'>
+			<div className='grid md:grid-cols-3 px-8 2xl:grid-cols-4 mt-10 lg:mt-16 gap-x-8 gap-y-16'>
 				{gallery.map((item) => (
 					<div
 						key={item.id}
-						className='relative h-[300px] md:h-[230px] lg:h-[280px] xl:h-[320px] 2xl:h-[303px]'
+						className='relative h-[300px] md:h-[240px] lg:h-[280px] xl:h-[320px] 2xl:h-[303px]'
 					>
 						<Image src={'/images/galley01.png'} fill alt='gallery image' />
 					</div>
