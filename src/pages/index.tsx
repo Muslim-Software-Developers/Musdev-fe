@@ -1,13 +1,10 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import HomePage from '@/components/home';
-
-const inter = Inter({ subsets: ['latin'] });
+import Layout from '@/components/layout';
 
 export default function Home() {
 	return (
-		<main className={`min-h-screen bg-white ${inter.className}`}>
+		<Layout>
 			<HomePage />
-		</main>
+		</Layout>
 	);
 }
