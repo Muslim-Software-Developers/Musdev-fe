@@ -30,3 +30,17 @@ body {
 .wrapper {
   @apply container mx-auto px-4 lg:px-8 xl:px-24;
 }
+
+.slick-arrow,
+.slick-arrow:hover,
+.slick-arrow:focus {
+  @apply w-[44px] h-[44px] rounded-full !flex items-center justify-center bg-[#BFE2E2] border border-[#E5E7EB];
+}
+
+.slick-arrow:before {
+  display: none;
+}
+
+/* #executives .slick-slide {
+  margin-right: 24px;
+} */

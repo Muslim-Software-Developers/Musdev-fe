@@ -27,7 +27,11 @@ const Button = ({ children, variant, className, ...rest }: ButtonProps) => {
     );
   }
 
-  return <button {...rest}>{children}</button>;
+  return (
+    <button className={className} {...rest}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

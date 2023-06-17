@@ -8,6 +8,7 @@ export const InstagramIcon = (props: SVGProps<any>) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clip-path="url(#clip0_257_777)">
         <path
