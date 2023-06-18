@@ -3,7 +3,7 @@ import ArrowRight from "../Icons/ArrowRight";
 
 const Hero = () => {
   return (
-    <section className="flex flex-col gap-y-40">
+    <section className="flex flex-col gap-y-40 wrapper pt-24 pb-72">
       <div className="flex items-center gap-x-[90px]">
         <div className="flex flex-col w-3/5">
           <h1 className="text-[#000000] font-bold text-[64px] leading-[86px] tracking-[-0.025em]">

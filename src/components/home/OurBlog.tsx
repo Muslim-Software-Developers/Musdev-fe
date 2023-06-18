@@ -4,9 +4,9 @@ import ArrowRight from "../Icons/ArrowRight";
 
 const OurBlog = (): JSX.Element => {
   return (
-    <section className="py-7 md:py-[61px]">
+    <section className="py-10 md:py-[61px] wrapper">
       <div className="text-center max-w-[879px] mx-auto mb-6 md:mb-[95px]">
-        <h1 className="font-bold text-[25px] md:text-[64px] leading-[1.5] text-[#141414]">
+        <h1 className="font-bold text-[25px] md:text-[64px] leading-[1.5] text-[#141414] mb-6">
           Our Blog
         </h1>
         <p className="md:text-[20px] leading-[1.4] text-center text-[#808080]">

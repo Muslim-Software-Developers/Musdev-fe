@@ -3,7 +3,7 @@ import { brands } from "./staticData/ourBlog";
 
 const Partnerships = (): JSX.Element => {
   return (
-    <section className="pt-[64px]">
+    <section className="pt-[64px] wrapper">
       <h1 className="text-[#111827] font-bold text-[25px] md:text-[36px] leading-[1.4] text-center mb-4 md:mb-6">
         Partnerships
       </h1>
