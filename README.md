@@ -22,14 +22,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 4. Push branch online then make a PR, request review from your team members and **DO NOT MERGE PR** (follow PR template when making one)
 5. PR gets merged into `dev` by team lead after team and code review has passed.
 
-***NB: Ticket numbers can be found in the project management tool being used e.g Trello, JIRA, Github Boards***
+**_NB: Ticket numbers can be found in the project management tool being used e.g Trello, JIRA, Github Boards_**
 
-***NB: Task types can be***:
+**_NB: Task types can be_**:
 
 - feat/feature
 - chore
 - refactor
 - bug
-- fix/hotfix  
-  
-*See [link](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index) for more conventional commit style.*
+- fix/hotfix
+
+_See [link](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index) for more conventional commit style._
