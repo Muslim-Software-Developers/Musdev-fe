@@ -13,9 +13,9 @@ const ArrowRight = (props: SVGProps<any>) => {
       <path
         d="M9.55556 1.58887L15 7.03331M15 7.03331L9.55555 12.4778M15 7.03331L1 7.03331"
         stroke="#141414"
-        stroke-width="1.67"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.67"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
