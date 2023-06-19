@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { blogData } from "./staticData/ourBlog";
-import ArrowRight from "../Icons/ArrowRight";
+import ArrowRight from "../icons/arrowRight";
 
 const OurBlog = (): JSX.Element => {
   return (
