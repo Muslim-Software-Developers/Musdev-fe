@@ -14,6 +14,7 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-image": "url('/icons/hero-image.svg')",
+        "auth-layout": "url('/icons/auth-layout.svg')",
       },
       boxShadow: {
         "3xl":

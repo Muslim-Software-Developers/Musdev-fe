@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRight from "../Icons/ArrowRight";
+import ArrowRight from "../icons/arrowRight";
 
 const Hero = () => {
   return (
