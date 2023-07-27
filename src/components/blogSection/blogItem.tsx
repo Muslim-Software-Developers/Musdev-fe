@@ -8,7 +8,7 @@ interface BlogProps {
   slug?: string;
 }
 
-const BlogItem = ({ slug }: BlogProps) => {
+const BlogItem = ({ slug = "chatgpt" }: BlogProps) => {
   return (
     <Link href={`/blog/${slug}`}>
       <div>
