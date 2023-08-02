@@ -43,7 +43,8 @@ module.exports = {
         neutral02: "#808080",
         neutral03: "#F9FAFB",
         writeBg: "#FDFDFD",
-        neutral05: "#CBCBCB"
+        neutral05: "#CBCBCB",
+        secondary01: "#0D706E",
       },
     },
   },
