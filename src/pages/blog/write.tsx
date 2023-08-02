@@ -4,7 +4,7 @@ const Write = () => {
   const [titleValue, setTitleValue] = useState("");
 
   return (
-    <section className="wrapper my-20 flex flex-col py-[67px] !px-[132px] rounded-[20px] border-neutral05 bg-writeBg border-2 border-solid h-[90vh]">
+    <section className="wrapper my-20 flex flex-col py-[67px] !px-[20px] md:!px-[119px] rounded-[20px] border-neutral05 bg-writeBg border-2 border-solid h-[90vh] box-border">
       <input
         placeholder="Title"
         value={titleValue}
