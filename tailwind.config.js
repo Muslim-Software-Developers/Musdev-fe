@@ -26,7 +26,8 @@ module.exports = {
         neutral01: "#141414",
         neutral02: "#808080",
         neutral03: "#F9FAFB",
-        borderLine: "#FDFDFD"
+        writeBg: "#FDFDFD",
+        neutral05: "#CBCBCB"
       },
     },
   },
