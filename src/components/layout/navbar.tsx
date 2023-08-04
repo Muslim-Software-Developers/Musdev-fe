@@ -6,7 +6,7 @@ import Button from "../button";
 
 const Navbar = () => {
   return (
-    <header className="h-[95px] flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] z-10">
+    <header className="h-[95px] flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 right-0 z-10">
       <nav className="wrapper flex items-center justify-between">
         <Link href="/">
           <NextImage src={Logo} alt="Logo" />
@@ -31,8 +31,13 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-4">
-          <Button variant="outline">Log In</Button>
-          <Button variant="primary">Sign Up</Button>
+          <Link href="/auth/login">
+            <Button variant="outline">Log In</Button>
+          </Link>
+
+          <Link href="/auth/signup">
+            <Button variant="primary">Sign Up</Button>
+          </Link>
         </div>
       </nav>
     </header>

@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
-import Head from "next/head";
 import { Inter } from "next/font/google";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Head from "next/head";
+import Navbar from "../navbar";
+import Sidebar from "./sidebar";
 
-interface ILayoutProps {
+interface IDashboardLayoutProps {
   title?: string;
   children: ReactNode;
   className?: string;
@@ -12,9 +12,13 @@ interface ILayoutProps {
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Layout = ({ title, children, className }: ILayoutProps) => {
+const DashboardLayout = ({
+  title,
+  children,
+  className,
+}: IDashboardLayoutProps) => {
   return (
-    <section className={inter.className}>
+    <section>
       <Head>
         <title>{title || "Home"}</title>
         <meta name="description" content="Haastrup Mall Limited" />
@@ -33,10 +37,12 @@ const Layout = ({ title, children, className }: ILayoutProps) => {
       </Head>
 
       <Navbar />
-      <main className={`min-h-screen z-[1] ${className}`}>{children}</main>
-      <Footer />
+      <section className={`z-[1] mt-[95px] ${className}`}>
+        <Sidebar />
+        <main className="">{children}</main>
+      </section>
     </section>
   );
 };
 
-export default Layout;
+export default DashboardLayout;
