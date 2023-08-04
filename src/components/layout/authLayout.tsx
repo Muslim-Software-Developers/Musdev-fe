@@ -4,16 +4,16 @@ import Logo from "../../assets/Logo.png";
 import NextImage from "next/image";
 
 interface IAuthLayout {
-    children: React.ReactNode;
-    heading: string;
-    subHeading?:string;
+  children: React.ReactNode;
+  heading: string;
+  subHeading?: string;
 }
 
 const AuthLayout = ({ children, heading, subHeading }: IAuthLayout) => {
   return (
     <section className="w-full h-screen flex items-center justify-center">
       <div className="bg-auth-layout bg-no-repeat bg-center bg-contain flex flex-col justify-center items-center">
-      <Link href="/">
+        <Link href="/">
           <NextImage src={Logo} alt="Logo" />
         </Link>
         <div className="py-7 text-center">
