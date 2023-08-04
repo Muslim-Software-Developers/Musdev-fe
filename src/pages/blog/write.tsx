@@ -18,7 +18,7 @@ const Write = () => {
           height={10}
           alt="text DropDown"
           onClick={() => setShowDropDownList((prev) => !prev)}
-          className="mr-5"
+          className="mr-5 cursor-pointer"
         />
 
         {showDropDownList && (
