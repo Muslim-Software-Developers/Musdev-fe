@@ -8,7 +8,7 @@ import {
   TwitterIcon,
 } from "../icons";
 import ArrowLeft from "../icons/arrowLeft";
-import ArrowRight from "../icons/arrowRight";
+import ArrowRight from "../icons/arrowRightIcon";
 
 const Executives = () => {
   const sliderRef = React.useRef(null);
