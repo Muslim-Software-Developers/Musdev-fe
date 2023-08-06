@@ -37,7 +37,9 @@ const DashboardLayout = ({
       </Head>
 
       <Navbar />
-      <section className={`z-[1] mt-[95px] ${className}`}>
+      <section
+        className={`z-[1] mt-[95px] bg-[#F0FFFF] section-full-screen ${className}`}
+      >
         <Sidebar />
         <main className="">{children}</main>
       </section>

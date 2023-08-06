@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   EventsIcon,
   HomeIcon,
@@ -55,14 +56,19 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="p-4 bg-[#F0FFFF] w-[300px] fixed top-[95px] left-0 bottom-0">
+    <aside className="p-4 bg-[#F0FFFF] w-[300px] fixed top-[95px] left-0 bottom-0 border-r border-[#B6B6B6]">
       <ul>
         {menus.map((menu) => (
-          <li key={menu.label} className="py-4">
-            <div className="flex items-center">
-              <span className="mr-4">{menu.icon}</span>
-              {menu.label}
-            </div>
+          <li key={menu.label} className="my-6">
+            <Link
+              href={menu.href}
+              className="block py-4 ml-4 transition-colors text-[#737791] hover:bg-[#0D706E] hover:text-white hover:transition-colors duration-200 rounded-2xl"
+            >
+              <div className="pl-8 flex items-center text-lg">
+                <span className="mr-6">{menu.icon}</span>
+                {menu.label}
+              </div>
+            </Link>
           </li>
         ))}
       </ul>

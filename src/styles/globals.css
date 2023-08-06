@@ -41,6 +41,10 @@ body {
   display: none;
 }
 
+.section-full-screen {
+  min-height: calc(100vh - 95px);
+}
+
 /* #executives .slick-slide {
   margin-right: 24px;
 } */
