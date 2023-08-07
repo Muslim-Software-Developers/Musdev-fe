@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import Input from "@/components/forms/Input";
 import AuthLayout from "@/components/layout/authLayout";
@@ -106,9 +107,13 @@ const Login = () => {
           <h3 className="text-[#808080] text-sm leading-5">
             Forgotten Your Password?
           </h3>
-          <Button className="text-sm leading-5 font-medium text-[#006A4E]">
+          <Link
+            href="/auth/reset-password"
+            className="text-sm leading-5 font-medium text-[#006A4E]"
+          >
+            {" "}
             Reset Now
-          </Button>
+          </Link>
         </div>
       </form>
     </AuthLayout>
