@@ -3,10 +3,15 @@ import Logo from "../../assets/Logo.png";
 import Link from "next/link";
 import NextImage from "next/image";
 import Button from "../button";
+import { useSession } from "next-auth/react";
+import { MessageIcon, NotificationIcon } from "../icons";
+import UserDropdown from "./userDropdown";
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   return (
-    <header className="h-[95px] flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] z-10">
+    <header className="h-[95px] bg-white flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 right-0 z-10">
       <nav className="wrapper flex items-center justify-between">
         <Link href="/">
           <NextImage src={Logo} alt="Logo" />
@@ -30,15 +35,27 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="flex items-center gap-4">
-          <a href="/auth/login">
-            {" "}
-            <Button variant="outline">Log In</Button>
-          </a>
-          <a href="/auth/signup">
-            <Button variant="primary">Sign Up</Button>
-          </a>
-        </div>
+        {session ? (
+          <div className="flex items-center gap-5">
+            <button>
+              <NotificationIcon />
+            </button>
+            <button>
+              <MessageIcon />
+            </button>
+            <UserDropdown />
+          </div>
+        ) : (
+          <div className="flex items-center gap-4">
+            <Link href="/auth/login">
+              <Button variant="outline">Log In</Button>
+            </Link>
+
+            <Link href="/auth/signup">
+              <Button variant="primary">Sign Up</Button>
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

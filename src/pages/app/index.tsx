@@ -4,7 +4,7 @@ import React from "react";
 import Button from "@/components/button";
 import { trendingData } from "@/constants/trending";
 
-const MembershipHomePage = () => {
+const Home = () => {
   return (
     <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 space-y-24 pb-20">
       <div className="rounded-[20px] bg-white border border-solid border-[#B6B6B6] p-8 flex gap-x-[43px]">
@@ -86,6 +86,7 @@ const MembershipHomePage = () => {
             .fill(trendingData)
             .map((data: ICardTwo) => (
               <CardTwo
+                key={data.title}
                 logo="/images/logo2.svg"
                 image="/images/image7.svg"
                 description={data.description}
@@ -120,4 +121,7 @@ const MembershipHomePage = () => {
   );
 };
 
-export default MembershipHomePage;
+Home.title = "Home";
+Home.isAuthPage = true;
+
+export default Home;
