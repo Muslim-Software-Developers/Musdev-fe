@@ -5,6 +5,7 @@ import NextImage from "next/image";
 import Button from "../button";
 import { useSession } from "next-auth/react";
 import { MessageIcon, NotificationIcon } from "../icons";
+import UserDropdown from "./userDropdown";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -35,14 +36,14 @@ const Navbar = () => {
         </ul>
 
         {session ? (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <button>
               <NotificationIcon />
             </button>
             <button>
               <MessageIcon />
             </button>
-            {/* <UserDropdown /> */}
+            <UserDropdown />
           </div>
         ) : (
           <div className="flex items-center gap-4">
