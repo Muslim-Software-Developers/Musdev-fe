@@ -9,6 +9,8 @@ import { Controller, FieldErrors, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignupFormFields, signupSchema } from "@/utils/schema";
 import { extractAxiosError } from "@/utils/helpers";
+import { notifyError, notifySuccess } from "@/utils/toast";
+import { useRouter } from "next/router";
 
 interface IStepOneProp {
   handleStep: (step: number) => void;
@@ -25,6 +27,7 @@ interface IStepTwoProps {
 const Signup = () => {
   const [step, setStep] = React.useState(1);
 
+  const router = useRouter();
   const mutation = useRegister();
 
   const {
@@ -37,21 +40,17 @@ const Signup = () => {
   });
 
   const onSubmit = async (data: SignupFormFields) => {
-    try {
-      console.log(data);
-
-      await mutation.mutateAsync(data, {
-        onSuccess: (data) => {
-          console.log(data);
-        },
-        onError: (error) => {
-          console.log(error);
-          const msg = extractAxiosError(error);
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await mutation.mutateAsync(data, {
+      onSuccess: (data) => {
+        router.push("/login");
+        notifySuccess("Account created successfully.");
+      },
+      onError: (error) => {
+        console.log(error);
+        const msg = extractAxiosError(error);
+        notifyError(msg);
+      },
+    });
   };
 
   const handleStep = async (step: number) => {
@@ -85,7 +84,10 @@ const Signup = () => {
             Already have an account?
           </h3>
           <Link href="/auth/login">
-            <Button className="text-sm leading-5 font-medium text-[#006A4E]">
+            <Button
+              isLoading={mutation.isLoading}
+              className="text-sm leading-5 font-medium text-[#006A4E]"
+            >
               Login
             </Button>
           </Link>

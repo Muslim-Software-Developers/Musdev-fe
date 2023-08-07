@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { Fragment, ReactNode } from "react";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Navbar from "./navbar";
@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ title, children, className }: ILayoutProps) => {
   return (
-    <section className={inter.className}>
+    <Fragment>
       <Head>
         <title>{title || "Home"}</title>
         <meta name="description" content="Haastrup Mall Limited" />
@@ -33,9 +33,11 @@ const Layout = ({ title, children, className }: ILayoutProps) => {
       </Head>
 
       <Navbar />
-      <main className={`min-h-screen z-[1] ${className}`}>{children}</main>
+      <main className={`section-full-screen mt-[95px] z-[1] ${className}`}>
+        {children}
+      </main>
       <Footer />
-    </section>
+    </Fragment>
   );
 };
 

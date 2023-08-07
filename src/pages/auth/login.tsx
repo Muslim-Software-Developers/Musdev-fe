@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
 import Input from "@/components/forms/Input";
 import AuthLayout from "@/components/layout/authLayout";
 import Button from "@/components/button";
 import { Controller, useForm } from "react-hook-form";
 import { LoginFormFields, loginSchema } from "@/utils/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useLogin } from "@/hooks/auth";
-import { extractAxiosError } from "@/utils/helpers";
+import { useRouter } from "next/router";
+import { notifyError } from "@/utils/toast";
 
 const Login = () => {
-  const mutation = useLogin();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+  const { data: session } = useSession();
 
   const {
     control,
@@ -23,19 +27,26 @@ const Login = () => {
     },
   });
 
-  const onSubmit = async (data: LoginFormFields) => {
-    try {
-      await mutation.mutateAsync(data, {
-        onSuccess: (data) => {
-          console.log(data);
-        },
-        onError: (error) => {
-          console.log(error);
-          const msg = extractAxiosError(error);
-        },
-      });
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    console.log({ session });
+    if (session) {
+      router.push((router.query.callbackUrl as string) || "/app");
+    }
+  }, [session, router]);
+
+  const onSubmit = async ({ email, password }: LoginFormFields) => {
+    setIsLoading(true);
+    const result = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false,
+      // callbackUrl: (router.query.callbackUrl as string) || "/login",
+    });
+    setIsLoading(false);
+
+    console.log({ result });
+    if (result?.error && result?.error !== "SessionRequired") {
+      return notifyError(result.error);
     }
   };
 
@@ -84,9 +95,9 @@ const Login = () => {
         </div>
         <div className="mt-4">
           <Button
+            isLoading={isLoading}
             type="submit"
             className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
-            isLoading={mutation.isLoading}
           >
             Save
           </Button>

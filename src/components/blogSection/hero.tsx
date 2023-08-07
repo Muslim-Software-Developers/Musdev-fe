@@ -30,7 +30,7 @@ const BlogHero = () => {
     },
   ];
   return (
-    <section className="wrapper mt-20">
+    <section className="wrapper pt-20">
       <div className="max-w-[992px] mx-auto flex items-center flex-col">
         <h1 className="text-5xl mb-16">Our Blog</h1>
 

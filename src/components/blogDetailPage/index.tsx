@@ -6,7 +6,7 @@ import Button from "../button";
 
 const BlogDetailPage = () => {
   return (
-    <section className="wrapper my-20">
+    <section className="wrapper py-20">
       <header className="text-[48px] font-semibold mb-[40px]">
         ChatGPT Changed How I Write Software
       </header>

@@ -45,6 +45,7 @@ module.exports = {
         writeBg: "#FDFDFD",
         neutral05: "#CBCBCB",
         secondary01: "#0D706E",
+        greenHover: "rgba(147, 253, 197, 0.32)",
       },
     },
   },

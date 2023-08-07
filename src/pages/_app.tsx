@@ -1,11 +1,13 @@
 import type { AppProps } from "next/app";
 import { ToastContainer as Toast } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import "@/styles/globals.css";
 import Layout from "@/components/layout";
 import DashboardLayout from "@/components/layout/dashboard";
 import { AppPropsWithLayout } from "@/utils/types";
 import { Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +21,10 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppPropsWithLayout) {
   const { isAuthPage = false, name, title } = Component;
 
   const ToastContainer = (
@@ -51,9 +56,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {ToastContainer}
-      {page}
-    </QueryClientProvider>
+    <SessionProvider session={session}>
+      <QueryClientProvider client={queryClient}>
+        {ToastContainer}
+        {page}
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </SessionProvider>
   );
 }
