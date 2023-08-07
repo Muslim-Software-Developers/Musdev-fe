@@ -22,9 +22,7 @@ const Write = () => {
         />
 
         {showDropDownList && (
-          <DropDownList
-            setShowDropDownList={setShowDropDownList}
-          />
+          <DropDownList setShowDropDownList={setShowDropDownList} />
         )}
       </div>
 

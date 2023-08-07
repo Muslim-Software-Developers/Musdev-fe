@@ -1,14 +1,89 @@
+import React, { useEffect, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
 import Input from "@/components/forms/Input";
 import AuthLayout from "@/components/layout/authLayout";
-import React from "react";
 import Button from "@/components/button";
+import { Controller, useForm } from "react-hook-form";
+import { LoginFormFields, loginSchema } from "@/utils/schema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/router";
+import { notifyError } from "@/utils/toast";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormFields>({
+    resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  useEffect(() => {
+    console.log({ session });
+    if (session) {
+      router.push((router.query.callbackUrl as string) || "/app");
+    }
+  }, [session, router]);
+
+  const onSubmit = async ({ email, password }: LoginFormFields) => {
+    setIsLoading(true);
+    const result = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false,
+      // callbackUrl: (router.query.callbackUrl as string) || "/login",
+    });
+    setIsLoading(false);
+
+    console.log({ result });
+    if (result?.error && result?.error !== "SessionRequired") {
+      return notifyError(result.error);
+    }
+  };
+
   return (
     <AuthLayout heading="Login to your account">
-      <div className="w-full flex flex-col gap-y-5">
-        <Input type="email" label="email address" placeholder="email address" />
-        <Input type="password" label="password" placeholder="password" />
+      <form
+        className="w-full flex flex-col gap-y-5"
+        onSubmit={handleSubmit(onSubmit, (errors) =>
+          console.log("Errors", errors),
+        )}
+      >
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <Input
+              type="email"
+              label="Email address"
+              placeholder="email address"
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => (
+            <Input
+              type="password"
+              label="Password"
+              placeholder="password"
+              {...field}
+            />
+          )}
+        />
+
         <div className="flex items-center gap-x-2">
           <input type="checkbox" id="remember me" />{" "}
           <label
@@ -20,9 +95,9 @@ const Login = () => {
         </div>
         <div className="mt-4">
           <Button
+            isLoading={isLoading}
+            type="submit"
             className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
-            type="button"
-            onClick={() => {}}
           >
             Save
           </Button>
@@ -35,7 +110,7 @@ const Login = () => {
             Reset Now
           </Button>
         </div>
-      </div>
+      </form>
     </AuthLayout>
   );
 };
