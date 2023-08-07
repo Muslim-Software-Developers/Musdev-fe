@@ -42,7 +42,7 @@ const Signup = () => {
   const onSubmit = async (data: SignupFormFields) => {
     await mutation.mutateAsync(data, {
       onSuccess: (data) => {
-        router.push("/login");
+        router.push("/auth/login");
         notifySuccess("Account created successfully.");
       },
       onError: (error) => {
