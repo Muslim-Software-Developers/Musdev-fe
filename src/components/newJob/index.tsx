@@ -19,7 +19,7 @@ const NewJob = () => {
       </h3>
       <div className="space-y-16">
         {newJobData.map((newJob: INewJobs) => (
-          <div className="flex justify-between items-end">
+          <div key={newJob.title} className="flex justify-between items-end">
             <div className="flex gap-x-10">
               <span
                 className={`bg-[${newJob.color}] w-[90px] h-[90px] rounded-[5px] flex items-center justify-center`}
@@ -30,7 +30,9 @@ const NewJob = () => {
                 <h4 className="text-black text-2xl font-semibold">
                   {newJob.title}
                 </h4>
-                <span className="font-medium text-xl text-[#808080] capitalize">{newJob.company}</span>
+                <span className="font-medium text-xl text-[#808080] capitalize">
+                  {newJob.company}
+                </span>
                 <div className="font-medium text-xl text-[#808080] space-x-4 capitalize">
                   <span>{newJob.location}</span>
                   <span>2 days ago</span>

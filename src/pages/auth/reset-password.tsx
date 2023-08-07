@@ -2,6 +2,7 @@ import Input from "@/components/forms/Input";
 import AuthLayout from "@/components/layout/authLayout";
 import React from "react";
 import Button from "@/components/button";
+import Link from "next/link";
 
 const ResetPassword = () => {
   return (
@@ -21,10 +22,12 @@ const ResetPassword = () => {
           </Button>
         </div>
         <div className="text-center mt-8">
-          <a href="/auth/login" className="text-sm leading-5 font-medium text-[#006A4E]">
-            {" "}
-              Back to login
-          </a>
+          <Link
+            href="/auth/login"
+            className="text-sm leading-5 font-medium text-[#006A4E]"
+          >
+            Back to login
+          </Link>
         </div>
       </div>
     </AuthLayout>

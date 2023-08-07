@@ -51,7 +51,7 @@ export const CardTwo = ({
   return (
     <div className="rounded-t-[10px] bg-white">
       <span className="w-full">
-        <img src={logo} alt="" className="w-full"/>
+        <img src={logo} alt="" className="w-full" />
       </span>
       <div className="p-5 space-y-6">
         <h3 className="text-black font-semibold text-base">{title}</h3>
@@ -63,7 +63,9 @@ export const CardTwo = ({
             </span>
             <div>
               <h4 className="text-sm text-black font-medium">{name}</h4>
-              <p className="text-[#696767] text-[10px] font-light capitalize">{jobTitle}</p>
+              <p className="text-[#696767] text-[10px] font-light capitalize">
+                {jobTitle}
+              </p>
               <span className="text-[#696767] text-[10px] font-light">
                 {date}
               </span>
