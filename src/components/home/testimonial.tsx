@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import GetTogether from "../../assets/get-togther.png";
 import EllipseFrame from "../../assets/ellipse.png";
 import ArrowLeft from "../icons/arrowLeft";
-import ArrowRight from "../icons/arrowRight";
+import ArrowRight from "../icons/arrowRightIcon";
 import Executives from "./executives";
 
 const Ellipse = () => (

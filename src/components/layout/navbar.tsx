@@ -17,10 +17,10 @@ const Navbar = () => {
             <Link href="#">About Us</Link>
           </li>
           <li>
-            <Link href="#">Membership</Link>
+            <Link href="/membership">Membership</Link>
           </li>
           <li>
-            <Link href="#">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </li>
           <li>
             <Link href="#">Learning</Link>
@@ -31,8 +31,13 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-4">
-          <Button variant="outline">Log In</Button>
-          <Button variant="primary">Sign Up</Button>
+          <a href="/auth/login">
+            {" "}
+            <Button variant="outline">Log In</Button>
+          </a>
+          <a href="/auth/signup">
+            <Button variant="primary">Sign Up</Button>
+          </a>
         </div>
       </nav>
     </header>
