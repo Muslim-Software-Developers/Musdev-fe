@@ -14,7 +14,7 @@ const ResetPassword = () => {
         <Input type="email" label="email address" placeholder="email address" />
         <div className="mt-6">
           <Button
-            className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
+            className="w-full bg-primary rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
             type="button"
             onClick={() => {}}
           >

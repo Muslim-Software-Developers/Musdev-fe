@@ -17,7 +17,7 @@ const Layout = ({ title, children, className }: ILayoutProps) => {
     <Fragment>
       <Head>
         <title>{title || "Home"}</title>
-        <meta name="description" content="Haastrup Mall Limited" />
+        <meta name="description" content="Musdev Website" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link

@@ -5,6 +5,16 @@ interface ILoginResponse {
   metadata: string[];
 }
 
+interface IForgotPasswordResponse {}
+
+interface IResetPasswordResponse {}
+
+interface ResetPasswordProps {
+  email: string;
+  token: string;
+  password: string;
+  password_confirmation: string;
+}
 interface ISignupResponse {
   data: {
     user: {
@@ -32,4 +42,11 @@ interface SignupPayload {
   password_confirmation: string;
 }
 
-export type { ILoginResponse, ISignupResponse, SignupPayload };
+export type {
+  ILoginResponse,
+  IResetPasswordResponse,
+  IForgotPasswordResponse,
+  ISignupResponse,
+  SignupPayload,
+  ResetPasswordProps,
+};

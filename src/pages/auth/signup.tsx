@@ -39,8 +39,8 @@ const Signup = () => {
     resolver: yupResolver(signupSchema),
   });
 
-  const onSubmit = async (data: SignupFormFields) => {
-    await mutation.mutateAsync(data, {
+  const onSubmit = (data: SignupFormFields) => {
+    mutation.mutate(data, {
       onSuccess: (data) => {
         router.push("/auth/login");
         notifySuccess("Account created successfully.");
@@ -77,17 +77,18 @@ const Signup = () => {
         {step === 1 ? (
           <StepOne handleStep={handleStep} control={control} errors={errors} />
         ) : (
-          <StepTwo control={control} errors={errors} />
+          <StepTwo
+            control={control}
+            errors={errors}
+            isLoading={mutation.isLoading}
+          />
         )}
         <div className="text-center mt-8">
           <h3 className="text-[#808080] text-sm leading-5">
             Already have an account?
           </h3>
           <Link href="/auth/login">
-            <Button
-              isLoading={mutation.isLoading}
-              className="text-sm leading-5 font-medium text-[#006A4E]"
-            >
+            <Button className="text-sm leading-5 font-medium text-[#006A4E]">
               Login
             </Button>
           </Link>
@@ -139,7 +140,7 @@ const StepOne = ({ handleStep, control, errors }: IStepOneProp) => {
 
       <div className="mt-4">
         <Button
-          className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
+          className="w-full bg-primary rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
           type="button"
           onClick={() => handleStep(2)}
         >
@@ -220,7 +221,7 @@ const StepTwo = ({ control, errors, isLoading }: IStepTwoProps) => {
       </p>
       <div className="mt-4">
         <Button
-          className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
+          className="w-full bg-primary rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
           type="submit"
           isLoading={isLoading}
         >

@@ -11,18 +11,14 @@ interface IAuthLayout {
 
 const AuthLayout = ({ children, heading, subHeading }: IAuthLayout) => {
   return (
-    <section className="w-full h-screen flex items-center justify-center">
-      <div className="bg-auth-layout bg-no-repeat bg-center bg-contain flex flex-col justify-center items-center">
+    <section className="pt-40 py-10 px-4">
+      <div className="max-w-[592px] mx-auto w-full bg-auth-layout bg-no-repeat bg-center bg-contain flex flex-col justify-center items-center">
         <Link href="/">
           <NextImage src={Logo} alt="Logo" />
         </Link>
         <div className="py-7 text-center">
-          <h1 className="text-[#141414] leading-[48px] text-[40px] font-bold">
-            {heading}
-          </h1>
-          <p className="text-[#808080] text-[18px] leading-[28px] pt-3">
-            {subHeading}
-          </p>
+          <h1 className="text-[#141414] text-3xl font-bold">{heading}</h1>
+          <p className="text-[#808080] text-lg pt-3">{subHeading}</p>
         </div>
         {children}
       </div>

@@ -19,7 +19,7 @@ const Login = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginFormFields>({
     resolver: yupResolver(loginSchema),
     defaultValues: {
@@ -29,7 +29,6 @@ const Login = () => {
   });
 
   useEffect(() => {
-    console.log({ session });
     if (session) {
       router.push((router.query.callbackUrl as string) || "/app");
     }
@@ -67,6 +66,7 @@ const Login = () => {
               type="email"
               label="Email address"
               placeholder="email address"
+              errorMsg={errors.email?.message}
               {...field}
             />
           )}
@@ -80,6 +80,7 @@ const Login = () => {
               type="password"
               label="Password"
               placeholder="password"
+              errorMsg={errors.password?.message}
               {...field}
             />
           )}
@@ -98,7 +99,7 @@ const Login = () => {
           <Button
             isLoading={isLoading}
             type="submit"
-            className="w-full bg-[#0D703C] rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
+            className="w-full bg-primary rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
           >
             Save
           </Button>
@@ -108,7 +109,7 @@ const Login = () => {
             Forgotten Your Password?
           </h3>
           <Link
-            href="/auth/reset-password"
+            href="/auth/forgot-password"
             className="text-sm leading-5 font-medium text-[#006A4E]"
           >
             {" "}
