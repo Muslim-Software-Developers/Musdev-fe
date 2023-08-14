@@ -1,13 +1,15 @@
 import React, { forwardRef } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { UseFormRegister } from "react-hook-form";
+import { cn } from "@/utils/helpers";
 
-interface IInput {
-  name?: string;
+interface IInput
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   required?: boolean;
-  type: string;
   label: string;
-  placeholder: string;
   passwordText?: boolean;
   errorMsg?: string;
 }
@@ -26,7 +28,7 @@ const Input = forwardRef(
     }: IInput,
     ref: any,
   ) => (
-    <div className="flex flex-col gap-y-2">
+    <div className={cn("flex flex-col gap-y-2", rest.className)}>
       <label
         className="font-medium text-sm leading-5 capitalize"
         htmlFor={label}
@@ -38,8 +40,8 @@ const Input = forwardRef(
         type={type}
         placeholder={placeholder}
         id={label}
-        className="border boreder-[#808080] border-solid rounded-md px-[10px] py-3 placeholder:capitalize "
         {...rest}
+        className="border border-[#808080] border-solid rounded-md px-[10px] py-3 placeholder:capitalize"
       />
       {errorMsg && <ErrorMessage msg={errorMsg} />}
       {passwordText && (
