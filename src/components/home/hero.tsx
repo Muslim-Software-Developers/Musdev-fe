@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRight from "../icons/arrowRightIcon";
+import ArrowRightIcon from "../icons/arrowRightIcon";
 
 const Hero = () => {
   return (
@@ -18,7 +18,7 @@ const Hero = () => {
               <span>Join Now</span>
               <span>
                 {/* <img src="/icons/arrow-right.svg" alt="" /> */}
-                <ArrowRight stroke1="white" stroke2="white" />
+                <ArrowRightIcon stroke1="white" stroke2="white" />
               </span>
             </button>
           </div>

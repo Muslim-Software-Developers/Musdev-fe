@@ -8,10 +8,10 @@ import {
   TwitterIcon,
 } from "../icons";
 import ArrowLeft from "../icons/arrowLeft";
-import ArrowRight from "../icons/arrowRightIcon";
+import ArrowRight from "../icons/arrowRight";
 
 const Executives = () => {
-  const sliderRef = React.useRef(null);
+  const sliderRef = React.useRef<Slider | null>(null);
 
   const testimonialSettings = {
     // dots: true,
