@@ -1,6 +1,11 @@
 import React from "react";
 
-const WritingBox = ({ titleValue, setTitleValue }) => {
+interface Props {
+  titleValue: string;
+  setTitleValue: React.Dispatch<String>;
+}
+
+const WritingBox = ({ titleValue, setTitleValue }: Props) => {
   return (
     <div className="flex flex-col py-[67px] !px-[20px] md:!px-[119px] rounded-[20px] border-neutral05 bg-writeBg border-2 border-solid h-[90vh] box-border">
       <input
