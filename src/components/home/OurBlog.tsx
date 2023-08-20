@@ -19,7 +19,7 @@ const OurBlog = (): JSX.Element => {
 
       <div className="flex flex-col md:flex-row justify-between gap-y-[30px]">
         <div className="w-full md:w-[48.7%]">
-          <div className="w-full h-[185px] md:h-[357px] bg-orange-200 relative">
+          <div className="w-full h-[185px] md:h-[357px] relative">
             <Image
               src="/images/sitting-room.svg"
               alt="Sitting room"
