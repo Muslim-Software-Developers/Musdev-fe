@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SearchIcon } from "../../components/Icons";
+import { SearchIcon } from "../../components/icons";
 import Button from "../../components/button";
 
 interface JobInfo {
@@ -79,10 +79,9 @@ const jobData: JobInfo[] = [
     amount: "600K - 700K",
     color: "#E73152",
   },
-]
+];
 
 const SearchBar = () => {
-
   return (
     <div className="max-w-[748px] mx-auto flex items-center flex-col">
       <h1 className="text-5xl mb-8 font-semibold">Search for Jobs</h1>
@@ -100,15 +99,18 @@ const SearchBar = () => {
       <nav className="mt-7 mb-20">
         <ul className="list-none flex items-center gap-12">
           {jobCategories.map((category) => (
-            <li key={category.title} className="hover:text-primary font-medium text-sm">
+            <li
+              key={category.title}
+              className="hover:text-primary font-medium text-sm"
+            >
               <Link href={category.href}>{category.title}</Link>
             </li>
           ))}
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
 const JobCard = ({ job }: { job: JobInfo }) => {
   return (
@@ -142,15 +144,15 @@ const JobCard = ({ job }: { job: JobInfo }) => {
       </div>
     </div>
   );
-}
+};
 const JobHero = () => {
   return (
     <div className="mb-10">
       <h1 className="text-5xl mb-8 font-semibold">Welcome back, Ahmad Rufai</h1>
       <p className="text-2xl font-medium">Recommended for you</p>
     </div>
-  )
-}
+  );
+};
 
 const JobsSection = () => {
   return (
@@ -159,7 +161,7 @@ const JobsSection = () => {
       <JobHero />
       <div className="space-y-16 mt-20 pb-20">
         {jobData.map((job: JobInfo) => (
-          <JobCard key={job.id} job={job} /> 
+          <JobCard key={job.id} job={job} />
         ))}
       </div>
     </section>

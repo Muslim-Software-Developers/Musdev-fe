@@ -2,12 +2,12 @@ import type { AppProps } from "next/app";
 import { ToastContainer as Toast } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import "@/styles/globals.css";
 import Layout from "@/components/layout";
 import DashboardLayout from "@/components/layout/dashboard";
 import { AppPropsWithLayout } from "@/utils/types";
 import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import "@/styles/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
