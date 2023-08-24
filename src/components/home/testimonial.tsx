@@ -4,8 +4,8 @@ import NextImage from "next/image";
 import Slider from "react-slick";
 import GetTogether from "../../assets/get-togther.png";
 import EllipseFrame from "../../assets/ellipse.png";
-import ArrowLeft from "../icons/arrowLeft";
-import ArrowRight from "../icons/arrowRightIcon";
+import ArrowLeft from "../Icons/arrowLeft";
+import ArrowRight from "../Icons/arrowRightIcon";
 import Executives from "./executives";
 
 const Ellipse = () => (

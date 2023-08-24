@@ -6,9 +6,9 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-} from "../icons";
-import ArrowLeft from "../icons/arrowLeft";
-import ArrowRight from "../icons/arrowRightIcon";
+} from "../Icons";
+import ArrowLeft from "../Icons/arrowLeft";
+import ArrowRight from "../Icons/arrowRightIcon";
 
 const Executives = () => {
   const sliderRef = React.useRef(null);

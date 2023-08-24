@@ -10,6 +10,7 @@ export const axiosInstance = axios.create({
 const api = {
   auth: new Auth(axiosInstance),
   HttpClient: axiosInstance,
+  blog: new Auth(axiosInstance),
 };
 
 export default api;
