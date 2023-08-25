@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useGetAllBlogs } from "@/hooks/blogs";
+import { useGetAllPosts } from "@/hooks/blogs";
 
 interface BlogProps {
   id?: string;
@@ -13,7 +13,7 @@ interface BlogProps {
 
 const BlogItem = ({ slug = "chatgpt" }: BlogProps) => {
 
-  const {data} = useGetAllBlogs()
+  const {data} = useGetAllPosts()
 
   // console.log('item', data)
   // console.log(data?.data?.data[0])

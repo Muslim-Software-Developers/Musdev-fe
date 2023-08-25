@@ -1,13 +1,26 @@
+"use-client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import ThreeVerticalDots from "../../assets/threeDotsVertical.png";
 import DropDownList from "@/components/blogWrite/dropDownList";
 import WritingBox from "@/components/blogWrite/writingBox";
+import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
+
+import { createPostPayload } from "@/hooks/blogs/types";
 
 const Write = () => {
   const [titleValue, setTitleValue] = useState("");
   const [showDropDownList, setShowDropDownList] = useState(false);
+  const [editor, setEditor] = React.useState<string>("");
+
+  const mutation = useCreatePost();
+
+  const onSubmit = (blogData: createPostPayload) => {
+    mutation.mutate(blogData);
+  };
 
   return (
     <section className="wrapper my-20">
@@ -26,9 +39,29 @@ const Write = () => {
         )}
       </div>
 
-      <WritingBox titleValue={titleValue} setTitleValue={setTitleValue} />
+      <WritingBox
+        titleValue={titleValue}
+        setTitleValue={setTitleValue}
+        editor={editor}
+        setEditor={setEditor}
+      />
 
-      <button className="py-[8px] px-[16px] my-[64px] bg-secondary01 rounded-lg text-white">
+      <button
+        onClick={() => {
+          onSubmit({
+            name: "Sample",
+            phone: "string",
+            email: "string",
+            tech_niche: "string",
+            title: titleValue,
+            content: "string",
+            category_id: 2,
+            author: "string",
+            is_draft: true,
+          });
+        }}
+        className="py-[8px] px-[16px] my-[64px] bg-secondary01 rounded-lg text-white"
+      >
         Submit for review
       </button>
     </section>

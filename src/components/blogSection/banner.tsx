@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { useGetAllBlogs } from "@/hooks/blogs";
+import { useGetAllPosts } from "@/hooks/blogs";
 
 const Banner = () => {
-  const { data } = useGetAllBlogs();
+  const { data } = useGetAllPosts();
 
   console.log("banner", data.data);
   // console.log(data?.data?.data[0])
@@ -28,15 +28,7 @@ const Banner = () => {
             <div className="w-1/2">
               <h2 className="text-4xl mb-8">{post.title}</h2>
 
-              <p className="text-xl text-[#696767]">
-                As product managers, there are some things we just have to learn
-                through experience. You’ll never know what it really feels like
-                to present your product roadmap to your executive staff, for
-                example, until you call that meeting and do it. You’ll never
-                know what it really feels like to present your product roadmap
-                to your executive staff, for example, until you call that
-                meeting and do it.
-              </p>
+              <p className="text-xl text-[#696767]">{post.content}</p>
 
               <div className="flex justify-between items-start mt-12">
                 <div className="flex items-center gap-4">
@@ -48,7 +40,7 @@ const Banner = () => {
                   />
 
                   <div>
-                    <p className="text-lg">Jafar Zed</p>
+                    <p className="text-lg">{post.author}</p>
                     <p className="text-[#696767]">Product Manager</p>
                     <p className="text-sm">Jan 02, 2023</p>
                   </div>
