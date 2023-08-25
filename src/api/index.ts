@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 import Auth from "./auth";
+import Blog from "./blog";
 
 export const axiosInstance = axios.create({
   baseURL: `${BASE_URL}/api/v1`,
@@ -10,7 +11,7 @@ export const axiosInstance = axios.create({
 const api = {
   auth: new Auth(axiosInstance),
   HttpClient: axiosInstance,
-  blog: new Auth(axiosInstance),
+  blog: new Blog(axiosInstance),
 };
 
 export default api;

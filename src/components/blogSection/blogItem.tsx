@@ -1,6 +1,9 @@
+"use-client"
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useGetAllBlogs } from "@/hooks/blogs";
 
 interface BlogProps {
   id?: string;
@@ -9,6 +12,13 @@ interface BlogProps {
 }
 
 const BlogItem = ({ slug = "chatgpt" }: BlogProps) => {
+
+  const {data} = useGetAllBlogs()
+
+  // console.log('item', data)
+  // console.log(data?.data?.data[0])
+
+
   return (
     <Link href={`/blog/${slug}`}>
       <div>
@@ -22,10 +32,11 @@ const BlogItem = ({ slug = "chatgpt" }: BlogProps) => {
             backgroundPosition: "center",
           }}
         />
-
+{
+  data?.data?.data.map((post: any) => {
         <div className="p-4">
           <h5 className="mb-6 font-bold text-lg">
-            Online Communities Product Managers Should Join
+            {post.title}
           </h5>
 
           <p className="text-[#696767] text-sm mb-10">
@@ -44,16 +55,18 @@ const BlogItem = ({ slug = "chatgpt" }: BlogProps) => {
 
               <div>
                 <p className="">Jafar Zed</p>
-                <p className="text-sm text-[#696767]">Product Manager</p>
+                <p className="text-sm text-[#696767]">Product Manag</p>
                 <p className="text-xs">Jan 02, 2023</p>
               </div>
             </div>
 
             <p className="text-xs px-2 py-1 m-0 rounded-[18px] bg-[#BFE2E2] text-[#696767]">
-              Product
+              {post.category}
             </p>
           </div>
         </div>
+  })
+}
       </div>
     </Link>
   );

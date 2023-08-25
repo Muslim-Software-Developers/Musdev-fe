@@ -1,8 +1,11 @@
+"use-client"
+
 import React from "react";
 import { SearchIcon } from "../Icons";
 import Link from "next/link";
 
 const BlogHero = () => {
+
   const links = [
     {
       title: "All",
