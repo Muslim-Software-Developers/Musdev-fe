@@ -4,17 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { useSession } from "next-auth/react";
 import ThreeVerticalDots from "../../assets/threeDotsVertical.png";
 import DropDownList from "@/components/blogWrite/dropDownList";
 import WritingBox from "@/components/blogWrite/writingBox";
 import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
-
 import { createPostPayload } from "@/hooks/blogs/types";
 
 const Write = () => {
   const [titleValue, setTitleValue] = useState("");
   const [showDropDownList, setShowDropDownList] = useState(false);
   const [editor, setEditor] = React.useState<string>("");
+
+  const {data: session} = useSession()
+
+  console.log(session)
 
   const mutation = useCreatePost();
 

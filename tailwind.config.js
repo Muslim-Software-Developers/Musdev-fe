@@ -46,6 +46,7 @@ module.exports = {
         neutral05: "#CBCBCB",
         secondary01: "#0D706E",
         greenHover: "#0D703C",
+        draftGray: "#B6B6B6"
       },
     },
   },
