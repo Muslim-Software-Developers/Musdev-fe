@@ -1,12 +1,56 @@
+import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import ArrowRight from "@/components/icons/arrowRight";
 import ArrowRightIcon from "@/components/icons/arrowRightIcon";
 import ArrowUpRight from "@/components/icons/arrowUpRight";
-import Image from "next/image";
-import React from "react";
+import Modal from "@/components/modal";
 
 const events = ["networking", "games", "quizzes", "funs"];
 
 const Events = () => {
+  const buttonRef = useRef<HTMLButtonElement>();
+
+  useEffect(() => {
+    const openmodal = document.querySelectorAll(".modal-open");
+
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleModal();
+      });
+    }
+
+    const overlay = document.querySelector(".modal-overlay");
+    overlay?.addEventListener("click", toggleModal);
+
+    var closemodal = document.querySelectorAll(".modal-close");
+
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener("click", toggleModal);
+    }
+
+    document.onkeydown = function (evt) {
+      evt = evt || window.event;
+      var isEscape = false;
+      if ("key" in evt) {
+        isEscape = evt.key === "Escape" || evt.key === "Esc";
+      } else {
+        isEscape = evt.keyCode === 27;
+      }
+      if (isEscape && document.body.classList.contains("modal-active")) {
+        toggleModal();
+      }
+    };
+  }, []);
+
+  function toggleModal() {
+    const body = document.querySelector("body");
+    const modal = document.querySelector(".modal");
+    modal?.classList.toggle("opacity-0");
+    modal?.classList.toggle("pointer-events-none");
+    body?.classList.toggle("modal-active");
+  }
+
   return (
     <section className="wrapper pt-20">
       <h1 className="text-neutral01 font-semibold text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
@@ -48,7 +92,8 @@ const Events = () => {
             fill
           />
         </div>
-        <button className="bg-primary rounded-lg text-white py-2 flex gap-2 items-center justify-between px-4 leading-[19px] tracking-[0.4px]">
+
+        <button className="modal-open bg-primary rounded-lg text-white py-2 flex gap-2 items-center justify-between px-4 leading-[19px] tracking-[0.4px]">
           <span className="font-light text-sm">Event details</span>
           <ArrowRightIcon stroke1="white" stroke2="white" />
         </button>
