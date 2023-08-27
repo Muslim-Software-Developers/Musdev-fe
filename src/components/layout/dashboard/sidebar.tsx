@@ -9,7 +9,7 @@ import {
   SettingsIcon,
   SignoutIcon,
   WriteIcon,
-} from "@/components/icons";
+} from "@/components/svgs";
 import { signOut } from "next-auth/react";
 
 const Sidebar = () => {

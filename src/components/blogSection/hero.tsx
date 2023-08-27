@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchIcon } from "../icons";
+import { SearchIcon } from "../svgs";
 import Link from "next/link";
 
 const BlogHero = () => {

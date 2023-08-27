@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRightIcon from "../icons/arrowRightIcon";
+import ArrowRightIcon from "../svgs/arrowRightIcon";
 
 const Hero = () => {
   return (

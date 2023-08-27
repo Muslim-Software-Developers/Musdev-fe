@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import ArrowRight from "@/components/icons/arrowRight";
-import ArrowRightIcon from "@/components/icons/arrowRightIcon";
-import ArrowUpRight from "@/components/icons/arrowUpRight";
+import ArrowRight from "@/components/svgs/arrowRight";
+import ArrowRightIcon from "@/components/svgs/arrowRightIcon";
+import ArrowUpRight from "@/components/svgs/arrowUpRight";
 import Modal from "@/components/modal";
 
 const events = ["networking", "games", "quizzes", "funs"];
@@ -52,7 +52,7 @@ const Events = () => {
   }
 
   return (
-    <section className="wrapper pt-20">
+    <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 pb-20">
       <h1 className="text-neutral01 font-semibold text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
         Experience the Musdev effect{" "}
       </h1>
