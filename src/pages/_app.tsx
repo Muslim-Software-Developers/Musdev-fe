@@ -8,6 +8,7 @@ import { AppPropsWithLayout } from "@/utils/types";
 import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import "@/styles/globals.css";
+import { useRouter } from "next/router";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,8 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
   const { isAuthPage = false, name, title } = Component;
+
+  const router = useRouter();
 
   const ToastContainer = (
     <Toast
@@ -47,7 +50,7 @@ export default function App({
     </Layout>
   );
 
-  if (isAuthPage) {
+  if (router.pathname.startsWith("/app")) {
     page = (
       <DashboardLayout title={title || name} className={inter.className}>
         <Component {...pageProps} />

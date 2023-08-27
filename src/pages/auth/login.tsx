@@ -104,7 +104,7 @@ const Login = () => {
             Save
           </Button>
         </div>
-        <div className="flex items-center justify-center gap-x-1 text-center mt-5">
+        <div className="flex items-center justify-center gap-x-1 text-center mt-4">
           <h3 className="text-[#808080] text-sm leading-5">
             Forgotten Your Password?
           </h3>
@@ -115,6 +115,19 @@ const Login = () => {
             {" "}
             Reset Now
           </Link>
+        </div>
+
+        <div className="flex items-center justify-center gap-x-1 text-center">
+          <p className="text-[#808080] text-sm leading-5">
+            Don&apos;t have an account?
+            <Link
+              href="/auth/signup"
+              className="text-sm leading-5 font-medium text-[#006A4E]"
+            >
+              {" "}
+              Sign up
+            </Link>
+          </p>
         </div>
       </form>
     </AuthLayout>

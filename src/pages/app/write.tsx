@@ -10,7 +10,7 @@ const Write = () => {
   const [showDropDownList, setShowDropDownList] = useState(false);
 
   return (
-    <section className="wrapper my-20">
+    <section className="wrapper pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 space-y-24 pb-20s">
       <div className="relative w-full flex justify-end py-[71px]">
         <Image
           src={ThreeVerticalDots}
