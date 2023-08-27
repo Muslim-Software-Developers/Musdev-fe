@@ -44,11 +44,11 @@ const Sidebar = () => {
       href: "/app/write",
       icon: <WriteIcon />,
     },
-    {
-      label: "Settings",
-      href: "/app/settings",
-      icon: <SettingsIcon />,
-    },
+    // {
+    //   label: "Settings",
+    //   href: "/app/settings",
+    //   icon: <SettingsIcon />,
+    // },
     {
       label: "Signout",
       href: "/app/signout",
