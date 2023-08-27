@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { Fragment, ReactNode } from "react";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Navbar from "../navbar";
@@ -18,7 +18,7 @@ const DashboardLayout = ({
   className,
 }: IDashboardLayoutProps) => {
   return (
-    <section>
+    <Fragment>
       <Head>
         <title>{title || "Home"}</title>
         <meta name="description" content="Haastrup Mall Limited" />
@@ -43,7 +43,7 @@ const DashboardLayout = ({
         <Sidebar />
         <main className="ml-[300px]">{children}</main>
       </section>
-    </section>
+    </Fragment>
   );
 };
 

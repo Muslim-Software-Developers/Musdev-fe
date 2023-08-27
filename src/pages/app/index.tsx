@@ -121,7 +121,7 @@ const Home = () => {
   );
 };
 
-Home.title = "Home";
-Home.isAuthPage = true;
+// Home.title = "Home";
+// Home.isAuthPage = true;
 
 export default Home;
