@@ -17,7 +17,7 @@
 } */
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: #141414;
   background: #ffffff;
   /* background: linear-gradient(
       to bottom,
