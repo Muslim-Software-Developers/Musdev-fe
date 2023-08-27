@@ -16,9 +16,9 @@ const Write = () => {
   const [showDropDownList, setShowDropDownList] = useState(false);
   const [editor, setEditor] = React.useState<string>("");
 
-  const {data: session} = useSession()
+  // const {data: session} = useSession()
 
-  console.log(session)
+  // console.log(session)
 
   const mutation = useCreatePost();
 
