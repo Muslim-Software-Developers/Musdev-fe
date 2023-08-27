@@ -34,11 +34,11 @@ const Sidebar = () => {
       href: "/app/profile",
       icon: <ProfileIcon />,
     },
-    {
-      label: "Learning",
-      href: "/app/learning",
-      icon: <LearningIcon />,
-    },
+    // {
+    //   label: "Learning",
+    //   href: "/app/learning",
+    //   icon: <LearningIcon />,
+    // },
     {
       label: "Write",
       href: "/app/write",
@@ -70,13 +70,13 @@ const Sidebar = () => {
     <aside className="p-4 bg-[#F0FFFF] w-[300px] fixed top-[95px] left-0 bottom-0 border-r border-[#B6B6B6]">
       <ul>
         {menus.map((menu) => (
-          <li key={menu.label} className="mb-4">
+          <li key={menu.label}>
             <Link
               href={menu.href}
               className="block py-4 ml-4 transition-colors text-[#737791] hover:bg-[#0D706E] hover:text-white hover:transition-colors duration-200 rounded-2xl"
               onClick={(e) => handleMenuClick(e, menu.label)}
             >
-              <div className="pl-8 flex items-center text-lg">
+              <div className="pl-8 flex items-center">
                 <span className="mr-6">{menu.icon}</span>
                 {menu.label}
               </div>

@@ -83,20 +83,22 @@ const jobData: JobInfo[] = [
 
 const SearchBar = () => {
   return (
-    <div className="max-w-[748px] mx-auto flex items-center flex-col">
-      <h1 className="text-5xl mb-8 font-semibold">Search for Jobs</h1>
+    <div className="max-w-[760px] w-full mx-auto">
+      <div className="text-center">
+        <h1 className="text-3xl mb-8 font-semibold">Search for Jobs</h1>
 
-      <form className="flex items-center max-w-[600px] mx-auto w-full">
-        <input
-          className="h-[44px] px-4 rounded-tl-2xl rounded-bl-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border flex-1"
-          placeholder="Search here"
-        />
-        <button className="h-[44px] w-[76px] rounded-tr-2xl rounded-br-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border border-l-0 flex items-center justify-center">
-          <SearchIcon />
-        </button>
-      </form>
+        <form className="flex items-center mx-auto w-full">
+          <input
+            className="h-[44px] px-4 rounded-tl-2xl rounded-bl-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border flex-1"
+            placeholder="Search here"
+          />
+          <button className="h-[44px] w-[76px] rounded-tr-2xl rounded-br-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border border-l-0 flex items-center justify-center">
+            <SearchIcon />
+          </button>
+        </form>
+      </div>
 
-      <nav className="mt-7 mb-20">
+      <nav className="mt-7 mb-20 flex items-center justify-center">
         <ul className="list-none flex items-center gap-12">
           {jobCategories.map((category) => (
             <li
@@ -122,11 +124,11 @@ const JobCard = ({ job }: { job: JobInfo }) => {
           <Image src="/images/logo.svg" width={69} height={19} alt="" />
         </span>
         <div>
-          <h4 className="text-black text-2xl font-semibold">{job.title}</h4>
-          <span className="font-medium text-xl text-[#808080] capitalize pt-2">
+          <h4 className="text-black text-xl font-semibold">{job.title}</h4>
+          <span className="font-medium text-lg text-[#808080] capitalize pt-2">
             {job.company}
           </span>
-          <div className="font-medium text-xl text-[#808080] space-x-4 capitalize">
+          <div className="font-medium text-lg text-[#808080] space-x-4 capitalize">
             <span>{job.location}</span>
             <span>2 days ago</span>
           </div>
@@ -148,15 +150,15 @@ const JobCard = ({ job }: { job: JobInfo }) => {
 const JobHero = () => {
   return (
     <div className="mb-10">
-      <h1 className="text-5xl mb-8 font-semibold">Welcome back, Ahmad Rufai</h1>
-      <p className="text-2xl font-medium">Recommended for you</p>
+      <h1 className="text-3xl mb-8 font-semibold">Welcome back, Ahmad Rufai</h1>
+      <p className="text-xl font-medium">Recommended for you</p>
     </div>
   );
 };
 
 const JobsSection = () => {
   return (
-    <section className="wrapper pt-20">
+    <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 space-y-24 pb-20">
       <SearchBar />
       <JobHero />
       <div className="space-y-16 mt-20 pb-20">
