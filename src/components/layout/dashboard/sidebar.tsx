@@ -9,7 +9,7 @@ import {
   SettingsIcon,
   SignoutIcon,
   WriteIcon,
-} from "@/components/icons";
+} from "@/components/svgs";
 import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
@@ -44,11 +44,11 @@ const Sidebar = () => {
       href: "/app/write",
       icon: <WriteIcon />,
     },
-    {
-      label: "Settings",
-      href: "/app/settings",
-      icon: <SettingsIcon />,
-    },
+    // {
+    //   label: "Settings",
+    //   href: "/app/settings",
+    //   icon: <SettingsIcon />,
+    // },
     {
       label: "Signout",
       href: "/app/signout",

@@ -16,7 +16,7 @@ export const Education = (props: IEdit) => {
       <div className="text-neutral01 font-bold text-sm tracking-[0.112px] space-y-[3px]">
         <h2 className="capitalize">tomorrow university</h2>
         <p className="text-[#808080] font-normal">
-          Artificial Intelligence and sustainable technologies, Bachelor's
+          Artificial Intelligence and sustainable technologies, Bachelor&apos;s
         </p>
         <p className="text-[#808080] font-normal">2025</p>
       </div>
@@ -101,7 +101,9 @@ export const EducationEdit = (props: IEdit) => {
       </div>
 
       <div>
-        <Button variant="primary" onClick={props.closeEdit} type="button">Save Changes</Button>
+        <Button variant="primary" onClick={props.closeEdit} type="button">
+          Save Changes
+        </Button>
       </div>
     </div>
   );
