@@ -6,7 +6,14 @@ const useGenericQuery = (
   func: (data?: any) => any,
   params?: object | string,
 ) => {
-  return useQuery(key, func, {});
+  return useQuery(key, func, {
+    onError: (res) => {
+      console.log(res)
+    },
+    onSuccess: (res) => {
+      console.log(res)
+    }
+  });
 };
 
 export default useGenericQuery;

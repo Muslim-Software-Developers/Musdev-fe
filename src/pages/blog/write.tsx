@@ -11,14 +11,36 @@ import WritingBox from "@/components/blogWrite/writingBox";
 import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
 import { createPostPayload } from "@/hooks/blogs/types";
 
+export type postObjTypes = {
+  name: string;
+  phone: number | null;
+  email: string;
+  tech_niche: string;
+  title: string;
+  content: string;
+  category_id: number | null;
+  author: string;
+  is_draft: boolean;
+};
+
 const Write = () => {
   const [titleValue, setTitleValue] = useState("");
   const [showDropDownList, setShowDropDownList] = useState(false);
-  const [editor, setEditor] = React.useState<string>("");
+  const [editor, setEditor] = useState<string>("");
 
-  // const {data: session} = useSession()
+  const [postObj, setPostObj] = useState<postObjTypes>({
+    name: "",
+    phone: null,
+    email: "",
+    tech_niche: "",
+    title: "",
+    content: "",
+    category_id: null,
+    author: "",
+    is_draft: true,
+  });
 
-  // console.log(session)
+  console.log(postObj)
 
   const mutation = useCreatePost();
 
@@ -39,7 +61,7 @@ const Write = () => {
         />
 
         {showDropDownList && (
-          <DropDownList setShowDropDownList={setShowDropDownList} />
+          <DropDownList setShowDropDownList={setShowDropDownList} category={postObj.category_id} setPostObj={setPostObj} />
         )}
       </div>
 
