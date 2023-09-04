@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useSession } from "next-auth/react";
 import ThreeVerticalDots from "../../assets/threeDotsVertical.png";
@@ -10,25 +10,30 @@ import DropDownList from "@/components/blogWrite/dropDownList";
 import WritingBox from "@/components/blogWrite/writingBox";
 import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
 import { createPostPayload } from "@/hooks/blogs/types";
+import { validatePost } from "@/utils/helpers";
+import { blogData } from "@/components/home/staticData/ourBlog";
 
-export type postObjTypes = {
-  name: string;
-  phone: number | null;
-  email: string;
-  tech_niche: string;
-  title: string;
-  content: string;
-  category_id: number | null;
-  author: string;
-  is_draft: boolean;
-};
+// export type postObjTypes = {
+//   name: string;
+//   phone: number | null;
+//   email: string;
+//   tech_niche: string;
+//   title: string;
+//   content: string;
+//   category_id: number | null;
+//   author: string;
+//   is_draft: boolean;
+// };
 
 const Write = () => {
-  const [titleValue, setTitleValue] = useState("");
+  const { data: session, status } = useSession();
+  const mutation = useCreatePost();
+
   const [showDropDownList, setShowDropDownList] = useState(false);
   const [editor, setEditor] = useState<string>("");
+  const [isSavingDraft, setIsSavingDraft] = useState(false);
 
-  const [postObj, setPostObj] = useState<postObjTypes>({
+  const [postObj, setPostObj] = useState<createPostPayload>({
     name: "",
     phone: null,
     email: "",
@@ -37,14 +42,41 @@ const Write = () => {
     content: "",
     category_id: null,
     author: "",
-    is_draft: true,
+    is_draft: false,
   });
 
-  console.log(postObj)
+  const saveDraft = () => {
+    const blogData = {
+      name: session?.user?.name ? session?.user?.name : "",
+      phone: "",
+      email: session?.user?.email ? session?.user?.email : "",
+      tech_niche: "string",
+      title: postObj.title,
+      content: editor,
+      category_id: postObj.category_id!,
+      author: session?.user?.name ? session?.user?.name : "",
+      is_draft: true,
+    };
 
-  const mutation = useCreatePost();
+    console.log(1)
+
+    console.log("saving blog");
+
+    // const {data, loading} = mutation.mutate(blogData);
+  };
+
+  useEffect(() => {
+    setInterval(saveDraft, 10000);
+  }, []);
 
   const onSubmit = (blogData: createPostPayload) => {
+    const res = validatePost(blogData);
+
+    console.log(res);
+    console.log(blogData.content);
+
+    return;
+
     mutation.mutate(blogData);
   };
 
@@ -61,13 +93,17 @@ const Write = () => {
         />
 
         {showDropDownList && (
-          <DropDownList setShowDropDownList={setShowDropDownList} category={postObj.category_id} setPostObj={setPostObj} />
+          <DropDownList
+            setShowDropDownList={setShowDropDownList}
+            category={postObj.category_id!}
+            setPostObj={setPostObj}
+          />
         )}
       </div>
 
       <WritingBox
-        titleValue={titleValue}
-        setTitleValue={setTitleValue}
+        titleValue={postObj.title}
+        setTitleValue={setPostObj}
         editor={editor}
         setEditor={setEditor}
       />
@@ -75,15 +111,15 @@ const Write = () => {
       <button
         onClick={() => {
           onSubmit({
-            name: "Sample",
-            phone: "string",
-            email: "string",
+            name: session?.user?.name ? session?.user?.name : "",
+            phone: "",
+            email: session?.user?.email ? session?.user?.email : "",
             tech_niche: "string",
-            title: titleValue,
-            content: "string",
-            category_id: 2,
-            author: "string",
-            is_draft: true,
+            title: postObj.title,
+            content: editor,
+            category_id: postObj.category_id!,
+            author: session?.user?.name ? session?.user?.name : "",
+            is_draft: false,
           });
         }}
         className="py-[8px] px-[16px] my-[64px] bg-secondary01 rounded-lg text-white"

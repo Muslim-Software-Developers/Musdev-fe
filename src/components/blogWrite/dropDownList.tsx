@@ -1,4 +1,4 @@
-import { postObjTypes } from "@/pages/blog/write";
+import { createPostPayload } from "@/hooks/blogs/types";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -8,7 +8,7 @@ const DropDownList = ({
   setShowDropDownList,
 }: {
   category: number;
-  setPostObj: React.Dispatch<(prev: postObjTypes) => postObjTypes>;
+  setPostObj: React.Dispatch<(prev: createPostPayload) => createPostPayload>;
   setShowDropDownList: React.Dispatch<boolean>;
 }) => {
   const dropDownItemsStyle =
@@ -17,7 +17,7 @@ const DropDownList = ({
   const [showSubList, setShowSubList] = useState<boolean>(false);
 
   const setCategory = (id: number) => {
-    setPostObj((prev: postObjTypes) => {
+    setPostObj((prev: createPostPayload) => {
       return { ...prev, category_id: id };
     });
   };
@@ -88,7 +88,7 @@ const DropDownList = ({
   };
 
   return (
-    <ul className="absolute top-28 w-[200px] md:w-[250px] border-[1px] border-neutral05  bg-white rounded-md shadow-md">
+    <ul className="absolute top-28 w-[200px] md:w-[250px] border-[1px] border-neutral05  bg-white rounded-md shadow-md z-10">
       <span className="absolute -z-1 w-[18px] h-[18px] transform rotate-45 right-5 bg-white border-[1px]  border-r-0 border-b-0 border-neutral05 -top-[9.8px] rounded-tl-lg"></span>
 
       <span className="relative z-2 w-full h-full overflow-hidden rounded-md">
