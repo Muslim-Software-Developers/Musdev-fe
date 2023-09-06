@@ -45,39 +45,15 @@ const Write = () => {
     is_draft: false,
   });
 
-  const saveDraft = () => {
-    const blogData = {
-      name: session?.user?.name ? session?.user?.name : "",
-      phone: "",
-      email: session?.user?.email ? session?.user?.email : "",
-      tech_niche: "string",
-      title: postObj.title,
-      content: editor,
-      category_id: postObj.category_id!,
-      author: session?.user?.name ? session?.user?.name : "",
-      is_draft: true,
-    };
-
-    console.log(1)
-
-    console.log("saving blog");
-
-    // const {data, loading} = mutation.mutate(blogData);
-  };
-
-  useEffect(() => {
-    setInterval(saveDraft, 10000);
-  }, []);
-
   const onSubmit = (blogData: createPostPayload) => {
     const res = validatePost(blogData);
 
-    console.log(res);
-    console.log(blogData.content);
+    if (res === null) {
+      mutation.mutate(blogData);
+    }
 
     return;
 
-    mutation.mutate(blogData);
   };
 
   return (
