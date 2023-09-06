@@ -9,7 +9,7 @@ interface IInput
     HTMLInputElement
   > {
   required?: boolean;
-  label: string;
+  label?: string;
   passwordText?: boolean;
   errorMsg?: string;
 }

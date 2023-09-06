@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { blogData } from "./staticData/ourBlog";
-import ArrowRight from "../Icons/arrowRightIcon";
+import ArrowRightIcon from "../svgs/arrowRightIcon";
 
 const OurBlog = (): JSX.Element => {
   return (
@@ -20,7 +20,12 @@ const OurBlog = (): JSX.Element => {
       <div className="flex flex-col md:flex-row justify-between gap-y-[30px]">
         <div className="w-full md:w-[48.7%]">
           <div className="w-full h-[185px] md:h-[357px] relative">
-            <Image src="/images/sitting-room.svg" alt="Sitting room" fill />
+            <Image
+              src="/images/sitting-room.svg"
+              alt="Sitting room"
+              fill
+              className="object-cover"
+            />
           </div>
           <p className="font-bold md:text-[24px] text-[#141414] leading-[1.4]">
             Flying fish swiftly flew by the space station.
@@ -62,7 +67,7 @@ const OurBlog = (): JSX.Element => {
           ))}
           <button className="flex text-[#0D706E] font-medium items-center gap-x-[10px] w-[fit-content]">
             <span>Learn More</span>
-            <ArrowRight stroke1="#0D706E" stroke2="#0D706E" />
+            <ArrowRightIcon stroke1="#0D706E" stroke2="#0D706E" />
           </button>
         </div>
       </div>

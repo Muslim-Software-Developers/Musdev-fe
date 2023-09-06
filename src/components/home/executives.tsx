@@ -6,12 +6,12 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-} from "../Icons";
-import ArrowLeft from "../Icons/arrowLeft";
-import ArrowRight from "../Icons/arrowRightIcon";
+} from "../svgs";
+import ArrowLeft from "../svgs/arrowLeft";
+import ArrowRight from "../svgs/arrowRight";
 
 const Executives = () => {
-  const sliderRef = React.useRef(null);
+  const sliderRef = React.useRef<Slider | null>(null);
 
   const testimonialSettings = {
     // dots: true,

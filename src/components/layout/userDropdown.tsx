@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowDownIcon from "../Icons/arrowDown";
+import ArrowDownIcon from "../svgs/arrowDown";
 
 const UserDropdown = () => {
   return (

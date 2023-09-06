@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRight from "../Icons/arrowRightIcon";
+import ArrowRightIcon from "../svgs/arrowRightIcon";
 
 const Hero = () => {
   return (
@@ -17,8 +17,7 @@ const Hero = () => {
             <button className="bg-primary rounded-lg text-white w-[135px] h-[45px] flex items-center justify-between px-4 font-medium text-base leading-[19px] tracking-[0.4px]">
               <span>Join Now</span>
               <span>
-                {/* <img src="/icons/arrow-right.svg" alt="" /> */}
-                <ArrowRight stroke1="white" stroke2="white" />
+                <ArrowRightIcon stroke1="white" stroke2="white" />
               </span>
             </button>
           </div>

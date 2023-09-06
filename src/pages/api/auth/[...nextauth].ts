@@ -38,6 +38,7 @@ export const authOptions: NextAuthOptions = {
 
           return data.data;
         } catch (error) {
+          console.log(error);
           console.log(extractAxiosError(error));
           throw new Error(extractAxiosError(error));
         }
@@ -60,7 +61,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/auth/login",
   },
 };
 

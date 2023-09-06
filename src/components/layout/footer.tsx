@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/Logo.svg";
 import Link from "next/link";
 import NextImage from "next/image";
 import Button from "../button";
@@ -8,7 +8,7 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-} from "../Icons";
+} from "../svgs";
 
 const Footer = () => {
   const links = [
