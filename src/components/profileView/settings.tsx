@@ -12,7 +12,7 @@ import {
   Education,
   EducationEdit,
 } from "@/components/profileSetting/education";
-import { SearchIcon } from "@/components/icons";
+import { SearchIcon } from "@/components/svgs";
 interface IEditObject {
   experience: string;
   education: string;

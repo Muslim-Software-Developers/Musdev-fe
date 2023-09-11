@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SearchIcon } from "../../components/icons";
+import { SearchIcon } from "../../components/svgs";
 import Button from "../../components/button";
 
 interface JobInfo {

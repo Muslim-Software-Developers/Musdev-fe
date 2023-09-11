@@ -8,7 +8,7 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-} from "../icons";
+} from "../svgs";
 
 const Footer = () => {
   const links = [

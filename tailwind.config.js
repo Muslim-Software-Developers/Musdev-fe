@@ -46,6 +46,9 @@ module.exports = {
         neutral05: "#CBCBCB",
         secondary01: "#0D706E",
         greenHover: "#0D703C",
+        draftGray: "#B6B6B6",
+        dropDownBg: 'rgba(147, 253, 197, 0.32)',
+        dropDownColor: '#141414'
       },
     },
   },
