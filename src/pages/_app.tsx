@@ -28,12 +28,6 @@ export default function App({
 }: AppPropsWithLayout) {
   const { isAuthPage = false, name, title } = Component;
 
-  console.log("checking..");
-  console.log("checking..");
-  console.log("checking..");
-  console.log("checking..");
-  console.log("checking..");
-
   const router = useRouter();
 
   const ToastContainer = (
