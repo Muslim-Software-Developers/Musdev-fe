@@ -56,3 +56,11 @@ body.modal-active {
 /* #executives .slick-slide {
   margin-right: 24px;
 } */
+
+.ql-editor {
+  border: none;
+}
+
+.ql-container.ql-snow{ border: none !important;}
+
+
