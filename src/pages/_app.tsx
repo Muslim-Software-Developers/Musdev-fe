@@ -28,8 +28,6 @@ export default function App({
 }: AppPropsWithLayout) {
   const { isAuthPage = false, name, title } = Component;
 
-  console.log('opened page...')
-
   const router = useRouter();
 
   const ToastContainer = (
