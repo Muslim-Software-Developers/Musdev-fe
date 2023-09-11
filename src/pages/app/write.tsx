@@ -53,7 +53,6 @@ const Write = () => {
     }
 
     return;
-
   };
 
   return (

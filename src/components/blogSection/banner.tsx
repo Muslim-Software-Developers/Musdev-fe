@@ -24,7 +24,6 @@ const Banner = () => {
     <section className="wrapper my-[5rem]">
       {firstFive.length > 0
         ? firstFive.map((post: any, index: number) => {
-
             return (
               <div key={index} className="flex gap-12 mb-10">
                 <div className="w-1/2">
@@ -38,7 +37,9 @@ const Banner = () => {
                 <div className="w-1/2">
                   <h2 className="text-4xl mb-8">{post.title}</h2>
 
-                  <p className="text-xl text-[#696767]">{post.content.slice(0, 100)}...</p>
+                  <p className="text-xl text-[#696767]">
+                    {post.content.slice(0, 100)}...
+                  </p>
 
                   <div className="flex justify-between items-start mt-12">
                     <div className="flex items-center gap-4">

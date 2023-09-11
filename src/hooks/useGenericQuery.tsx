@@ -8,11 +8,11 @@ const useGenericQuery = (
 ) => {
   return useQuery(key, func, {
     onError: (res) => {
-      console.log(res)
+      console.log(res);
     },
     onSuccess: (res) => {
-      console.log(res)
-    }
+      console.log(res);
+    },
   });
 };
 

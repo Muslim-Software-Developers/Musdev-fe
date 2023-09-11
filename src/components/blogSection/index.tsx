@@ -4,9 +4,6 @@ import Banner from "./banner";
 import PopularArticles from "./popularArticles";
 
 const BlogSection = () => {
-
-  
-
   return (
     <>
       <BlogHero />

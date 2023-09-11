@@ -17,7 +17,7 @@ class Blog {
   }
 
   createPost<T>(body: createPostPayload) {
-    console.log({body})
+    console.log({ body });
     return this.client.post<T>("/blog/create", body);
   }
 }

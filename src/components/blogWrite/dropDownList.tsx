@@ -36,7 +36,7 @@ const DropDownList = ({
     },
     {
       title: "Add main topics",
-      onClick: () => setShowSubList(prev => !prev),
+      onClick: () => setShowSubList((prev) => !prev),
       icon: "/images/arrowDown.png",
     },
     {
