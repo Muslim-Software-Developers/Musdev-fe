@@ -67,7 +67,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="p-4 bg-[#F0FFFF] w-[300px] fixed top-[95px] left-0 bottom-0 border-r border-[#B6B6B6]">
+    <aside className="p-4 bg-[#F0FFFF] w-[300px] hidden md:flex fixed top-[95px] left-0 bottom-0 border-r border-[#B6B6B6]">
       <ul>
         {menus.map((menu) => (
           <li key={menu.label}>

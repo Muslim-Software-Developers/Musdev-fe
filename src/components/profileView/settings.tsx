@@ -70,7 +70,7 @@ const Settings = () => {
 
   const heading = "text-neutral01 tracking-[0.12px] text-2xl font-bold";
   return (
-    <div className="border border-solid border-[#B6B6B6] rounded-[20px] bg-white py-8 px-16 divide-y divide-solid divide-[#B7B7B7]">
+    <div className="border md:border-solid border-[#B6B6B6] rounded-[0] border-none md:rounded-[20px] bg-white py-8 px-6 md:px-16 divide-y divide-solid divide-[#B7B7B7]">
       <div className="pb-6 mb-8 space-y-5 border-b border-solid border-[#E1E1FB]">
         <div>
           <h1 className="tracking-[0.12px] text-2xl font-bold text-[#11142D]">
@@ -96,7 +96,7 @@ const Settings = () => {
         <h2 className={heading}>Profile Edit</h2>
         <form className="mt-8 space-y-8">
           <div className="space-y-8">
-            <div className="flex items-center gap-x-10">
+            <div className="flex items-center gap-x-10 flex-col md:flex-row">
               <Controller
                 name="display_name"
                 control={control}
@@ -111,6 +111,7 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
               <Controller
                 name="full_name"
                 control={control}
@@ -126,8 +127,9 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
             </div>
-            <div className="flex items-center gap-x-10">
+            <div className="flex items-center gap-x-10 flex-col md:flex-row">
               <Controller
                 name="phone"
                 control={control}
@@ -143,6 +145,7 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
               <Controller
                 name="email"
                 control={control}
@@ -157,8 +160,9 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
             </div>
-            <div className="flex items-center gap-x-10">
+            <div className="flex items-center gap-x-10 flex-col md:flex-row">
               <Controller
                 name="years_of_experience"
                 control={control}
@@ -173,6 +177,7 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
               <Controller
                 name="primary_role"
                 control={control}
@@ -187,6 +192,7 @@ const Settings = () => {
                   />
                 )}
               />
+              <div className="mb-5 md:mb-0" />
             </div>
             <Controller
               name="bio"
@@ -205,7 +211,7 @@ const Settings = () => {
           <div>
             <h2 className={heading}>Social links</h2>
             <div className="space-y-8 mt-8">
-              <div className="flex items-center gap-x-10">
+              <div className="flex items-center gap-x-10 flex-col md:flex-row">
                 <Controller
                   name="portfolio"
                   control={control}
@@ -220,6 +226,7 @@ const Settings = () => {
                     />
                   )}
                 />
+                <div className="mb-5 md:mb-0" />
                 <Controller
                   name="linkenIn"
                   control={control}
@@ -235,7 +242,7 @@ const Settings = () => {
                   )}
                 />
               </div>
-              <div className="flex items-center gap-x-10">
+              <div className="flex items-center gap-x-10 flex-col md:flex-row">
                 <Controller
                   name="github"
                   control={control}
@@ -250,6 +257,9 @@ const Settings = () => {
                     />
                   )}
                 />
+
+                <div className="mb-5 md:mb-0" />
+
                 <Controller
                   name="twitter"
                   control={control}
@@ -267,8 +277,8 @@ const Settings = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between">
-            <div className="space-y-2">
+          <div className="flex md:items-center justify-between flex-col items-start  md:flex-row">
+            <div className="space-y-2 mb-8 md:mb-0">
               <h2 className="font-medium text-[#11142D] text-2xl tracking-[0.12px]">
                 Delete Account
               </h2>

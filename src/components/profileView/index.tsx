@@ -19,20 +19,28 @@ const ProfileView = () => {
   const onTabSelect = (index: number) => setCurrent(index);
 
   return (
-    <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 pb-20">
+    <section className="pt-[55px]  md:pl-[47px] bg-[#F0FFFF] md:pr-20 pb-20 ">
       <div className="">
-        <h2 className="font-semibold text-2xl mb-8">
+        <h2 className="px-8 md:px-0 font-semibold text-2xl mb-8">
           Make your Profile visible to recruiters
         </h2>
       </div>
 
-      <ul className="flex items-center gap-6 border-b border-[rgba(182,_182,_182,_0.50)] mb-16">
-        <li className="py-4 border-b-2 border-primary text-primary">
+      <ul className="flex px-8 md:px-0 items-center gap-6 border-b border-[rgba(182,_182,_182,_0.50)] mb-16">
+        <li
+          className={`py-4 ${
+            current === 0 ? "border-b-2 border-primary text-primary" : ""
+          }`}
+        >
           <button role="tab" onClick={() => onTabSelect(0)}>
             Profile
           </button>
         </li>
-        <li className="py-4">
+        <li
+          className={`py-4 ${
+            current === 1 ? "border-b-2 border-primary text-primary" : ""
+          }`}
+        >
           <button onClick={() => onTabSelect(1)}>Settings</button>
         </li>
         {/* <li className="py-4">
