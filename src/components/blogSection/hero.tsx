@@ -1,11 +1,10 @@
-"use-client"
+"use-client";
 
 import React from "react";
 import { SearchIcon } from "../svgs";
 import Link from "next/link";
 
 const BlogHero = () => {
-
   const links = [
     {
       title: "All",
@@ -34,7 +33,7 @@ const BlogHero = () => {
   ];
   return (
     <section className="wrapper pt-20">
-      <div className="max-w-[992px] mx-auto flex items-center flex-col">
+      <div className="max-w-[992px] mx-auto px-4 md:px-0 flex items-center flex-col">
         <h1 className="text-5xl mb-16">Our Blog</h1>
 
         <p className="text-center">
@@ -55,10 +54,10 @@ const BlogHero = () => {
           </button>
         </form>
 
-        <nav className="mt-8 mb-20">
-          <ul className="list-none flex items-center gap-12">
+        <nav className="mt-8 mb-20 overflow-auto pb-4">
+          <ul className="list-none flex items-center gap-4 md:gap-12">
             {links.map((link) => (
-              <li key={link.title}>
+              <li key={link.title} className="flex-shrink-0">
                 <Link href={link.href}>{link.title}</Link>
               </li>
             ))}

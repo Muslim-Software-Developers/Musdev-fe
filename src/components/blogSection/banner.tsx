@@ -10,7 +10,7 @@ const Banner = () => {
   const loadFirstFive = () => {
     for (let i = 0; i < 5; i++) {
       console.log(firstFive, firstFive.length);
-      setFirstFive((prev) => [...prev, data?.data?.data[i]]);
+      setFirstFive((prev) => [...prev, data![i]]);
     }
   };
 
@@ -24,10 +24,12 @@ const Banner = () => {
     <section className="wrapper my-[5rem]">
       {firstFive.length > 0
         ? firstFive.map((post: any, index: number) => {
-
             return (
-              <div key={index} className="flex gap-12 mb-10">
-                <div className="w-1/2">
+              <div
+                key={index}
+                className="flex flex-col md:flex-row items-center  gap-6 md:gap-12 mb-10"
+              >
+                <div className="">
                   <Image
                     src="/images/rectangle-456.png"
                     alt="Banner 456"
@@ -35,10 +37,12 @@ const Banner = () => {
                     height={540}
                   />
                 </div>
-                <div className="w-1/2">
-                  <h2 className="text-4xl mb-8">{post.title}</h2>
+                <div className="">
+                  <h2 className="text-2xl mdtext-4xl mb-8">{post.title}</h2>
 
-                  <p className="text-xl text-[#696767]">{post.content.slice(0, 100)}...</p>
+                  <p className="text-lg md:text-xl text-[#696767]">
+                    {post.content.slice(0, 100)}...
+                  </p>
 
                   <div className="flex justify-between items-start mt-12">
                     <div className="flex items-center gap-4">

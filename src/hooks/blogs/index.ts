@@ -1,21 +1,27 @@
 import api from "@/api";
 import useGenericMutation from "../useGenericMutation";
 import {
-  createPostPayload,
-  createPostResponse,
+  BlogProps,
+  CreatePostPayload,
+  CreatePostResponse,
   GetAllBlogResponse,
 } from "./types";
 import useGenericQuery from "../useGenericQuery";
+import { useQuery } from "react-query";
 
 export const useGetAllPosts = () => {
-  return useGenericQuery("getAllPosts", () => api.blog.getAllPosts());
+  const { data, ...rest } = useQuery("getAllPosts", () =>
+    api.blog.getAllPosts<GetAllBlogResponse>(),
+  );
+  return { ...rest, data: data?.data?.data };
 };
 
 export const useCreatePost = () => {
-  return useGenericMutation<createPostResponse, createPostPayload>(
-    "createPost",
-    (data) => api.blog.createPost<createPostResponse>(data),
-  );
+  const { data, ...rest } = useGenericMutation<
+    CreatePostResponse,
+    CreatePostPayload
+  >("createPost", (data) => api.blog.createPost<CreatePostResponse>(data));
+  return { ...rest, data: data?.data.data };
 };
 
 export const useGetUserPosts = () => {
