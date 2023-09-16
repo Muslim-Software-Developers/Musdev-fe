@@ -15,13 +15,9 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
-  const mobileMenuClasses = mobileMenuOpen
-  ? "lg:hidden absolute top-0 left-0 right-0 bg-[#0D706E] z-20 h-screen flex flex-col items-center justify-center transform translate-x-0"
-  : "lg:hidden absolute top-0 left-0 right-0 bg-transparent z-20 h-screen flex flex-col items-center justify-center transform translate-x-full";
 
   return (
-    <header className="h-[95px] bg-white flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 right-0 z-10">
+    <header className="h-[61px] lg:h-[95px] bg-white flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 right-0 z-10">
       <nav className="wrapper flex items-center justify-between">
         <Link href="/">
           <NextImage src={Logo} alt="Logo" />
@@ -30,7 +26,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <section className={`lg:hidden ${mobileMenuOpen && 'absolute top-0 left-0 right-0 bg-primary z-20 h-screen p-6'}`}>
         <div className="lg:hidden">
-          <button onClick={toggleMobileMenu} className={mobileMenuOpen ? 'flex ml-auto mt-3' : ''}>
+          <button onClick={toggleMobileMenu} className={mobileMenuOpen ? 'flex ml-auto mt-3' : 'outline-none'}>
             {mobileMenuOpen ? (
               <svg
               xmlns="http://www.w3.org/2000/svg"

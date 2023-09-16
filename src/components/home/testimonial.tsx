@@ -70,7 +70,7 @@ const Testimonial = () => {
 
   return (
     <div className="py-[8rem]">
-      <div className="wrapper bg-[#0D706E] p-12 rounded-[48px] flex justify-between mb-[6rem]">
+      <div className="hidden wrapper bg-[#0D706E] p-12 rounded-[48px] md:flex justify-between mb-[6rem]">
         <div className="w-1/2 py-16 text-white">
           <div className="flex items-center gap-4 mb-8">
             <Ellipse />
