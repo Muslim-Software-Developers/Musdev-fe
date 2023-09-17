@@ -24,74 +24,101 @@ const Navbar = () => {
         </Link>
 
         {/* Mobile Menu Toggle */}
-        <section className={`lg:hidden ${mobileMenuOpen && 'absolute top-0 left-0 right-0 bg-primary z-20 h-screen p-6'}`}>
-        <div className="lg:hidden">
-          <button onClick={toggleMobileMenu} className={mobileMenuOpen ? 'flex ml-auto mt-3' : 'outline-none'}>
-            {mobileMenuOpen ? (
-              <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-[25px] text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        <section
+          className={`lg:hidden ${
+            mobileMenuOpen &&
+            "absolute top-0 left-0 right-0 bg-primary z-20 h-screen p-6"
+          }`}
+        >
+          <div className="lg:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className={mobileMenuOpen ? "flex ml-auto mt-3" : "outline-none"}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                <path d="M2.25 5.1875H21.75M2.25 12.5H21.75M2.25 19.8125H21.75" stroke="#0D706E" stroke-width="2.67" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
-          <div className="flex flex-col top-[95px] left-0 right-0 gap-[40px] mt-11 z-20">
-            <ul className="list-none flex flex-col items-center gap-[40px] text-lg font-medium text-white">
-              <li>
-                <Link href="#">Home</Link>
-              </li>
-              <li>
-                <Link href="/blog">Blog</Link>
-              </li>
-              <li>
-                <Link href="#">Career</Link>
-              </li>
-              <li>
-                <Link href="#">About us</Link>
-              </li>
-              <li>
-                <Link href="#">Learning</Link>
-              </li>
-            </ul>
-            {session ? (
-              <div className="flex items-center justify-center gap-[40px]">
-                <button>
-                  <NotificationIcon />
-                </button>
-                <button>
-                  <MessageIcon />
-                </button>
-                <UserDropdown />
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-[40px]">
-                <Link href="/auth/login">
-                  <Button variant="outline" className="text-primary bg-white border">Log In</Button>
-                </Link>
-                <Link href="/auth/signup">
-                  <Button variant="primary" className="border">Sign Up</Button>
-                </Link>
-              </div>
-            )}
+              {mobileMenuOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-[25px] text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <path
+                    d="M2.25 5.1875H21.75M2.25 12.5H21.75M2.25 19.8125H21.75"
+                    stroke="#0D706E"
+                    stroke-width="2.67"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
-        )}
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="flex flex-col top-[95px] left-0 right-0 gap-[40px] mt-11 z-20">
+              <ul className="list-none flex flex-col items-center gap-[40px] text-lg font-medium text-white">
+                <li>
+                  <Link href="#">Home</Link>
+                </li>
+                <li>
+                  <Link href="/blog">Blog</Link>
+                </li>
+                <li>
+                  <Link href="#">Career</Link>
+                </li>
+                <li>
+                  <Link href="#">About us</Link>
+                </li>
+                <li>
+                  <Link href="#">Learning</Link>
+                </li>
+              </ul>
+              {session ? (
+                <div className="flex items-center justify-center gap-[40px]">
+                  <button>
+                    <NotificationIcon />
+                  </button>
+                  <button>
+                    <MessageIcon />
+                  </button>
+                  <UserDropdown />
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-[40px]">
+                  <Link href="/auth/login">
+                    <Button
+                      variant="outline"
+                      className="text-primary bg-white border"
+                    >
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link href="/auth/signup">
+                    <Button variant="primary" className="border">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </section>
 
         {/* Desktop Navigation Menu */}

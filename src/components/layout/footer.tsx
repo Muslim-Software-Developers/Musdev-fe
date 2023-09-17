@@ -49,7 +49,18 @@ const Footer = () => {
             <ul className="flex flex-col lg:flex-row lg:items-center gap-6 text-[#6B7280] mt-8">
               {links.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.url}>{link.name} <span className={link.badge ? `bg-[#F5F5FF] px-[10px] py-[2px] rounded-3xl` : ''}>{link?.badge}</span></Link>
+                  <Link href={link.url}>
+                    {link.name}{" "}
+                    <span
+                      className={
+                        link.badge
+                          ? `bg-[#F5F5FF] px-[10px] py-[2px] rounded-3xl`
+                          : ""
+                      }
+                    >
+                      {link?.badge}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -60,9 +71,10 @@ const Footer = () => {
               Get the latest updates in your inbox!
             </p>
             <form className="mt-6 flex items-center gap-2">
-              <input 
+              <input
                 placeholder="Email address"
-                className="h-[42px] rounded-lg border border-[#808080] px-3 placeholder:text-[#808080] flex-1" />
+                className="h-[42px] rounded-lg border border-[#808080] px-3 placeholder:text-[#808080] flex-1"
+              />
               <Button variant="primary" className="w-[94px] h-[42px]">
                 Submit
               </Button>
