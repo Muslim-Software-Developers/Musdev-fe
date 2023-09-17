@@ -17,7 +17,7 @@ const AuthLayout = ({ children, heading, subHeading }: IAuthLayout) => {
           <NextImage src={Logo} alt="Logo" />
         </Link>
         <div className="py-7 text-center">
-          <h1 className="text-[#141414] text-3xl font-bold">{heading}</h1>
+          <h1 className="text-[#141414] text-3xl sm:text-4xl font-bold">{heading}</h1>
           <p className="text-[#808080] text-lg pt-3">{subHeading}</p>
         </div>
         {children}
