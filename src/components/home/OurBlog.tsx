@@ -17,21 +17,39 @@ const OurBlog = (): JSX.Element => {
           keep you informed and inspired.
         </p>
         <button className="flex lg:hidden py-2 px-4 justify-center items-center gap-2 rounded-lg text-white bg-primary mt-6">
-          <span className="font-sans font-medium tracking-wider text-[14px]">Start reading</span>
+          <span className="font-sans font-medium tracking-wider text-[14px]">
+            Start reading
+          </span>
           <span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
-            <g clip-path="url(#clip0_395_1954)">
-              <path d="M4.45313 2.19336L10.5469 8.28711L4.45312 14.3809" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_395_1954">
-                <rect width="15" height="15" fill="white" transform="translate(15 15.7871) rotate(-180)"/>
-              </clipPath>
-            </defs>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="16"
+              viewBox="0 0 15 16"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_395_1954)">
+                <path
+                  d="M4.45313 2.19336L10.5469 8.28711L4.45312 14.3809"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_395_1954">
+                  <rect
+                    width="15"
+                    height="15"
+                    fill="white"
+                    transform="translate(15 15.7871) rotate(-180)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
           </span>
         </button>
-
       </div>
 
       <div className="hidden md:flex flex-col md:flex-row justify-between gap-y-[30px]">

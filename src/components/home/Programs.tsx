@@ -11,7 +11,7 @@ const Programs = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    className: 'flex gap-x-4 shadow-sm',
+    className: "flex gap-x-4 shadow-sm",
   };
 
   return (
