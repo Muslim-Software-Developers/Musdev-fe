@@ -29,7 +29,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "hero-image": "url('/icons/hero-image.svg')",
+        "hero-image": "url('/images/hero.png')",
         "auth-layout": "url('/icons/auth-layout.svg')",
       },
       boxShadow: {

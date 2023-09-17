@@ -29,7 +29,7 @@ const Ellipse = () => (
 );
 
 const Testimonial = () => {
-  const [testimonials, setTestimonials] = useState([
+  const testimonials = [
     {
       content:
         "I worked with the Musdev executive for the SEO of my personal blog. They worked great. Definitely recommend.",
@@ -48,7 +48,7 @@ const Testimonial = () => {
       author: "Habib Isah",
       post: "Someone random",
     },
-  ]);
+  ];
 
   const testimonialSettings = {
     // dots: true,
@@ -102,7 +102,7 @@ const Testimonial = () => {
         </div>
       </div>
 
-      <div className="testimonial-section py-20 border-y-2 border-y-[rgba(128,_128,_128,_0.21)]">
+      <div className="testimonial-section py-20 mx-8 border-y-2 border-y-[rgba(128,_128,_128,_0.21)]">
         <div className="max-w-[650px] mx-auto text-center">
           <Slider {...testimonialSettings}>
             {testimonials.map((testimonial) => (
