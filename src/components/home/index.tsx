@@ -5,6 +5,7 @@ import OurBlog from "./OurBlog";
 import Programs from "./Programs";
 import Gallery from "./Gallery";
 import Testimonial from "./testimonial";
+import GetTogetherSection from "./GetTogetherSection";
 
 const HomePage = () => {
   return (
@@ -13,8 +14,14 @@ const HomePage = () => {
       <Programs />
       <Gallery />
       <Partnerships />
+      <div className="md:hidden">
+        <Testimonial />
+      </div>
       <OurBlog />
-      <Testimonial />
+      <GetTogetherSection />
+      <div className="hidden md:block">
+        <Testimonial />
+      </div>
     </div>
   );
 };

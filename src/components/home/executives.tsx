@@ -23,7 +23,7 @@ const Executives = () => {
   };
 
   return (
-    <div id="executives" className="">
+    <div id="executives" className="hidden md:block">
       <div className="container mx-auto pt-4">
         <h2 className="text-6xl font-bold my-16 text-center">Our Executives</h2>
 
