@@ -72,7 +72,7 @@ const Signup = () => {
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-[592px] flex flex-col items-center"
+        className="w-full flex flex-col items-center"
       >
         {step === 1 ? (
           <StepOne handleStep={handleStep} control={control} errors={errors} />
