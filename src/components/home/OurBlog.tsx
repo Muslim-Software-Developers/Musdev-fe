@@ -5,19 +5,36 @@ import ArrowRightIcon from "../svgs/arrowRightIcon";
 const OurBlog = (): JSX.Element => {
   return (
     <section className="py-10 md:py-[61px] wrapper">
-      <div className="text-center max-w-[879px] mx-auto mb-6 md:mb-[95px]">
-        <h1 className="font-bold text-[25px] md:text-[64px] leading-[1.5] text-[#141414] mb-6">
-          Our Blog
+      <div className="px-3 lg:text-center max-w-[879px] mx-auto mb-6 lg:mb-[95px]">
+        <h1 className="font-bold text-[32px] lg:text-[64px] leading-[40.8px] text-[#141414] mb-6">
+          <span className="block md:hidden mt-[110px] mb-8">Blog</span>
+          <span className="hidden md:block">Our Blog</span>
         </h1>
-        <p className="md:text-[20px] leading-[1.4] text-center text-[#808080]">
+        <p className="text-[20px] leading-[127%] lg:text-center text-[#141414] lg:text-[#808080]">
           Stay updated with the latest trends, insights, and news from the world
           of technology through our blog. Our team of experts and community
           contributors share their knowledge, experiences, and perspectives to
           keep you informed and inspired.
         </p>
+        <button className="flex lg:hidden py-2 px-4 justify-center items-center gap-2 rounded-lg text-white bg-primary mt-6">
+          <span className="font-sans font-medium tracking-wider text-[14px]">Start reading</span>
+          <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+            <g clip-path="url(#clip0_395_1954)">
+              <path d="M4.45313 2.19336L10.5469 8.28711L4.45312 14.3809" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_395_1954">
+                <rect width="15" height="15" fill="white" transform="translate(15 15.7871) rotate(-180)"/>
+              </clipPath>
+            </defs>
+          </svg>
+          </span>
+        </button>
+
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between gap-y-[30px]">
+      <div className="hidden md:flex flex-col md:flex-row justify-between gap-y-[30px]">
         <div className="w-full md:w-[48.7%]">
           <div className="w-full h-[185px] md:h-[357px] relative">
             <Image
