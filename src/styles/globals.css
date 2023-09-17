@@ -36,7 +36,7 @@ body.modal-active {
 }
 
 .wrapper {
-  @apply container mx-auto px-12;
+  @apply container mx-auto px-4 md:px-12;
 }
 
 .slick-arrow,
@@ -61,6 +61,6 @@ body.modal-active {
   border: none;
 }
 
-.ql-container.ql-snow{ border: none !important;}
-
-
+.ql-container.ql-snow {
+  border: none !important;
+}

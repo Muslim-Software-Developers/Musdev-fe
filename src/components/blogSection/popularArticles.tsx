@@ -5,7 +5,6 @@ import { useGetAllPosts } from "@/hooks/blogs";
 
 const PopularArticles = () => {
   const { isLoading, data } = useGetAllPosts();
-  console.log(data);
 
   if (isLoading) {
     return (

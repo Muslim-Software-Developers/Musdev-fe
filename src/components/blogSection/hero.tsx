@@ -54,8 +54,8 @@ const BlogHero = () => {
           </button>
         </form>
 
-        <nav className="mt-8 mb-20 overflow-auto pb-4">
-          <ul className="list-none flex items-center gap-4 md:gap-12">
+        <nav className="mt-8 mb-20 overflow-auto pb-4 w-full">
+          <ul className="list-none flex items-center justify-center gap-4 md:gap-12">
             {links.map((link) => (
               <li key={link.title} className="flex-shrink-0">
                 <Link href={link.href}>{link.title}</Link>

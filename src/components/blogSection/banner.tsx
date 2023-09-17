@@ -9,7 +9,6 @@ const Banner = () => {
 
   const loadFirstFive = () => {
     for (let i = 0; i < 5; i++) {
-      console.log(firstFive, firstFive.length);
       setFirstFive((prev) => [...prev, data![i]]);
     }
   };
