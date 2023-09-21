@@ -85,25 +85,27 @@ const SearchBar = () => {
   return (
     <div className="max-w-[760px] w-full mx-auto">
       <div className="text-center">
-        <h1 className="text-3xl mb-8 font-semibold">Search for Jobs</h1>
+        <h1 className="text-2xl md:text-3xl mb-8 font-semibold">
+          Search for Jobs
+        </h1>
 
         <form className="flex items-center mx-auto w-full">
           <input
-            className="h-[44px] px-4 rounded-tl-2xl rounded-bl-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border flex-1"
+            className="h-[44px] text-sm md:text-xl px-4 rounded-tl-2xl rounded-bl-2xl border-[#808080] bg-white  md:bg-[rgba(217,217,217,0.33)] border flex-1"
             placeholder="Search here"
           />
-          <button className="h-[44px] w-[76px] rounded-tr-2xl rounded-br-2xl border-[#808080] bg-[rgba(217,217,217,0.33)] border border-l-0 flex items-center justify-center">
+          <button className="h-[44px] w-[50px]  md:w-[76px] rounded-tr-2xl rounded-br-2xl border-[#808080] bg-white md:bg-[rgba(217,217,217,0.33)] border border-l-0 flex items-center justify-center">
             <SearchIcon />
           </button>
         </form>
       </div>
 
       <nav className="mt-7 mb-20 flex items-center justify-center">
-        <ul className="list-none flex items-center gap-12">
+        <ul className="list-none flex flex-wrap items-center gap-12">
           {jobCategories.map((category) => (
             <li
               key={category.title}
-              className="hover:text-primary font-medium text-sm"
+              className="hover:text-primary font-normal md:font-medium text-sm"
             >
               <Link href={category.href}>{category.title}</Link>
             </li>
@@ -124,19 +126,24 @@ const JobCard = ({ job }: { job: JobInfo }) => {
           <Image src="/images/logo.svg" width={69} height={19} alt="" />
         </span>
         <div>
-          <h4 className="text-black text-xl font-semibold">{job.title}</h4>
-          <span className="font-medium text-lg text-[#808080] capitalize pt-2">
+          <h4 className="text-black text-xl capitalize font-semibold">
             {job.company}
+          </h4>
+          <span className="font-medium text-lg text-[#808080] capitalize pt-2">
+            {job.title}
           </span>
-          <div className="font-medium text-lg text-[#808080] space-x-4 capitalize">
-            <span>{job.location}</span>
-            <span>2 days ago</span>
+
+          <div>
+            <div className="font-medium text-lg text-[#808080] space-x-4 capitalize">
+              <span>{job.location}</span>
+              <span>2 days ago</span>
+            </div>
+            {job.amount && (
+              <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
+                {job.amount}
+              </span>
+            )}
           </div>
-          {job.amount && (
-            <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
-              {job.amount}
-            </span>
-          )}
         </div>
       </div>
       <div>
@@ -150,15 +157,17 @@ const JobCard = ({ job }: { job: JobInfo }) => {
 const JobHero = () => {
   return (
     <div className="mb-10">
-      <h1 className="text-3xl mb-8 font-semibold">Welcome back, Ahmad Rufai</h1>
-      <p className="text-xl font-medium">Recommended for you</p>
+      <h1 className="text-xl md:text-3xl mb-2 md:mb-8 font-semibold">
+        Welcome back, Ahmad Rufai
+      </h1>
+      <p className="text-sm md:text-xl font-medium">Recommended for you</p>
     </div>
   );
 };
 
 const JobsSection = () => {
   return (
-    <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 space-y-24 pb-20">
+    <section className="pt-[55px] pl-[16px] md:pl-[47px] bg-white md:bg-[#F0FFFF] pr-[16px] md:pr-20 space-y-24 pb-20">
       <SearchBar />
       <JobHero />
       <div className="space-y-16 mt-20 pb-20">
