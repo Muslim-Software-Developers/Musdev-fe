@@ -1,4 +1,6 @@
-import React from "react";
+"use-client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SearchIcon } from "../../components/svgs";
@@ -118,7 +120,10 @@ const SearchBar = () => {
 
 const JobCard = ({ job }: { job: JobInfo }) => {
   return (
-    <div className="flex justify-between items-end">
+    <div
+      onClick={() => console.log(job)}
+      className="flex justify-between items-end"
+    >
       <div className="flex w-full flex-col gap-x-10">
         <div className="w-full flex flex-row mb-8">
           <span
@@ -126,7 +131,7 @@ const JobCard = ({ job }: { job: JobInfo }) => {
           >
             <Image src="/images/logo.svg" width={69} height={19} alt="" />
           </span>
-          <span className="md:w-[full]">
+          <span className="md:w-full">
             <h4 className="text-black text-xl capitalize font-semibold">
               {job.company}
             </h4>
@@ -177,6 +182,11 @@ const JobCard = ({ job }: { job: JobInfo }) => {
     </div>
   );
 };
+
+const JobInfo = ({ job }: { job: JobInfo }) => {
+  return <div></div>;
+};
+
 const JobHero = () => {
   return (
     <div className="mb-10">
@@ -189,13 +199,20 @@ const JobHero = () => {
 };
 
 const JobsSection = () => {
+  const [showJobInfo, setShowJobInfo] = useState<JobInfo>({});
+
   return (
     <section className="pt-[55px] pl-[16px] md:pl-[47px] bg-white md:bg-[#F0FFFF] pr-[16px] md:pr-20 space-y-24 pb-20">
       <SearchBar />
       <JobHero />
       <div className="space-y-16 mt-20 pb-20">
         {jobData.map((job: JobInfo) => (
-          <JobCard key={job.id} job={job} />
+          <>
+            <JobCard key={job.id} job={job} />
+            {showJobInfo?.id > 0 && showJobInfo?.id === job.id ? (
+              <JobInfo job={job} />
+            ) : null}
+          </>
         ))}
       </div>
     </section>
