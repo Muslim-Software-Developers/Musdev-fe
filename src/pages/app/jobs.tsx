@@ -119,38 +119,61 @@ const SearchBar = () => {
 const JobCard = ({ job }: { job: JobInfo }) => {
   return (
     <div className="flex justify-between items-end">
-      <div className="flex gap-x-10">
-        <span
-          className={`bg-[${job.color}] w-[90px] h-[90px] rounded-[5px] flex items-center justify-center`}
-        >
-          <Image src="/images/logo.svg" width={69} height={19} alt="" />
-        </span>
-        <div>
-          <h4 className="text-black text-xl capitalize font-semibold">
-            {job.company}
-          </h4>
-          <span className="font-medium text-lg text-[#808080] capitalize pt-2">
+      <div className="flex w-full flex-col gap-x-10">
+        <div className="w-full flex flex-row mb-8">
+          <span
+            className={`bg-[${job.color}] w-[90px] h-[90px] mr-[32px] rounded-[5px] flex items-center justify-center`}
+          >
+            <Image src="/images/logo.svg" width={69} height={19} alt="" />
+          </span>
+          <span className="md:w-[full]">
+            <h4 className="text-black text-xl capitalize font-semibold">
+              {job.company}
+            </h4>
+            <span className="font-medium text-lg text-[#808080] capitalize pt-2">
+              {job.title}
+            </span>
+
+            <div className="hidden md:flex w-full flex-col md:flex-row md:justify-between border-coolGray-50">
+              <div>
+                <div className="font-medium text-lg text-[#808080] space-x-4 capitalize">
+                  <span>{job.location}</span>
+                  <span>2 days ago</span>
+                </div>
+                {job.amount && (
+                  <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
+                    {job.amount}
+                  </span>
+                )}
+              </div>
+              <Button variant="outline" className="capitalize">
+                Learn more
+              </Button>
+            </div>
+          </span>
+        </div>
+
+        <div className="w-full md:hidden flex flex-col md:flex-row md:justify-between border-neutral05 border-[2px] p-5 rounded-xl">
+          <span className="font-medium text-lg text-neutral01 capitalize pt-2 mb-2">
             {job.title}
           </span>
 
-          <div>
-            <div className="font-medium text-lg text-[#808080] space-x-4 capitalize">
-              <span>{job.location}</span>
-              <span>2 days ago</span>
+          <div className="flex flex-row items-center justify-start mb-3 bg-white">
+            <div className="font-medium text-[11px] text-[#808080] capitalize mr-2">
+              <span>{job.location}</span> . <span>2 days ago.</span>
             </div>
             {job.amount && (
-              <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
+              <span className="font-medium text-[11px] text-[#808080] capitalize">
                 {job.amount}
               </span>
             )}
           </div>
+          <Button variant="outline" className="capitalize w-[45%] text-sm">
+            <p className="text-sm">Learn more</p>
+          </Button>
         </div>
       </div>
-      <div>
-        <Button variant="outline" className="capitalize">
-          Learn more
-        </Button>
-      </div>
+      <div></div>
     </div>
   );
 };
