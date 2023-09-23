@@ -49,6 +49,8 @@ module.exports = {
         draftGray: "#B6B6B6",
         dropDownBg: "rgba(147, 253, 197, 0.32)",
         dropDownColor: "#141414",
+        lightGreenBg: "#F0FFFF",
+        black: "#000000",
       },
     },
   },
