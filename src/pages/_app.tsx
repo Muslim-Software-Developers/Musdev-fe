@@ -27,7 +27,6 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
   const { isAuthPage = false, name, title } = Component;
-
   const router = useRouter();
 
   const ToastContainer = (

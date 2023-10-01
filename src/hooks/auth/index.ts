@@ -1,4 +1,6 @@
+import { useQuery } from "react-query";
 import useGenericMutation from "../useGenericMutation";
+import useGenericQuery from "../useGenericQuery";
 import {
   ILoginResponse,
   ISignupResponse,
@@ -6,8 +8,48 @@ import {
   IForgotPasswordResponse,
   IResetPasswordResponse,
   ResetPasswordProps,
+  ProfileProps,
 } from "./types";
 import api from "@/api";
+
+export const useGetProfile = () => {
+  const { data, ...rest } = useQuery("profile", () =>
+    api.auth.userProfile<ProfileProps>(),
+  );
+  return { ...rest, data: data?.data };
+};
+
+export const useUpdateProfile = () => {
+  return useGenericMutation<any, any>(
+    "profile",
+    (data) => api.auth.updateProfile<any, {}>(data),
+    undefined,
+  );
+};
+
+export const useAddEducation = () => {
+  return useGenericMutation<any, any>(
+    "add-education",
+    (data) => api.auth.addEducation<any, {}>(data),
+    undefined,
+  );
+};
+
+export const useAddWork = () => {
+  return useGenericMutation<any, any>(
+    "add-work",
+    (data) => api.auth.addWork<any, {}>(data),
+    undefined,
+  );
+};
+
+export const useDeleteWork = () => {
+  return useGenericMutation(
+    "delete-work",
+    (data) => api.auth.deleteWork(),
+    undefined,
+  );
+};
 
 export const useLogin = () => {
   return useGenericMutation<

@@ -3,8 +3,14 @@ import Avatar from "../../../public/images/avatar-3.png";
 import Image from "next/image";
 import Logo from "../../assets/Logo.svg";
 import NextImage from "next/image";
+import { ProfileProps } from "@/hooks/auth/types";
+import WorkExperience from "./settings/workExperienceSection/experience";
 
-const Profile = () => {
+interface Props {
+  data?: ProfileProps;
+}
+
+const Profile = ({ data }: Props) => {
   const skills = [
     "Research",
     "UI Design",
@@ -25,23 +31,18 @@ const Profile = () => {
         <div className="flex justify-between">
           <div className="flex gap-8 items-center">
             <Image src={Avatar} alt="Profile" />
-            <h3 className="text-2xl font-semibold">Ahmad Rufai Yusuf</h3>
+            <h3 className="text-2xl font-semibold">{data?.user.name}</h3>
             <div>
               <p className="font-medium text-xl">Product Designer</p>
               <p className="text-[#808080] font-medium">
-                4 years of experience
+                {data?.years} years of experience
               </p>
             </div>
           </div>
         </div>
 
         <div className="my-8">
-          <p className="text-[#808080]">
-            I am an innovative, creative individual who is adept at coming up
-            with real solutions that work for end users, i create design that
-            stir emotions and all so yh Hire me. Because I will transform your
-            business by translating you user’s need into pleasing interfaces
-          </p>
+          <p className="text-[#808080]">{data?.bio}</p>
         </div>
       </div>
 
@@ -51,25 +52,7 @@ const Profile = () => {
             Experience
           </h2>
 
-          <div className="flex">
-            <div className="w-[90px] h-[90px] rounded-md bg-[#E73152] mr-6 flex items-center justify-center">
-              <NextImage src={Logo} alt="Logo" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold">Lead Designer</h2>
-              <div className="my-2 text-[#808080]">
-                <p className="font-bold text-xl">Musdev</p>
-                <p>May 2023 to present</p>
-              </div>
-
-              <p className="mb-6">
-                Collaborated with partners across product and engineering to
-                define, build, and release new products and features. Construct
-                user flows, wireframes, and prototypes that effectively
-                communicate design concepts.
-              </p>
-            </div>
-          </div>
+          <WorkExperience works={data?.work || []} />
         </div>
 
         <div className="mb-10">
