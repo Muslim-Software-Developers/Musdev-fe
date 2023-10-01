@@ -302,6 +302,7 @@ const JobInfo = ({
           </div>
         </div>
       </div>
+      {/* This is the popup */}
       {!showApply && (
         <div className="absolute w-full px-3 top-0 z-40 bg-orange-400">
           <div className="w-full py-10">
