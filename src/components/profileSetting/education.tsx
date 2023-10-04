@@ -12,8 +12,8 @@ interface IEdit {
 
 export const Education = (props: IEdit) => {
   return (
-    <div className="w-full flex justify-between items-start">
-      <div className="text-neutral01 font-bold text-sm tracking-[0.112px] space-y-[3px]">
+    <div className="w-full flex justify-between items-start flex-col md:flex-row">
+      <div className="text-neutral01 font-bold text-sm tracking-[0.112px] space-y-[3px] mb-3 mb:mb-0">
         <h2 className="capitalize">tomorrow university</h2>
         <p className="text-[#808080] font-normal">
           Artificial Intelligence and sustainable technologies, Bachelor&apos;s

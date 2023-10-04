@@ -38,10 +38,12 @@ const DashboardLayout = ({
 
       <Navbar />
       <section
-        className={`z-[1] mt-[95px] bg-[#F0FFFF] section-full-screen ${className}`}
+        className={`z-[1] mt-[95px] bg-[#F0FFFF] section-full-screen ${className} w-50px]`}
       >
         <Sidebar />
-        <main className="ml-[300px]">{children}</main>
+        <main className="ml-[0px] m-[0px] p-[0px] md:ml-[300px]">
+          {children}
+        </main>
       </section>
     </Fragment>
   );

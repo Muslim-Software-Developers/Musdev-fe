@@ -11,8 +11,8 @@ interface IEdit {
 }
 export const WorkExperience = (props: IEdit) => {
   return (
-    <div className="w-full flex gap-x-8">
-      <span className="bg-[#E73152] rounded-[5px] w-[90px] h-[90px] inline-block"></span>
+    <div className="w-full flex gap-x-8 flex-col md:flex-row">
+      <span className="bg-[#E73152] rounded-[5px] w-[90px] h-[90px] inline-block mb-8 md:mb-0"></span>
       <div className="w-full space-y-[9px]">
         <div className="w-full flex justify-between">
           <h2 className="capitalize text-black text-2xl font-semibold">
