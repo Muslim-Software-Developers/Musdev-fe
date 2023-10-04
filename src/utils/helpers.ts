@@ -1,5 +1,4 @@
-import { createPostPayload } from "@/hooks/blogs/types";
-import { postObjTypes } from "@/pages/blog/write";
+import { CreatePostPayload } from "@/hooks/blogs/types";
 import { AxiosError } from "axios";
 import { error } from "console";
 
@@ -11,7 +10,7 @@ export function extractAxiosError(error: unknown): string {
   return (error as AxiosError<{ message: string }>).response?.data?.message!;
 }
 
-export function validatePost(postData: createPostPayload): string[] | null {
+export function validatePost(postData: CreatePostPayload): string[] | null {
   let errors = [];
 
   if (!postData.name || !postData.email || !postData.author) {

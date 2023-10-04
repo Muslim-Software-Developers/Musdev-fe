@@ -1,4 +1,4 @@
-import { createPostPayload } from "@/hooks/blogs/types";
+import { CreatePostPayload } from "@/hooks/blogs/types";
 import dynamic from "next/dynamic";
 import React from "react";
 import "react-quill/dist/quill.snow.css";
@@ -6,7 +6,7 @@ const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 interface Props {
   titleValue: string;
-  setTitleValue: React.Dispatch<(prev: createPostPayload) => createPostPayload>;
+  setTitleValue: React.Dispatch<(prev: CreatePostPayload) => CreatePostPayload>;
   editor: string;
   setEditor: React.Dispatch<string>;
 }
@@ -42,7 +42,7 @@ const WritingBox = ({
           placeholder="Title"
           value={titleValue}
           onChange={(e) => {
-            setTitleValue((prev: createPostPayload) => {
+            setTitleValue((prev: CreatePostPayload) => {
               return { ...prev, title: e.target.value };
             });
           }}

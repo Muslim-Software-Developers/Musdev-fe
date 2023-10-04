@@ -1,4 +1,4 @@
-import { createPostPayload } from "@/hooks/blogs/types";
+import { CreatePostPayload } from "@/hooks/blogs/types";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -8,7 +8,7 @@ const DropDownList = ({
   setShowDropDownList,
 }: {
   category: number;
-  setPostObj: React.Dispatch<(prev: createPostPayload) => createPostPayload>;
+  setPostObj: React.Dispatch<(prev: CreatePostPayload) => CreatePostPayload>;
   setShowDropDownList: React.Dispatch<boolean>;
 }) => {
   const dropDownItemsStyle =
@@ -17,7 +17,7 @@ const DropDownList = ({
   const [showSubList, setShowSubList] = useState<boolean>(false);
 
   const setCategory = (id: number) => {
-    setPostObj((prev: createPostPayload) => {
+    setPostObj((prev: CreatePostPayload) => {
       return { ...prev, category_id: id };
     });
   };
@@ -36,7 +36,7 @@ const DropDownList = ({
     },
     {
       title: "Add main topics",
-      onClick: () => setShowSubList(prev => !prev),
+      onClick: () => setShowSubList((prev) => !prev),
       icon: "/images/arrowDown.png",
     },
     {

@@ -29,7 +29,7 @@ const Events = () => {
       closemodal[i].addEventListener("click", toggleModal);
     }
 
-    document.onkeydown = function (evt) {
+    document.onkeydown = function (evt: any) {
       evt = evt || window.event;
       var isEscape = false;
       if ("key" in evt) {
