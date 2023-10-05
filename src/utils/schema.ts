@@ -46,26 +46,46 @@ export const resetPasswordSchema = object({
 export type ResetPasswordFormFields = InferType<typeof resetPasswordSchema>;
 
 export const profileSchema = object({
-  display_name: string().label("Display name"),
-  full_name: string().required("Full name is required"),
+  // display_name: string()
+  //   .label("Display name")
+  //   .required("Display name is required"),
+  name: string().required("Full name is required"),
   phone: string().required().length(11, "Phone number has to be 11 digits"),
   email: emailSchema(),
   primary_role: string().label("Primary role"),
-  years_of_experience: number().label("Years of experience"),
+  years: number().label("Years of experience"),
   bio: string().required("Bio is required"),
+
   portfolio: string(),
   linkenIn: string(),
   github: string(),
   twitter: string(),
-  company: string().required("This information is required"),
-  title: string().required("Title is required"),
-  start_date: string().required("Start date is required"),
-  end_date: string().required("End date is required"),
-  description: string().required("Description is required"),
-  college_name: string().required("College name is required"),
-  course_of_study: string(),
-  graduation: string().required("Graduation is required"),
-  skills: string(),
+
+  // skills: string(),
 });
 
 export type ProfileFormFields = InferType<typeof profileSchema>;
+
+export const workExperienceSchema = object({
+  company: string().required("This information is required"),
+  title: string().required("Title is required"),
+  start: string().required("Start date is required"),
+  end: string().required("End date is required"),
+  description: string().required("Description is required"),
+});
+
+export type WorkExperienceFields = InferType<typeof workExperienceSchema>;
+
+export const educationSchema = object({
+  college: string().required("College name is required"),
+  course: string().required(),
+  year_grad: string().required("Graduation is required"),
+});
+
+export type EducationFields = InferType<typeof educationSchema>;
+
+export const skillSchema = object({
+  skills: string(),
+});
+
+export type SkillFields = InferType<typeof skillSchema>;

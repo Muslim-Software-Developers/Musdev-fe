@@ -26,6 +26,26 @@ class Auth {
   resetPassword<T, P>(body: P) {
     return this.client.post<T>("/auth/reset-password", body);
   }
+
+  userProfile<T>() {
+    return this.client.get<T>("/profile/me");
+  }
+
+  updateProfile<T, P>(body: P) {
+    return this.client.post<T>("/profile/update", body);
+  }
+
+  addEducation<T, P>(body: P) {
+    return this.client.post<T>("/profile/update/add_edu", body);
+  }
+
+  addWork<T, P>(body: P) {
+    return this.client.post<T>("/profile/update/add_work", body);
+  }
+
+  deleteWork() {
+    return this.client.post("/profile/update/delete_work");
+  }
 }
 
 export default Auth;

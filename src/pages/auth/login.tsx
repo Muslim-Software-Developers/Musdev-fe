@@ -44,7 +44,6 @@ const Login = () => {
     });
     setIsLoading(false);
 
-    console.log({ result });
     if (result?.error && result?.error !== "SessionRequired") {
       return notifyError(result.error);
     }

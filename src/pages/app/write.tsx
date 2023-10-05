@@ -9,7 +9,7 @@ import ThreeVerticalDots from "../../assets/threeDotsVertical.png";
 import DropDownList from "@/components/blogWrite/dropDownList";
 import WritingBox from "@/components/blogWrite/writingBox";
 import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
-import { createPostPayload } from "@/hooks/blogs/types";
+import { CreatePostPayload } from "@/hooks/blogs/types";
 import { validatePost } from "@/utils/helpers";
 import { blogData } from "@/components/home/staticData/ourBlog";
 
@@ -33,19 +33,19 @@ const Write = () => {
   const [editor, setEditor] = useState<string>("");
   const [isSavingDraft, setIsSavingDraft] = useState(false);
 
-  const [postObj, setPostObj] = useState<createPostPayload>({
+  const [postObj, setPostObj] = useState<CreatePostPayload>({
     name: "",
-    phone: null,
+    phone: "",
     email: "",
     tech_niche: "",
     title: "",
     content: "",
-    category_id: null,
+    category_id: parseInt(""),
     author: "",
     is_draft: false,
   });
 
-  const onSubmit = (blogData: createPostPayload) => {
+  const onSubmit = (blogData: CreatePostPayload) => {
     const res = validatePost(blogData);
 
     if (res === null) {
