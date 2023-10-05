@@ -8,20 +8,59 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  color: #141414;
+  background: #ffffff;
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible !important;
+}
+
+.wrapper {
+  @apply container mx-auto px-4 md:px-12;
+}
+
+.slick-arrow,
+.slick-arrow:hover,
+.slick-arrow:focus {
+  @apply w-[44px] h-[44px] rounded-full !flex items-center justify-center bg-[#BFE2E2] border border-[#E5E7EB];
+}
+
+.slick-arrow:before {
+  display: none;
+}
+
+.section-full-screen {
+  min-height: calc(100vh - 95px);
+}
+
+/* #executives .slick-slide {
+  margin-right: 24px;
+} */
+
+.ql-editor {
+  border: none;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
 }
