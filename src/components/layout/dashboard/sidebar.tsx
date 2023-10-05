@@ -73,8 +73,8 @@ const Sidebar = () => {
     active === pathname ? "bg-[#0D706E] text-white" : "";
 
   return (
-    <aside className="p-4 bg-[#F0FFFF] w-[300px] hidden md:flex fixed top-[95px] left-0 bottom-0 border-r border-[#B6B6B6]">
-      <ul>
+    <aside className="p-4 bg-[#F0FFFF] w-[300px] md:flex fixed top-[95px] left-[-300px] lg:left-0 bottom-0 border-r border-[#B6B6B6]">
+      <ul className="flex-1">
         {menus.map((menu) => (
           <li key={menu.label}>
             <Link

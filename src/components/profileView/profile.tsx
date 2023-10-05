@@ -30,14 +30,17 @@ const Profile = ({ data }: Props) => {
     <div>
       <div className="sm:rounded-[0] sm:border-none bg-white w-full mb-16 py-8 px-4 md:px-8 md:rounded-[20px] md:border border-[#B6B6B6]">
         <div className="flex justify-between">
-          <div className="flex w-[100%] gap-8 items-center">
+          <div className="flex flex-col md:flex-row gap-8 md:items-center">
             <Image src={Avatar} alt="Profile" />
-            <h3 className="text-2xl font-semibold">{data?.user.name}</h3>
+
             <div>
-              <p className="font-medium text-xl">Product Designer</p>
-              <p className="text-[#808080] font-medium">
-                {data?.years} years of experience
-              </p>
+              <h3 className="text-2xl font-semibold">{data?.user.name}</h3>
+              <div>
+                <p className="font-medium text-xl">Product Designer</p>
+                <p className="text-[#808080] font-medium">
+                  {data?.years} years of experience
+                </p>
+              </div>
             </div>
           </div>
         </div>

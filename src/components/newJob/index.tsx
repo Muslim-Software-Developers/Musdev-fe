@@ -14,26 +14,27 @@ interface INewJobs {
 const NewJob = () => {
   return (
     <div>
-      <h3 className="text-black text-[32px] pb-10 font-semibold">
+      <h3 className="text-black text-xl md:text-3xl pb-10 font-semibold">
         New jobs posted
       </h3>
       <div className="space-y-16">
         {newJobData.map((newJob: INewJobs) => (
           <div key={newJob.title} className="flex justify-between items-end">
-            <div className="flex gap-x-10">
-              <span
+            <div className="flex flex-col md:flex-row gap-8">
+              <div
                 className={`bg-[${newJob.color}] w-[90px] h-[90px] rounded-[5px] flex items-center justify-center`}
               >
                 <img src="/images/logo.svg" alt="" />
-              </span>
+              </div>
+
               <div>
-                <h4 className="text-black text-2xl font-semibold">
+                <h4 className="text-black textlg md:text-2xl font-semibold">
                   {newJob.title}
                 </h4>
-                <span className="font-medium text-xl text-[#808080] capitalize">
+                <span className="font-medium text-base md:text-xl text-[#808080] capitalize">
                   {newJob.company}
                 </span>
-                <div className="font-medium text-xl text-[#808080] space-x-4 capitalize">
+                <div className="font-medium text-base md:text-xl text-[#808080] space-x-4 capitalize">
                   <span>{newJob.location}</span>
                   <span>2 days ago</span>
                 </div>

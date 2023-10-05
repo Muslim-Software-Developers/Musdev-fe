@@ -56,7 +56,7 @@ const Write = () => {
   };
 
   return (
-    <section className="wrapper pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 space-y-24 pb-20s">
+    <section className="wrapper pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] space-y-24 pb-20s">
       <div className="relative w-full flex justify-end py-[71px]">
         <Image
           src={ThreeVerticalDots}

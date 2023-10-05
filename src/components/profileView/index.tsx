@@ -34,7 +34,7 @@ const ProfileView = () => {
     current === active ? "border-b-2 border-primary text-primary" : "";
 
   return (
-    <section className="pt-[55px]  md:pl-[47px] bg-[#F0FFFF] md:pr-20 pb-20 ">
+    <section className="pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] pb-20 ">
       <div className="">
         <h2 className="px-8 md:px-0 font-semibold text-2xl mb-8">
           Make your Profile visible to recruiters

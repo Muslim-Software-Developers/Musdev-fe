@@ -41,7 +41,7 @@ const DashboardLayout = ({
         className={`z-[1] mt-[95px] bg-[#F0FFFF] section-full-screen ${className} w-50px]`}
       >
         <Sidebar />
-        <main className="ml-[0px] m-[0px] p-[0px] md:ml-[300px]">
+        <main className="ml-[0px] m-[0px] p-[0px] lg:ml-[300px] bg-[#F0FFFF]">
           {children}
         </main>
       </section>

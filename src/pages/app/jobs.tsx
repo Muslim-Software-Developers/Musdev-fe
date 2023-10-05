@@ -342,7 +342,7 @@ const JobsSection = () => {
 
   return (
     <>
-      <section className="relative pt-[55px] pl-[16px] md:pl-[47px] bg-white md:bg-[#F0FFFF] pr-[16px] md:pr-20 space-y-24 pb-20">
+      <section className="relative pt-[55px] px-4 lg:px-8md:bg-[#F0FFFF] space-y-24 pb-20">
         <SearchBar />
         <JobHero />
         <div className="space-y-16 mt-20 pb-20">

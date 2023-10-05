@@ -24,9 +24,11 @@ export const CardOne = ({ courseTitle, className }: ICard) => {
         <span
           className={`${className} rounded-[10px] h-20 w-20 inline-block`}
         ></span>
-        <p className="text-[24px] font-medium capitalize">{courseTitle}</p>
+        <p className="text-lg md:text-2xl font-medium capitalize">
+          {courseTitle}
+        </p>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <div className="h-[11px] w-9/12 rounded-[20px] bg-[#B6B6B6] relative">
           <span className="absolute h-full bg-[#0D706E] w-3/12 rounded-[20px]"></span>
         </div>

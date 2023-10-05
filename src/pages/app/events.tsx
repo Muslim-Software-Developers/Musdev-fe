@@ -52,7 +52,7 @@ const Events = () => {
   }
 
   return (
-    <section className="pt-[55px] pl-[47px] bg-[#F0FFFF] pr-20 pb-20">
+    <section className="pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] pb-20">
       <h1 className="text-neutral01 font-semibold text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
         Experience the Musdev effect{" "}
       </h1>
