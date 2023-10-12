@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Input from "@/components/forms/Input";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,6 +10,7 @@ import Button from "@/components/button";
 import SkillSection from "./skillSection";
 import { useUpdateProfile } from "@/hooks/auth";
 import { notifySuccess } from "@/utils/toast";
+import ErrorMessage from "@/components/forms/ErrorMessage";
 
 interface Props {
   data?: ProfileProps;
@@ -27,7 +28,7 @@ const SocialLinks = ({ control, errors }: IProps) => {
     <div className="mt-6">
       <h2 className={heading}>Social links</h2>
       <div className="space-y-8 mt-8">
-        <div className="flex items-center gap-x-10">
+        <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
           <Controller
             name="portfolio"
             control={control}
@@ -57,7 +58,7 @@ const SocialLinks = ({ control, errors }: IProps) => {
             )}
           />
         </div>
-        <div className="flex items-center gap-x-10">
+        <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
           <Controller
             name="github"
             control={control}
@@ -95,7 +96,7 @@ const SocialLinks = ({ control, errors }: IProps) => {
 const ProfileEdit = ({ control, errors }: IProps) => {
   return (
     <div className="space-y-8">
-      <div className="flex items-center gap-x-10">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
         {/* <Controller
           name="display_name"
           control={control}
@@ -128,7 +129,7 @@ const ProfileEdit = ({ control, errors }: IProps) => {
         />
       </div>
 
-      <div className="flex items-center gap-x-10">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
         <Controller
           name="phone"
           control={control}
@@ -160,7 +161,7 @@ const ProfileEdit = ({ control, errors }: IProps) => {
         />
       </div>
 
-      <div className="flex items-center gap-x-10">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
         <Controller
           name="years"
           control={control}
@@ -195,13 +196,21 @@ const ProfileEdit = ({ control, errors }: IProps) => {
         name="bio"
         control={control}
         render={({ field }) => (
-          <Input
-            type="string"
-            label="Bio"
-            placeholder="Bio"
-            errorMsg={errors.bio?.message}
-            {...field}
-          />
+          <div className="flex flex-col gap-y-2">
+            <label
+              className="font-medium text-sm leading-5 capitalize"
+              htmlFor="bio"
+            >
+              Bio
+            </label>
+            <textarea
+              id="bio"
+              placeholder="Bio"
+              className="border border-[#808080] border-solid rounded-md px-[10px] py-3 placeholder:capitalize h-40 w-full"
+              {...field}
+            />
+            {errors.bio?.message && <ErrorMessage msg={errors.bio?.messageF} />}
+          </div>
         )}
       />
     </div>
@@ -244,7 +253,7 @@ const Settings = ({ data }: Props) => {
   const heading = "text-neutral01 tracking-[0.12px] text-2xl font-bold";
 
   return (
-    <div className="border border-solid border-[#B6B6B6] rounded-[20px] bg-white py-8 px-16 divide-y divide-solid divide-[#B7B7B7]">
+    <div className="border border-solid border-[#B6B6B6] rounded-[20px] bg-white py-8 px-4 md:px-16 divide-y divide-solid divide-[#B7B7B7]">
       <div className="pb-6 mb-8 space-y-5 border-b border-solid border-[#E1E1FB]">
         <div>
           <h1 className="tracking-[0.12px] text-2xl font-bold text-[#11142D]">
