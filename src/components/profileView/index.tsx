@@ -36,8 +36,8 @@ const ProfileView = () => {
   return (
     <section className="pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] pb-20 ">
       <div className="">
-        <h2 className="px-8 md:px-0 font-semibold text-2xl mb-8">
-          Make your Profile visible to recruiters
+        <h2 className="px-0 font-semibold text-2xl mb-8">
+          Make your profile visible to recruiters
         </h2>
       </div>
 

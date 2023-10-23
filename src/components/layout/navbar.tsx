@@ -154,10 +154,10 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-5">
           {session ? (
             <>
-              <button>
+              <button className="flex items-center justify-center">
                 <NotificationIcon />
               </button>
-              <button>
+              <button className="flex items-center justify-center">
                 <MessageIcon />
               </button>
               <UserDropdown />

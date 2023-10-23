@@ -59,7 +59,7 @@ const WorkExperienceEdit = ({ closeEdit }: IEdit) => {
 
   return (
     <div className="space-y-8 mt-8">
-      <div className="flex items-center gap-x-10">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-10">
         <Controller
           name="company"
           control={control}
@@ -91,7 +91,7 @@ const WorkExperienceEdit = ({ closeEdit }: IEdit) => {
           )}
         />
       </div>
-      <div className="flex gap-x-10">
+      <div className="flex flex-wrap md:flex-nowrap gap-10">
         <Controller
           name="start"
           control={control}
