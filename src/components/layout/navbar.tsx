@@ -86,19 +86,30 @@ const Navbar = () => {
             <div className="flex flex-col top-[95px] left-0 right-0 gap-[40px] mt-11 z-20">
               <ul className="list-none flex flex-col items-center gap-[40px] text-lg font-medium text-white">
                 <li>
-                  <Link href="#">Home</Link>
+                  <Link href="#" onClick={toggleMobileMenu}>
+                    About us
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/blog">Blog</Link>
+                  <Link href="/membership" onClick={toggleMobileMenu}>
+                    Membership
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/blog" onClick={toggleMobileMenu}>
+                    Blog
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Career</Link>
+                  <Link href="#" onClick={toggleMobileMenu}>
+                    Learning
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">About us</Link>
-                </li>
-                <li>
-                  <Link href="#">Learning</Link>
+                  <Link href="#" onClick={toggleMobileMenu}>
+                    Career
+                  </Link>
                 </li>
               </ul>
               {session ? (
