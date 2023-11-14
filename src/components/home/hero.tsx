@@ -2,6 +2,7 @@ import React from "react";
 import ArrowRightIcon from "../svgs/arrowRightIcon";
 import Image from "next/image";
 import HeroImage from "../../../public/images/hero.png";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -16,15 +17,17 @@ const Hero = () => {
             future of technology
           </p>
           <div className="pt-6 md:pt-[38px]">
-            <button
-              className="bg-primary rounded-lg text-white w-[141px] md:w-[135px] h-[35px] md:h-[45px] flex items-center
+            <Link href="/auth/signup">
+              <button
+                className="bg-primary rounded-lg text-white w-[141px] md:w-[135px] h-[35px] md:h-[45px] flex items-center
              justify-center md:justify-between py-2 px-4 gap-2 font-medium text-[14px] md:text-base leading-[19px] tracking-[0.4px]"
-            >
-              <span>Join Now</span>
-              <span className="p-[1.6px]">
-                <ArrowRightIcon stroke1="white" stroke2="white" />
-              </span>
-            </button>
+              >
+                <span>Join Now</span>
+                <span className="p-[1.6px]">
+                  <ArrowRightIcon stroke1="white" stroke2="white" />
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
