@@ -1,9 +1,6 @@
-"use-client";
-
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useGetAllPosts } from "@/hooks/blogs";
 import { BlogProps } from "@/hooks/blogs/types";
 
 interface BlogItemProps {
@@ -13,13 +10,13 @@ interface BlogItemProps {
 const BlogItem = ({ blog }: BlogItemProps) => {
   return (
     <Link href={`/blog/${blog?.slug}`}>
-      <div>
+      <div className="border border-gray-300 rounded-lg">
         <div
           className="rounded-tl-lg rounded-tr-lg"
           style={{
             height: "140px",
             background: `url(/images/future-car.png)`,
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
@@ -31,7 +28,7 @@ const BlogItem = ({ blog }: BlogItemProps) => {
             {blog?.content}
           </p>
 
-          <div className="flex justify-between items-start mt-12">
+          <div className="flex justify-between items-center mt-12">
             <div className="flex items-center gap-2">
               <Image
                 src="/images/avatar-2.png"
@@ -42,7 +39,7 @@ const BlogItem = ({ blog }: BlogItemProps) => {
 
               <div>
                 <p className="">{blog?.author}</p>
-                <p className="text-sm text-[#696767]">Product Manag</p>
+                {/* <p className="text-sm text-[#696767]">Product Manag</p> */}
                 <p className="text-xs">Jan 02, 2023</p>
               </div>
             </div>
@@ -52,7 +49,6 @@ const BlogItem = ({ blog }: BlogItemProps) => {
             </p>
           </div>
         </div>
-        ;
       </div>
     </Link>
   );

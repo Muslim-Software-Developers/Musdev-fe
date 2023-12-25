@@ -1,6 +1,10 @@
 import React from "react";
 import Button from "../button";
 import { newJobData } from "@/constants/newJobs";
+import Link from "next/link";
+import { useGetJobs } from "@/hooks/jobs";
+import { formatDistanceToNow } from "date-fns";
+import { LoadingSpinner } from "../loadingSpinner";
 
 interface INewJobs {
   title: string;
@@ -11,51 +15,62 @@ interface INewJobs {
   color: string;
 }
 
-const NewJob = () => {
+const LatestJobs = () => {
+  const { isLoading, data } = useGetJobs();
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div>
       <h3 className="text-black text-xl md:text-3xl pb-10 font-semibold">
         New jobs posted
       </h3>
       <div className="space-y-16">
-        {newJobData.map((newJob: INewJobs) => (
-          <div key={newJob.title} className="flex justify-between items-end">
+        {data?.slice(0, 4)?.map((job) => (
+          <div key={job.slug} className="flex justify-between items-center">
             <div className="flex flex-col md:flex-row gap-8">
               <div
-                className={`bg-[${newJob.color}] w-[90px] h-[90px] rounded-[5px] flex items-center justify-center`}
+                className={`bg-gray-300 w-[90px] h-[90px] rounded-[5px] flex items-center justify-center`}
               >
-                <img src="/images/logo.svg" alt="" />
+                {/* <img src="/images/logo.svg" alt="" /> */}
               </div>
 
               <div>
                 <h4 className="text-black textlg md:text-2xl font-semibold">
-                  {newJob.title}
+                  {job.title}
                 </h4>
                 <span className="font-medium text-base md:text-xl text-[#808080] capitalize">
-                  {newJob.company}
+                  {job.company_name}
                 </span>
                 <div className="font-medium text-base md:text-xl text-[#808080] space-x-4 capitalize">
-                  <span>{newJob.location}</span>
-                  <span>2 days ago</span>
+                  <span>{formatDistanceToNow(job.listed_on)} ago</span>
                 </div>
-                <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
+                {/* <span className="pt-4 inline-block text-sm font-medium text-[#141414]">
                   {newJob.amount}
-                </span>
+                </span> */}
               </div>
             </div>
             <div>
               <Button variant="outline" className="capitalize">
-                description
+                View
               </Button>
             </div>
           </div>
         ))}
       </div>
+
+      <div className="mt-12 flex items-center justify-center">
+        <Link href="/app/jobs">
+          <Button variant="primary">view more</Button>
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default NewJob;
+export default LatestJobs;
 
 interface INewJobCard {
   className: string;

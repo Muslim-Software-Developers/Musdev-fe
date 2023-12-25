@@ -1,3 +1,4 @@
+import { useGetTechCategories } from "@/hooks/auth";
 import React, { LegacyRef, forwardRef } from "react";
 
 interface IFormSelect {
@@ -10,16 +11,8 @@ const FormSelect = forwardRef(
     { name, required, ...rest }: IFormSelect,
     ref?: LegacyRef<HTMLSelectElement>,
   ) => {
-    const tech = [
-      "UI/UX",
-      "Frontend",
-      "Backend",
-      "Devops",
-      "Cloud",
-      "Mobile",
-      "Data Science",
-      "QA Engineering",
-    ];
+    const { data } = useGetTechCategories();
+
     return (
       <div className="w-full flex flex-col gap-y-2">
         <label
@@ -39,11 +32,13 @@ const FormSelect = forwardRef(
             Choose from below
           </option>
 
-          {tech.map((t) => (
-            <option key={t} value={t} className="capitalize">
-              {t}
-            </option>
-          ))}
+          {data &&
+            Object.keys(data)?.map((key) => (
+              <option key={key} value={key} className="capitalize">
+                {/* @ts-ignore */}
+                {data[key]}
+              </option>
+            ))}
         </select>
       </div>
     );

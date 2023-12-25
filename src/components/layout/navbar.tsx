@@ -46,9 +46,9 @@ const ToggleButton = ({
             <path
               d="M2.25 5.1875H21.75M2.25 12.5H21.75M2.25 19.8125H21.75"
               stroke="#0D706E"
-              stroke-width="2.67"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2.67"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}
@@ -112,6 +112,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
+
               {session ? (
                 <div className="flex items-center justify-center gap-[40px]">
                   <button>
@@ -144,6 +145,7 @@ const Navbar = () => {
         )}
 
         {/* Desktop Navigation Menu */}
+
         <ul className="hidden list-none lg:flex items-center gap-10 text-lg font-medium">
           <li>
             <Link href="#">About Us</Link>

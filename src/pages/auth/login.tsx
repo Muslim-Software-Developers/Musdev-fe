@@ -30,7 +30,8 @@ const Login = () => {
 
   useEffect(() => {
     if (session) {
-      router.push((router.query.callbackUrl as string) || "/app");
+      const path = session.user?.user?.is_admin ? "/admin" : "/app";
+      router.push((router.query.callbackUrl as string) || path);
     }
   }, [session, router]);
 

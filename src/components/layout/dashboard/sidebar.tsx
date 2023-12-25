@@ -16,7 +16,9 @@ import { useRouter } from "next/router";
 const Sidebar = () => {
   const { pathname } = useRouter();
 
-  const menus = [
+  const isAdmin = false;
+
+  const userMenus = [
     {
       label: "Home",
       href: "/app",
@@ -27,11 +29,11 @@ const Sidebar = () => {
       href: "/app/jobs",
       icon: <JobsIcon />,
     },
-    {
-      label: "Events",
-      href: "/app/events",
-      icon: <EventsIcon />,
-    },
+    // {
+    //   label: "Events",
+    //   href: "/app/events",
+    //   icon: <EventsIcon />,
+    // },
     {
       label: "Profile",
       href: "/app/profile",
@@ -59,6 +61,34 @@ const Sidebar = () => {
     },
   ];
 
+  const adminMenus = [
+    {
+      label: "Home",
+      href: "/admin",
+      icon: <HomeIcon />,
+    },
+    {
+      label: "Jobs",
+      href: "/admin/jobs",
+      icon: <JobsIcon />,
+    },
+    // {
+    //   label: "Events",
+    //   href: "/admin/events",
+    //   icon: <EventsIcon />,
+    // },
+    {
+      label: "Members",
+      href: "/admin/members",
+      icon: <ProfileIcon />,
+    },
+    {
+      label: "Signout",
+      href: "/admin/signout",
+      icon: <SignoutIcon />,
+    },
+  ];
+
   const handleMenuClick = async (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     menu: string,
@@ -75,7 +105,7 @@ const Sidebar = () => {
   return (
     <aside className="p-4 bg-[#F0FFFF] w-[300px] md:flex fixed top-[95px] left-[-300px] lg:left-0 bottom-0 border-r border-[#B6B6B6]">
       <ul className="flex-1">
-        {menus.map((menu) => (
+        {(isAdmin ? adminMenus : userMenus).map((menu) => (
           <li key={menu.label}>
             <Link
               href={menu.href}

@@ -12,20 +12,6 @@ interface Props {
 }
 
 const Profile = ({ data }: Props) => {
-  const skills = [
-    "Research",
-    "UI Design",
-    "Analytics",
-    "Adobe XD",
-    "CSS",
-    "Python",
-    "Design",
-    "Figma",
-    "Blogs",
-    "Tailwind",
-    "more",
-  ];
-
   return (
     <div>
       <div className="sm:rounded-[0] sm:border-none bg-white w-full mb-16 py-8 px-4 md:px-8 md:rounded-[20px] md:border border-[#B6B6B6]">
@@ -34,11 +20,12 @@ const Profile = ({ data }: Props) => {
             <Image src={Avatar} alt="Profile" />
 
             <div>
-              <h3 className="text-2xl font-semibold">{data?.user.name}</h3>
+              <h3 className="text-2xl font-semibold">{data?.user?.name}</h3>
+
               <div>
-                <p className="font-medium text-xl">Product Designer</p>
+                <p className="font-medium text-xl">{data?.profile?.work}</p>
                 <p className="text-[#808080] font-medium">
-                  {data?.years} years of experience
+                  {data?.profile.years_of_experience} years of experience
                 </p>
               </div>
             </div>
@@ -88,7 +75,7 @@ const Profile = ({ data }: Props) => {
           <h2 className="mb-4 text-[#808080] text-2xl font-medium">Skills</h2>
 
           <ul className="flex item gap-4 flex-wrap">
-            {skills.map((skill) => (
+            {data?.profile?.skills?.map((skill) => (
               <li
                 key={skill}
                 className="h-7 shrink-0 rounded-md bg-[#BFE2E2] px-[10px]"

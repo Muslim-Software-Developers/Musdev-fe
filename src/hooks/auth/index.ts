@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import useGenericMutation from "../useGenericMutation";
-import useGenericQuery from "../useGenericQuery";
 import {
   ILoginResponse,
   ISignupResponse,
@@ -8,15 +7,23 @@ import {
   IForgotPasswordResponse,
   IResetPasswordResponse,
   ResetPasswordProps,
-  ProfileProps,
+  ProfilePropsResponse,
+  GetTechCategoriesResponse,
 } from "./types";
 import api from "@/api";
 
 export const useGetProfile = () => {
   const { data, ...rest } = useQuery("profile", () =>
-    api.auth.userProfile<ProfileProps>(),
+    api.auth.userProfile<ProfilePropsResponse>(),
   );
-  return { ...rest, data: data?.data };
+  return { ...rest, data: data?.data.data };
+};
+
+export const useGetTechCategories = () => {
+  const { data, ...rest } = useQuery("tech-categories", () =>
+    api.auth.getTechCategories<GetTechCategoriesResponse>(),
+  );
+  return { ...rest, data: data?.data.data };
 };
 
 export const useUpdateProfile = () => {
@@ -31,6 +38,30 @@ export const useAddEducation = () => {
   return useGenericMutation<any, any>(
     "add-education",
     (data) => api.auth.addEducation<any, {}>(data),
+    undefined,
+  );
+};
+
+export const useDeleteEducation = () => {
+  return useGenericMutation<any, { key: string }>(
+    "delete-education",
+    (data) => api.auth.deleteEducation(data),
+    undefined,
+  );
+};
+
+export const useUpdateSkills = () => {
+  return useGenericMutation<any, any>(
+    "update-skills",
+    (data) => api.auth.updateSkills<any, {}>(data),
+    undefined,
+  );
+};
+
+export const useUpdateSocials = () => {
+  return useGenericMutation<any, any>(
+    "update-socials",
+    (data) => api.auth.updateSocials<any, {}>(data),
     undefined,
   );
 };

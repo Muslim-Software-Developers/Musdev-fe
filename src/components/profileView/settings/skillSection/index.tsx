@@ -5,6 +5,8 @@ import { SearchIcon } from "@/components/svgs";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { SkillFields, skillSchema } from "@/utils/schema";
+import { useUpdateSkills } from "@/hooks/auth";
+import { notifySuccess } from "@/utils/toast";
 
 const SkillSection = () => {
   const {
@@ -18,8 +20,21 @@ const SkillSection = () => {
     },
   });
 
+  const mutation = useUpdateSkills();
+
   const onSubmit = (data: SkillFields) => {
-    console.log(data);
+    console.log(data?.skills?.split(","));
+    mutation.mutate(
+      { skills: data?.skills?.split(",") },
+      {
+        onSuccess: (data) => {
+          notifySuccess("Skills updated successfully");
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      },
+    );
   };
 
   const heading = "text-neutral01 tracking-[0.12px] text-2xl font-bold";
@@ -51,6 +66,7 @@ const SkillSection = () => {
         <Button
           type="button"
           variant="primary"
+          isLoading={mutation.isLoading}
           onClick={handleSubmit(onSubmit)}
         >
           Save Changes

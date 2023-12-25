@@ -1,5 +1,3 @@
-"use-client";
-
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -12,6 +10,7 @@ import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
 import { CreatePostPayload } from "@/hooks/blogs/types";
 import { validatePost } from "@/utils/helpers";
 import { blogData } from "@/components/home/staticData/ourBlog";
+import Button from "@/components/button";
 
 // export type postObjTypes = {
 //   name: string;
@@ -40,7 +39,7 @@ const Write = () => {
     tech_niche: "",
     title: "",
     content: "",
-    category_id: parseInt(""),
+    // category_id: parseInt(""),
     author: "",
     is_draft: false,
   });
@@ -48,24 +47,28 @@ const Write = () => {
   const onSubmit = (blogData: CreatePostPayload) => {
     const res = validatePost(blogData);
 
-    if (res === null) {
-      mutation.mutate(blogData);
-    }
+    console.log(blogData);
+
+    // if (res === null) {
+    //   mutation.mutate(blogData);
+    // }
 
     return;
   };
 
   return (
-    <section className="wrapper pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] space-y-24 pb-20s">
-      <div className="relative w-full flex justify-end py-[71px]">
-        <Image
-          src={ThreeVerticalDots}
-          width={20}
-          height={10}
-          alt="text DropDown"
-          onClick={() => setShowDropDownList((prev) => !prev)}
-          className="mr-5 cursor-pointer"
-        />
+    <section className="wrapper py-16 px-4 lg:px-8 bg-[#F0FFFF] pb-20">
+      <div className="relative w-full flex justify-end py-6">
+        <button className="bg-none border-none">
+          <Image
+            src={ThreeVerticalDots}
+            width={20}
+            height={10}
+            alt="text DropDown"
+            onClick={() => setShowDropDownList((prev) => !prev)}
+            className="mr-5 cursor-pointer"
+          />
+        </button>
 
         {showDropDownList && (
           <DropDownList
@@ -83,7 +86,9 @@ const Write = () => {
         setEditor={setEditor}
       />
 
-      <button
+      <Button
+        variant="primary"
+        className="mt-8"
         onClick={() => {
           onSubmit({
             name: session?.user?.name ? session?.user?.name : "",
@@ -92,15 +97,14 @@ const Write = () => {
             tech_niche: "string",
             title: postObj.title,
             content: editor,
-            category_id: postObj.category_id!,
+            // category_id: postObj.category_id!,
             author: session?.user?.name ? session?.user?.name : "",
             is_draft: false,
           });
         }}
-        className="py-[8px] px-[16px] my-[64px] bg-secondary01 rounded-lg text-white"
       >
         Submit for review
-      </button>
+      </Button>
     </section>
   );
 };

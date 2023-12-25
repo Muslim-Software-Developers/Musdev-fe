@@ -2,6 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 import Auth from "./auth";
 import Blog from "./blog";
+import Jobs from "./jobs";
 import { getSession } from "next-auth/react";
 
 export const axiosInstance = axios.create({
@@ -28,6 +29,7 @@ const api = {
   auth: new Auth(axiosInstance),
   HttpClient: axiosInstance,
   blog: new Blog(axiosInstance),
+  jobs: new Jobs(axiosInstance),
 };
 
 export default api;

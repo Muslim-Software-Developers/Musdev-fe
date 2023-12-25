@@ -1,0 +1,61 @@
+.page-item {
+  font-size: 8px;
+  margin: 0px 8px;
+}
+
+.page-link {
+  border-radius: 8px;
+  padding: 7px 0px;
+  border: 1px solid black;
+}
+
+.npage-link {
+  border-radius: 8px;
+  padding: 7px 0px;
+  border: 1px solid black;
+}
+
+.active {
+  color: white;
+  background-color: black;
+  border-radius: 8px;
+}
+
+.disabled {
+  color: #d4d4d4;
+  border-color: #d4d4d4;
+}
+
+.container li {
+  list-style-type: none;
+  display: inline;
+}
+
+.npage-link,
+.page-link {
+  text-align: center;
+  user-select: none;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 576px) {
+  /* Styles applied only for screens with a maximum width of 600px */
+  .npage-link,
+  .page-link {
+    width: 27px;
+    height: 27px;
+    font-size: 10px;
+  }
+
+  .page-link {
+    padding: 5px 0px;
+  }
+
+  .npage-link {
+    padding: 5px 0px;
+  }
+}

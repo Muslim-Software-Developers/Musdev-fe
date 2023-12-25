@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import ArrowDownIcon from "../svgs/arrowDown";
 import { cn } from "@/utils/helpers";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const UserDropdown = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { data: session } = useSession();
 
   function toggleDropdown() {
     setIsDropdownOpen((open) => !open);
@@ -26,7 +27,7 @@ const UserDropdown = () => {
         className="flex items-center gap-2 text-[#808080] justify-center w-full py-2 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
       >
         <div className="w-8 h-8 rounded-full bg-slate-300"></div>
-        <p>Habib Sagir</p>
+        <p>{session?.user.name}</p>
         <span>
           <ArrowDownIcon />
         </span>

@@ -59,6 +59,15 @@ interface ProfileProps {
   tech_niche: string;
   years: string;
   work: WorkProps[];
+  profile: {
+    bio: string;
+    education: string;
+    skills: string;
+    socials: string;
+    tech_niche: string;
+    work: string;
+    years_of_experience: "4";
+  };
   education: any;
   socials: {
     website: string;
@@ -77,6 +86,22 @@ interface ProfileProps {
   };
 }
 
+interface ProfilePropsResponse extends IResponse {
+  data: ProfileProps;
+}
+
+interface GetTechCategoriesResponse extends IResponse {
+  data: {
+    "web-development": "Web Development";
+    "ui-ux": "UI UX";
+    "data-science": "Data Science";
+    "frontend-development": "Frontend Development";
+    "backend-development": "Backend Development";
+    "computer-networking": "Computer Networking";
+    others: "Others";
+  };
+}
+
 export type {
   ILoginResponse,
   IResetPasswordResponse,
@@ -86,4 +111,6 @@ export type {
   ResetPasswordProps,
   ProfileProps,
   WorkProps,
+  ProfilePropsResponse,
+  GetTechCategoriesResponse,
 };

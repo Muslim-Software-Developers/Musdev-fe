@@ -38,3 +38,11 @@ export function validatePost(postData: CreatePostPayload): string[] | null {
 
   return null;
 }
+
+export function formatPostDate(date: string): string {
+  return new Date(date).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}

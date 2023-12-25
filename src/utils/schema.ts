@@ -55,16 +55,19 @@ export const profileSchema = object({
   primary_role: string().label("Primary role"),
   years: number().label("Years of experience"),
   bio: string().required("Bio is required"),
-
-  portfolio: string(),
-  linkenIn: string(),
-  github: string(),
-  twitter: string(),
-
   // skills: string(),
 });
 
 export type ProfileFormFields = InferType<typeof profileSchema>;
+
+export const socialSchema = object({
+  portfolio: string(),
+  linkenIn: string(),
+  repository: string(),
+  twitter: string(),
+});
+
+export type SocialFormFields = InferType<typeof socialSchema>;
 
 export const workExperienceSchema = object({
   company: string().required("This information is required"),
@@ -89,3 +92,19 @@ export const skillSchema = object({
 });
 
 export type SkillFields = InferType<typeof skillSchema>;
+
+export const createJobSchema = object({
+  title: string().required("Job title is required"),
+  // image: string()
+  section: string().required("Job category is required"),
+  company_name: string().required("Company name is required"),
+  employment_type: string()
+    // .oneOf(["Full-time", "Part-time", "Contract"])
+    .required("Employment type is required"),
+  position: string().required("Position is required"),
+  description: string().required("Job description is required"),
+  qualifications: string().required("Job qualifications is required"),
+  responsibilities: string().required("Job responsibilities is required"),
+});
+
+export type CreateJobFields = InferType<typeof createJobSchema>;

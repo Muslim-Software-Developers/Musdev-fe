@@ -49,7 +49,10 @@ export default function App({
     </Layout>
   );
 
-  if (router.pathname.startsWith("/app")) {
+  const isUserRoute = router.pathname.startsWith("/app");
+  const isAdminRoute = router.pathname.startsWith("/admin");
+
+  if (isUserRoute || isAdminRoute) {
     page = (
       <DashboardLayout title={title || name} className={inter.className}>
         <Component {...pageProps} />

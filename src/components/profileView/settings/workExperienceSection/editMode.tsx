@@ -39,9 +39,9 @@ const WorkExperienceEdit = ({ closeEdit }: IEdit) => {
       work: {
         1: {
           ...rest,
-          start: formattedStart,
+          begin: formattedStart,
           // end: formattedEnd,
-          is_current: false,
+          is_current: true,
         },
       },
     };

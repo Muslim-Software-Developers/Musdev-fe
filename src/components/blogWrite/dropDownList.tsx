@@ -1,3 +1,4 @@
+import { useGetPostCategories } from "@/hooks/blogs";
 import { CreatePostPayload } from "@/hooks/blogs/types";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -11,6 +12,10 @@ const DropDownList = ({
   setPostObj: React.Dispatch<(prev: CreatePostPayload) => CreatePostPayload>;
   setShowDropDownList: React.Dispatch<boolean>;
 }) => {
+  const { data: blogCategories } = useGetPostCategories();
+
+  console.log(blogCategories);
+
   const dropDownItemsStyle =
     "py-4 px-4 hover:bg-dropDownBg hover:text-dropDownColor hover:cursor-pointer text-[16px] md:text-[20px] flex flex-row justify-between items-center";
 
@@ -119,7 +124,7 @@ const DropDownList = ({
           className="absolute -left-24 top-20 md:-left-64 md:top-32 z-2 w-full overflow-hidden bg-white border-[1px] rounded-md z-10"
           onClick={() => setShowSubList(false)}
         >
-          {Object.keys(subList).map((listItem: string) => {
+          {Object.keys(blogCategories).map((listItem: string) => {
             return (
               <li
                 onClick={() =>

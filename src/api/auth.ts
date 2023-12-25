@@ -32,11 +32,11 @@ class Auth {
   }
 
   updateProfile<T, P>(body: P) {
-    return this.client.post<T>("/profile/update", body);
+    return this.client.put<T>("/profile", body);
   }
 
   addEducation<T, P>(body: P) {
-    return this.client.post<T>("/profile/update/add_edu", body);
+    return this.client.post<T>("/profile/education", body);
   }
 
   addWork<T, P>(body: P) {
@@ -44,7 +44,23 @@ class Auth {
   }
 
   deleteWork() {
-    return this.client.post("/profile/update/delete_work");
+    return this.client.post("/profile/work");
+  }
+
+  deleteEducation(body: { key: string }) {
+    return this.client.post("/profile/education", body);
+  }
+
+  updateSkills<T, P>(body: P) {
+    return this.client.patch<T>("/profile/skills", body);
+  }
+
+  updateSocials<T, P>(body: P) {
+    return this.client.patch<T>("/profile/socials", body);
+  }
+
+  getTechCategories<T>() {
+    return this.client.get<T>("/data/tech-categories");
   }
 }
 

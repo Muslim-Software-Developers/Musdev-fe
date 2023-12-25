@@ -1,15 +1,14 @@
 import React from "react";
 import BlogHero from "./hero";
 import Banner from "./banner";
-import PopularArticles from "./popularArticles";
+import TrendingArticles from "./trendingArticles";
 
 const BlogSection = () => {
   return (
     <>
       <BlogHero />
       <Banner />
-      <PopularArticles />
-      <PopularArticles />
+      <TrendingArticles />
     </>
   );
 };
