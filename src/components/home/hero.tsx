@@ -92,7 +92,7 @@ export default function HeroSection() {
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:block">
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
               <Image 
-                src="/images/hero1.png" 
+                src="/images/hero1.PNG" 
                 alt="Muslim In Tech Community" 
                 className="w-full object-cover" 
                 width={800}
