@@ -114,7 +114,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* --- MISSION PART --- */}
+      {/* --- MISSION PART ------ */}
       <section className="bg-white py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 order-2 lg:order-1">
