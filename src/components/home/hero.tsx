@@ -66,7 +66,7 @@ export default function HeroSection() {
             </h1>
 
            <p className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-200 text-white/80 text-lg md:text-xl mb-10 max-w-lg">
-  Join <strong>Muslim In Tech </strong>(Musdev), a vibrant community of innovators bridging the gap between faith and the global tech landscape.
+  Join <strong>Muslims In Tech </strong>(Musdev), a vibrant community of innovators bridging the gap between faith and the global tech landscape.
 </p>
 
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-4">
