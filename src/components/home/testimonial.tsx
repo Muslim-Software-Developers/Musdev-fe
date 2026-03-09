@@ -1,129 +1,137 @@
-import React, { useState } from "react";
-import Button from "../button";
-import NextImage from "next/image";
-import Slider from "react-slick";
-import GetTogether from "../../assets/get-togther.png";
-import EllipseFrame from "../../assets/ellipse.png";
-import ArrowLeft from "../svgs/arrowLeft";
-import ArrowRight from "../svgs/arrowRight";
-import Executives from "./executives";
+"use client";
 
-const Ellipse = () => (
-  <svg
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="24"
-      cy="24"
-      r="20"
-      fill="white"
-      fill-opacity="0.2"
-      stroke="white"
-      stroke-width="8"
-    />
+import { useEffect, useRef, useState } from "react";
+
+// Custom Arrow Icons
+const ArrowIcon = ({ className }: { className?: string }) => (
+  <svg className={`w-5 h-5 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
   </svg>
 );
 
-const Testimonial = () => {
-  const testimonials = [
-    {
-      content:
-        "I worked with the Musdev executive for the SEO of my personal blog. They worked great. Definitely recommend.",
-      author: "Habib Isah",
-      post: "Someone random",
-    },
-    {
-      content:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis adipisci iusto vel? Minus soluta inventore voluptatem? Pariatur dolores commodi aperiam minima cumque soluta tempora culpa? Sit consequuntur accusamus quam ni",
-      author: "John Doe",
-      post: "Someone special",
-    },
-    {
-      content:
-        "I worked with the Musdev executive for the SEO of my personal blog. They worked great. Definitely recommend.",
-      author: "Habib Isah",
-      post: "Someone random",
-    },
-  ];
+const testimonials = [
+  {
+    quote: "MusDev completely changed my career trajectory. Through their mentorship program, I landed my first developer role at a top Lagos fintech company within 3 months.",
+    name: "Yusuf Abdulrahman",
+    role: "Frontend Developer, Kuda Bank",
+  },
+  {
+    quote: "Being part of MusDev means I never have to choose between my faith and my career. The community understands and supports both — it's truly one of a kind.",
+    name: "Aminat Oladele",
+    role: "Product Manager, Paystack",
+  },
+  {
+    quote: "The hackathon I participated in through MusDev led to me co-founding my startup. The network and skills I gained there were invaluable to our early growth.",
+    name: "Musa Aliyu",
+    role: "Co-founder, HalalCart",
+  }
+];
 
-  const testimonialSettings = {
-    // dots: true,
-    infinite: true,
-    speeed: 500,
-    // slidesToShow: 3,
-    slidesToScroll: 1,
-    nextArrow: (
-      <button>
-        <ArrowRight />
-      </button>
-    ),
-    prevArrow: (
-      <button>
-        <ArrowLeft />
-      </button>
-    ),
+export default function TestimonialsSection() {
+  const [active, setActive] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const handleSlideChange = (index: number) => {
+    setIsFading(true);
+    setTimeout(() => {
+      setActive(index);
+      setIsFading(false);
+    }, 200);
   };
 
+  const nextSlide = () => handleSlideChange((active + 1) % testimonials.length);
+  const prevSlide = () => handleSlideChange((active - 1 + testimonials.length) % testimonials.length);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll(".reveal-item").forEach((el, i) => {
+              setTimeout(() => {
+                el.classList.add("opacity-100", "translate-y-0");
+                el.classList.remove("opacity-0", "translate-y-10");
+              }, i * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="py-[8rem]">
-      <div className="hidden wrapper bg-[#0D706E] p-12 rounded-[48px] md:flex justify-between mb-[6rem]">
-        <div className="w-1/2 py-16 text-white">
-          <div className="flex items-center gap-4 mb-8">
-            <Ellipse />
-            <h2 className="text-6xl">Get Together</h2>
-          </div>
-
-          <div className="ml-6 border-l border-l-white pl-10 mb-10">
-            <p className="text-xl">
-              Families and friends gathered, joyous feasts shared, prayers
-              offered, laughter echoed—Eid get-together, a celebration of love
-              and togetherness
-            </p>
-          </div>
-
-          <div className="ml-[4rem]">
-            <Button className="h-10 px-4 text-black rounded-md bg-white">
-              Learn More
-            </Button>
-          </div>
+    <section ref={sectionRef} className="py-16 bg-white overflow-hidden border-t border-neutral-50" id="testimonials">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <span className="reveal-item opacity-0 translate-y-10 transition-all duration-700 text-[#0a5e5c] font-bold tracking-widest uppercase text-xs mb-3 block">
+            Success Stories
+          </span>
+          <h2 className="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-100 font-black text-neutral-900 text-3xl md:text-4xl tracking-tight">
+            Trusted by the Community
+          </h2>
         </div>
 
-        <div className="w-1/2 p-4 rounded-3xl bg-transparent flex items-center justify-center relative">
-          <NextImage src={GetTogether} alt="Get Together" />
-          <NextImage
-            src={EllipseFrame}
-            alt="Frame"
-            className="absolute top-1/2 translate-y-[-50%]"
-          />
-        </div>
-      </div>
+        {/* Testimonial Slider Section */}
+        <div className="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-200 border-y border-neutral-100 py-12 relative">
+          <div className="max-w-3xl mx-auto text-center px-4">
+            
+            {/* Quote Icon */}
+            <div className="flex justify-center mb-6">
+                <svg className="w-8 h-8 text-[#0a5e5c]/10" fill="currentColor" viewBox="0 0 32 32">
+                    <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2h2V8h-2zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2h2V8h-2z" />
+                </svg>
+            </div>
 
-      <div className="testimonial-section py-20 mx-8 border-y-2 border-y-[rgba(128,_128,_128,_0.21)]">
-        <div className="max-w-[650px] mx-auto text-center">
-          <Slider {...testimonialSettings}>
-            {testimonials.map((testimonial) => (
-              <div className="flex-1" key={testimonial.author}>
-                <p className="text-lg italic font-normal leading-7 mb-6">
-                  {testimonial.content}
-                </p>
+            {/* Testimonial Content */}
+            <div className="min-h-[180px] flex flex-col justify-center">
+              <p className={`text-lg md:text-xl italic font-medium text-neutral-800 leading-relaxed mb-8 transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+                &ldquo;{testimonials[active].quote}&rdquo;
+              </p>
 
-                <p className="text-sm mb-1">{testimonial.author}</p>
-                <p className="font-normal text-sm text-[#808080]">
-                  {testimonial.post}
-                </p>
+              <div className={`transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+                <p className="text-neutral-900 font-bold text-base mb-0.5">{testimonials[active].name}</p>
+                <p className="text-[#0a5e5c] font-bold text-[11px] uppercase tracking-widest">{testimonials[active].role}</p>
               </div>
-            ))}
-          </Slider>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-6 mt-10">
+                <button 
+                  onClick={prevSlide}
+                  className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-[#0a5e5c] hover:text-[#0a5e5c] transition-all group active:scale-90"
+                  aria-label="Previous testimonial"
+                >
+                  <ArrowIcon className="rotate-180 transition-transform" />
+                </button>
+                
+                {/* Dots */}
+                <div className="flex gap-1.5">
+                  {testimonials.map((_, i) => (
+                    <button 
+                      key={i} 
+                      onClick={() => handleSlideChange(i)}
+                      className={`h-1 rounded-full transition-all duration-300 ${active === i ? "bg-[#0a5e5c] w-6" : "bg-neutral-200 w-1.5"}`}
+                    />
+                  ))}
+                </div>
+
+                <button 
+                  onClick={nextSlide}
+                  className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-[#0a5e5c] hover:text-[#0a5e5c] transition-all group active:scale-90"
+                  aria-label="Next testimonial"
+                >
+                  <ArrowIcon className="transition-transform" />
+                </button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <Executives />
-    </div>
+    </section>
   );
-};
-
-export default Testimonial;
+}

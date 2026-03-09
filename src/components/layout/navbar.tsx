@@ -1,192 +1,154 @@
-import React, { useState } from "react";
-import Logo from "../../assets/Logo.svg";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import NextImage from "next/image";
-import Button from "../button";
-import { useSession } from "next-auth/react";
-import { MessageIcon, NotificationIcon } from "../svgs";
-import UserDropdown from "./userDropdown";
+import { usePathname } from "next/navigation";
 
-const ToggleButton = ({
-  mobileMenuOpen,
-  toggleMobileMenu,
-}: {
-  mobileMenuOpen: boolean;
-  toggleMobileMenu: () => void;
-}) => {
-  return (
-    <div className="lg:hidden z-50">
-      <button
-        onClick={toggleMobileMenu}
-        className={mobileMenuOpen ? "flex ml-auto mt-3" : "outline-none"}
-      >
-        {mobileMenuOpen ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-[25px] text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
-          >
-            <path
-              d="M2.25 5.1875H21.75M2.25 12.5H21.75M2.25 19.8125H21.75"
-              stroke="#0D706E"
-              stroke-width="2.67"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        )}
-      </button>
-    </div>
-  );
-};
+// Assets & Icons
+import Logo from "@/assets/Logo.svg";
+// Import your icons here - adjusting path based on your footer imports
+import { TwitterIcon, LinkedInIcon } from "../svgs"; 
 
-const Navbar = () => {
-  const { data: session } = useSession();
+const navLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Membership", href: "/#hero" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Learning", href: "/#blog" },
+];
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const socialLinks = [
+  { icon: <TwitterIcon />, href: "https://x.com/musdevofficial" },
+  { icon: <LinkedInIcon />, href: "https://www.linkedin.com/company/79099434" },
+];
 
-  // Toggle the mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+export default function Navbar() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const isActive = (href: string) => pathname === href;
+
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.split("#")[1];
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+        setMenuOpen(false);
+      }
+    }
   };
 
   return (
-    <header className="h-[95px] bg-white flex items-center shadow-[0px_2px_12px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 right-0 z-10">
-      <nav className="wrapper flex items-center justify-between">
-        <Link href="/">
-          <NextImage src={Logo} alt="Logo" />
-        </Link>
-
-        {/* Mobile Menu Toggle */}
-        <ToggleButton
-          mobileMenuOpen={mobileMenuOpen}
-          toggleMobileMenu={toggleMobileMenu}
-        />
-
-        {mobileMenuOpen && (
-          <section className="absolute top-0 left-0 right-0 bg-primary z-20 h-screen p-6">
-            {/* Mobile Navigation Menu */}
-            <div className="flex flex-col top-[95px] left-0 right-0 gap-[40px] mt-11 z-20">
-              <ul className="list-none flex flex-col items-center gap-[40px] text-lg font-medium text-white">
-                <li>
-                  <Link href="#" onClick={toggleMobileMenu}>
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/membership" onClick={toggleMobileMenu}>
-                    Membership
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="/blog" onClick={toggleMobileMenu}>
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" onClick={toggleMobileMenu}>
-                    Learning
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" onClick={toggleMobileMenu}>
-                    Career
-                  </Link>
-                </li>
-              </ul>
-              {session ? (
-                <div className="flex items-center justify-center gap-[40px]">
-                  <button>
-                    <NotificationIcon />
-                  </button>
-                  <button>
-                    <MessageIcon />
-                  </button>
-                  <UserDropdown />
-                </div>
-              ) : (
-                <div className="flex flex-col items-center gap-[40px]">
-                  <Link href="/auth/login">
-                    <Button
-                      variant="outline"
-                      className="text-primary bg-white border"
-                    >
-                      Log In
-                    </Button>
-                  </Link>
-                  <Link href="/auth/signup">
-                    <Button variant="primary" className="border">
-                      Sign Up
-                    </Button>
-                  </Link>
-                </div>
-              )}
+    <>
+      <header
+        className={`h-[95px] fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out flex items-center ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-sm py-3 h-[75px]"
+            : "bg-[#0a5e5c] py-5"
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+          <Link href="/" className="relative z-50 flex items-center">
+            <div className={`transition-all duration-300 ${!scrolled ? "brightness-0 invert" : ""}`}>
+              <NextImage src={Logo} alt="MusDev Logo" width={120} height={32} priority />
             </div>
-          </section>
-        )}
+          </Link>
 
-        {/* Desktop Navigation Menu */}
-        <ul className="hidden list-none lg:flex items-center gap-10 text-lg font-medium">
-          <li>
-            <Link href="#">About Us</Link>
-          </li>
-          <li>
-            <Link href="/membership">Membership</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link href="#">Learning</Link>
-          </li>
-          <li>
-            <Link href="#">Career</Link>
-          </li>
-        </ul>
+          {/* Center Navigation */}
+          <ul className="hidden lg:flex items-center gap-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                    isActive(link.href)
+                      ? scrolled ? "bg-[#0a5e5c] text-white" : "bg-white text-[#0a5e5c]"
+                      : scrolled ? "text-[#0a5e5c] hover:bg-[#0a5e5c]/10" : "text-white/90 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        <div className="hidden lg:flex items-center gap-5">
-          {session ? (
-            <>
-              <button className="flex items-center justify-center">
-                <NotificationIcon />
-              </button>
-              <button className="flex items-center justify-center">
-                <MessageIcon />
-              </button>
-              <UserDropdown />
-            </>
-          ) : (
-            <>
-              <Link href="/auth/login">
-                <Button variant="outline">Log In</Button>
+          {/* Social Icons instead of Login/Signup */}
+          <div className="hidden lg:flex items-center gap-3">
+            {socialLinks.map((social, idx) => (
+              <a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  scrolled 
+                    ? "bg-[#0a5e5c]/5 text-[#0a5e5c] hover:bg-[#0a5e5c] hover:text-white" 
+                    : "bg-white/10 text-white hover:bg-white hover:text-[#0a5e5c]"
+                }`}
+              >
+                <div className="w-5 h-5">{social.icon}</div>
+              </a>
+            ))}
+          </div>
+
+          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden relative z-50 p-2 outline-none">
+            <div className="w-6 flex flex-col gap-1.5 items-end">
+              <span className={`h-0.5 w-6 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2 bg-neutral-900" : scrolled ? "bg-[#0a5e5c]" : "bg-white"}`} />
+              <span className={`h-0.5 w-4 transition-all duration-300 ${menuOpen ? "opacity-0" : scrolled ? "bg-[#0a5e5c]" : "bg-white"}`} />
+              <span className={`h-0.5 w-5 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2 bg-neutral-900" : scrolled ? "bg-[#0a5e5c]" : "bg-white"}`} />
+            </div>
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile Drawer */}
+      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${menuOpen ? "visible" : "invisible"}`}>
+        <div className={`absolute inset-0 bg-neutral-900/60 backdrop-blur-sm transition-opacity duration-500 ${menuOpen ? "opacity-100" : "opacity-0"}`} onClick={() => setMenuOpen(false)} />
+        <div className={`absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white transition-transform duration-500 ease-out p-8 pt-24 flex flex-col ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+          <nav className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleScrollToSection(e, link.href)}
+                className={`text-2xl font-black p-4 rounded-2xl transition-all ${isActive(link.href) ? "text-[#0a5e5c] bg-[#0a5e5c]/5" : "text-neutral-800"}`}
+              >
+                {link.label}
               </Link>
-              <Link href="/auth/signup">
-                <Button variant="primary">Sign Up</Button>
-              </Link>
-            </>
-          )}
+            ))}
+          </nav>
+          
+          {/* Mobile Socials */}
+          <div className="mt-auto flex gap-4 p-4 border-t border-neutral-100">
+            {socialLinks.map((social, idx) => (
+              <a 
+                key={idx} 
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center text-[#0a5e5c]"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </>
   );
-};
-
-export default Navbar;
+}
