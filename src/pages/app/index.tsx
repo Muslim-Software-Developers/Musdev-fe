@@ -1,7 +1,7 @@
-import { CardOne, CardTwo, ICardTwo } from "@/components/card";
-import NewJob from "@/components/newJob";
+// import { CardOne, CardTwo, ICardTwo } from "@/components/card";
+// import NewJob from "@/components/newJob";
 import React from "react";
-import Button from "@/components/button";
+// import Button from "@/components/button";
 import { trendingData } from "@/constants/trending";
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <h3 className="capitalize text-[32px] font-semibold text-black pb-10">
           continue learning
         </h3>
@@ -55,14 +55,14 @@ const Home = () => {
             className="bg-[#E73152]"
           />
         </div>
-      </div>
+      </div> */}
 
       <div>
-        <NewJob />
+        {/* <NewJob /> */}
       </div>
 
       <div className="h-[90px] bg-white flex items-center justify-center">
-        <Button variant="primary">view more</Button>
+        {/* <Button variant="primary">view more</Button> */}
       </div>
       <div className="flex flex-col md:flex-row gap-8 items-center justify-between">
         <span>
@@ -78,12 +78,12 @@ const Home = () => {
             togetherness
           </p>
           <div>
-            <Button variant="primary">Get Ticket</Button>
+            {/* <Button variant="primary">Get Ticket</Button> */}
           </div>
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <h3 className="font-semibold text-xl md:text-3xl mb-6">
           Trending In the Community
         </h3>
@@ -104,7 +104,7 @@ const Home = () => {
               />
             ))}
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
@@ -120,7 +120,7 @@ const Home = () => {
             must not be used for activities that are contrary to t
           </p>
           <div>
-            <Button variant="primary">View Verdict</Button>
+            {/* <Button variant="primary">View Verdict</Button> */}
           </div>
         </div>
       </div>
