@@ -6,8 +6,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useSession } from "next-auth/react";
 import ThreeVerticalDots from "../../assets/threeDotsVertical.png";
-import DropDownList from "@/components/blogWrite/dropDownList";
-import WritingBox from "@/components/blogWrite/writingBox";
+
 import { useCreatePost, useGetUserPosts } from "@/hooks/blogs";
 import { CreatePostPayload } from "@/hooks/blogs/types";
 import { validatePost } from "@/utils/helpers";
@@ -56,52 +55,7 @@ const Write = () => {
   };
 
   return (
-    <section className="wrapper pt-[55px] px-4 lg:px-8 bg-[#F0FFFF] space-y-24 pb-20s">
-      <div className="relative w-full flex justify-end py-[71px]">
-        <Image
-          src={ThreeVerticalDots}
-          width={20}
-          height={10}
-          alt="text DropDown"
-          onClick={() => setShowDropDownList((prev) => !prev)}
-          className="mr-5 cursor-pointer"
-        />
-
-        {showDropDownList && (
-          <DropDownList
-            setShowDropDownList={setShowDropDownList}
-            category={postObj.category_id!}
-            setPostObj={setPostObj}
-          />
-        )}
-      </div>
-
-      <WritingBox
-        titleValue={postObj.title}
-        setTitleValue={setPostObj}
-        editor={editor}
-        setEditor={setEditor}
-      />
-
-      <button
-        onClick={() => {
-          onSubmit({
-            name: session?.user?.name ? session?.user?.name : "",
-            phone: "",
-            email: session?.user?.email ? session?.user?.email : "",
-            tech_niche: "string",
-            title: postObj.title,
-            content: editor,
-            category_id: postObj.category_id!,
-            author: session?.user?.name ? session?.user?.name : "",
-            is_draft: false,
-          });
-        }}
-        className="py-[8px] px-[16px] my-[64px] bg-secondary01 rounded-lg text-white"
-      >
-        Submit for review
-      </button>
-    </section>
+  <div>...</div>
   );
 };
 

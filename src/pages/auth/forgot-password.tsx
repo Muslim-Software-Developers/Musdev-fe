@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "@/components/forms/Input";
+
 import AuthLayout from "@/components/layout/authLayout";
-import Button from "@/components/button";
+
 import Link from "next/link";
 import { useForgotPassword } from "@/hooks/auth";
 import { Controller, useForm } from "react-hook-form";
@@ -44,44 +44,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <AuthLayout
-      heading="Forgot your password"
-      subHeading="Enter your email to reset your password"
-    >
-      <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <Input
-              type="email"
-              label="Email address"
-              placeholder="email address"
-              errorMsg={errors.email?.message}
-              {...field}
-            />
-          )}
-        />
-
-        <div className="mt-6">
-          <Button
-            className="w-full bg-primary rounded-md py-[10px] font-medium text-[18px] leading-[28px] text-white"
-            type="submit"
-            isLoading={mutation.isLoading}
-          >
-            Reset
-          </Button>
-        </div>
-        <div className="text-center mt-8">
-          <Link
-            href="/auth/login"
-            className="text-sm leading-5 font-medium text-[#006A4E]"
-          >
-            Back to login
-          </Link>
-        </div>
-      </form>
-    </AuthLayout>
+   <div>...</div>
   );
 };
 

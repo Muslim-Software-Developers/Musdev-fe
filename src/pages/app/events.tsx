@@ -3,7 +3,7 @@ import Image from "next/image";
 import ArrowRight from "@/components/svgs/arrowRight";
 import ArrowRightIcon from "@/components/svgs/arrowRightIcon";
 import ArrowUpRight from "@/components/svgs/arrowUpRight";
-import Modal from "@/components/modal";
+
 
 const events = ["networking", "games", "quizzes", "funs"];
 
