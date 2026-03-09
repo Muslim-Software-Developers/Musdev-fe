@@ -3,30 +3,17 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HeroImage1 from "../../../public/images/mats.jpg";
-import HeroImage2 from "../../../public/images/mdh.jpg";
-import HeroImage3 from "../../../public/images/prp.jpg";
-
-// Placeholder SVG generator for clean development
-const ImagePlaceholder = ({ label }: { label: string }) => (
-  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-emerald-800 to-emerald-600 text-white/40">
-    <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-    <span className="text-[10px] font-bold uppercase tracking-widest">{label}</span>
-  </div>
-);
 
 const events = [
-    {
-id: "musdev-post-ramadan-picnic-2026",
+  {
+    id: "musdev-post-ramadan-picnic-2026",
     title: "MusDev Post Ramadan Picnic",
     description: "Relax, connect, and recharge with the community! An afternoon of networking, outdoor games, and great food for Muslim techies and their families.",
-    date: "April 18, 2026", // Assuming roughly a week after Eid al-Fitr
+    date: "April 18, 2026",
     time: "11:00 AM WAT",
     location: "JJT Park, Ikeja, Lagos",
     category: "Community",
-     image:HeroImage3,
+    image: "/images/prp.jpg", // Direct path to public/images/prp.jpg
   },
   {
     id: "musdev-annual-summit-2026",
@@ -36,7 +23,7 @@ id: "musdev-post-ramadan-picnic-2026",
     time: "9:00 AM WAT",
     location: "Eko Hotel, Lagos",
     category: "Conference",
-    image:HeroImage1,
+    image: "/images/mats.jpg", // Direct path to public/images/mats.jpg
   },
   {
     id: "muslim-devs-hackathon-2026",
@@ -46,9 +33,8 @@ id: "musdev-post-ramadan-picnic-2026",
     time: "8:00 AM WAT",
     location: "CcHub, Yaba, Lagos",
     category: "Hackathon",
-     image:HeroImage2,
+    image: "/images/mdh.jpg", // Direct path to public/images/mdh.jpg
   },
-
 ];
 
 export default function EventsPreviewSection() {
@@ -81,14 +67,14 @@ export default function EventsPreviewSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="reveal-item opacity-0 translate-y-10 transition-all duration-700">
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Stay Updated</span>
+            <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs mb-3 block">Stay Updated</span>
             <h2 className="font-bold text-gray-900 leading-tight text-3xl md:text-5xl">
               Upcoming Events
             </h2>
           </div>
           <Link
             href="/events"
-            className="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-200 inline-flex items-center gap-2 text-primary font-bold group"
+            className="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-200 inline-flex items-center gap-2 text-emerald-600 font-bold group"
           >
             Explore all events
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,18 +85,21 @@ export default function EventsPreviewSection() {
 
         {/* Event Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event, i) => (
+          {events.map((event) => (
             <Link
               key={event.id}
               href={`#`}
-              // href={`/events/${event.id}`}
               className="reveal-item opacity-0 translate-y-10 transition-all duration-700 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
-              {/* Image with Placeholder */}
+              {/* Image Container */}
               <div className="relative h-52 w-full">
-                {/* <ImagePlaceholder label={event.category} /> */}
-                {/* Note: In production, replace the line above with the commented Image component below */}
-                <Image src={event.image} alt={event.title} fill className="object-cover" />
+                <Image 
+                  src={event.image} 
+                  alt={event.title} 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover" 
+                />
                 
                 <div className="absolute top-4 left-4">
                   <span className="bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg">
@@ -132,11 +121,11 @@ export default function EventsPreviewSection() {
                   <span>{event.time}</span>
                 </div>
 
-                <h3 className="font-bold text-gray-900 text-xl mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                <h3 className="font-bold text-gray-900 text-xl mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-tight">
                   {event.title}
                 </h3>
                 
-                <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-2 font-body">
+                <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-2">
                   {event.description}
                 </p>
 
@@ -147,7 +136,7 @@ export default function EventsPreviewSection() {
                     </svg>
                     <span className="text-[11px] font-medium truncate max-w-[120px]">{event.location}</span>
                   </div>
-                  <span className="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-emerald-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                     Details <span className="text-lg">→</span>
                   </span>
                 </div>

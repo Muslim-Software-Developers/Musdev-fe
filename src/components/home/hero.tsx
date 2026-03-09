@@ -3,8 +3,6 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HeroImage from "../../../public/images/hero1.png";
-import HeroImage2 from "../../../public/images/hero.png";
 import ArrowRightIcon from "../svgs/arrowRightIcon";
 
 export default function HeroSection() {
@@ -40,13 +38,10 @@ export default function HeroSection() {
   ];
 
   return (
-    // Changed bg-white to bg-[#0a5e5c] to prevent the "flicker" line
     <div ref={sectionRef} className="bg-[#0a5e5c] overflow-hidden">
       
       {/* --- HERO PART --- */}
       <section id="hero"
-        // 1. Removed min-h-[90vh] to use flex-grow or standard padding
-        // 2. Ensuring the background hex matches the navbar exactly
         className="relative min-h-screen flex items-center pt-24 md:pt-32 border-none outline-none"
         style={{ background: "linear-gradient(135deg, #0a5e5c 0%, #095957 45%, #00a751 100%)" }}
       >
@@ -57,7 +52,7 @@ export default function HeroSection() {
           <div className="text-left">
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">Nigeria&lsquo;s #1 Muslim Tech Community</span>
+              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">Nigeria&apos;s #1 Muslim Tech Community</span>
             </div>
 
             <h1 className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-100 text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
@@ -65,39 +60,45 @@ export default function HeroSection() {
               <span className="text-emerald-300">of Technology</span>
             </h1>
 
-           <p className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-200 text-white/80 text-lg md:text-xl mb-10 max-w-lg">
-  Join <strong>Muslims In Tech </strong>(Musdev), a vibrant community of innovators bridging the gap between faith and the global tech landscape.
-</p>
+            <p className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-200 text-white/80 text-lg md:text-xl mb-10 max-w-lg">
+              Join <strong>Muslims In Tech</strong> (Musdev), a vibrant community of innovators bridging the gap between faith and the global tech landscape.
+            </p>
 
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-4">
-              {/* Join Now - Link to external Google Form */}
-<Link 
-  href="https://forms.gle/xxt81k7r8U86XJP28" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="flex items-center gap-2 bg-white text-[#0a5e5c] font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all shadow-xl group"
->
-  Join Now
-  <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
-</Link>
+              <Link 
+                href="https://forms.gle/xxt81k7r8U86XJP28" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-white text-[#0a5e5c] font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all shadow-xl group"
+              >
+                Join Now
+                <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
+              </Link>
 
-{/* Explore Events - Jump to Programs Section */}
-<Link 
-  href="#programs" 
-  onClick={(e) => {
-    e.preventDefault();
-    document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
-  }}
-  className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all"
->
-  Explore Events
-</Link>
+              <Link 
+                href="#programs" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all"
+              >
+                Explore Events
+              </Link>
             </div>
           </div>
 
+          {/* Hero Image Section */}
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:block">
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
-              <Image src={HeroImage} alt="MusDev Community" className="w-full object-cover" priority />
+              <Image 
+                src="/images/hero1.png" 
+                alt="Muslim In Tech Community" 
+                className="w-full object-cover" 
+                width={800}
+                height={600}
+                priority 
+              />
             </div>
             {/* Floating Badge */}
             <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-2xl z-30 flex items-center gap-4">
@@ -120,8 +121,10 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-4 bg-emerald-500/10 rounded-[2.5rem] -rotate-3" />
               <Image 
-                src={HeroImage2} 
+                src="/images/womanhijab.JPG" 
                 alt="Mission Driven" 
+                width={600}
+                height={500}
                 className="relative z-10 rounded-[2rem] shadow-lg grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
