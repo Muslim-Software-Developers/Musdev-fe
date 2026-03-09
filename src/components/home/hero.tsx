@@ -40,13 +40,10 @@ export default function HeroSection() {
   ];
 
   return (
-    // Changed bg-white to bg-[#0a5e5c] to prevent the "flicker" line
     <div ref={sectionRef} className="bg-[#0a5e5c] overflow-hidden">
       
       {/* --- HERO PART --- */}
       <section id="hero"
-        // 1. Removed min-h-[90vh] to use flex-grow or standard padding
-        // 2. Ensuring the background hex matches the navbar exactly
         className="relative min-h-screen flex items-center pt-24 md:pt-32 border-none outline-none"
         style={{ background: "linear-gradient(135deg, #0a5e5c 0%, #095957 45%, #00a751 100%)" }}
       >
@@ -57,7 +54,8 @@ export default function HeroSection() {
           <div className="text-left">
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">Nigeria's #1 Muslim Tech Community</span>
+              {/* FIXED: Replaced ' with &apos; to resolve the build error */}
+              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">Nigeria&apos;s #1 Muslim Tech Community</span>
             </div>
 
             <h1 className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-100 text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
@@ -70,28 +68,26 @@ export default function HeroSection() {
             </p>
 
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-4">
-              {/* Join Now - Link to external Google Form */}
-<Link 
-  href="https://forms.gle/xxt81k7r8U86XJP28" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="flex items-center gap-2 bg-white text-[#0a5e5c] font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all shadow-xl group"
->
-  Join Now
-  <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
-</Link>
+              <Link 
+                href="https://forms.gle/xxt81k7r8U86XJP28" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-white text-[#0a5e5c] font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all shadow-xl group"
+              >
+                Join Now
+                <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
+              </Link>
 
-{/* Explore Events - Jump to Programs Section */}
-<Link 
-  href="#programs" 
-  onClick={(e) => {
-    e.preventDefault();
-    document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
-  }}
-  className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all"
->
-  Explore Events
-</Link>
+              <Link 
+                href="#programs" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all"
+              >
+                Explore Events
+              </Link>
             </div>
           </div>
 
@@ -99,7 +95,6 @@ export default function HeroSection() {
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
               <Image src={HeroImage} alt="MusDev Community" className="w-full object-cover" priority />
             </div>
-            {/* Floating Badge */}
             <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-2xl z-30 flex items-center gap-4">
               <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -127,7 +122,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2" id="purpose">
+          <div className="order-1 lg:order-2">
             <h2 className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 text-sm font-bold text-emerald-600 tracking-widest uppercase mb-4">Our Purpose</h2>
             <h3 className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-100 text-4xl font-bold text-gray-900 mb-8">
               Mission Driven. <br /> People Focused.
