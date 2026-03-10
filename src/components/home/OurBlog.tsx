@@ -94,10 +94,10 @@ export default function BlogSection() {
           {/* Featured Post */}
           <Link href={`#`} className="reveal-item opacity-0 translate-y-10 transition-all duration-700 lg:col-span-7 group">
             <div className="relative aspect-[16/10] w-full rounded-[2.5rem] overflow-hidden mb-8 shadow-sm group-hover:shadow-xl transition-all duration-500">
-              <Image 
+              <img
                 src={featured.image} 
                 alt={featured.title} 
-                fill 
+             
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover" 
               />
@@ -133,10 +133,10 @@ export default function BlogSection() {
                 className={`reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-${(i + 3) * 100} group flex gap-6 items-start`}
               >
                 <div className="relative w-24 h-24 md:w-32 md:h-28 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
-                  <Image 
+                  <img
                     src={post.image} 
                     alt={post.title} 
-                    fill 
+                   
                     sizes="150px"
                     className="object-cover" 
                   />
