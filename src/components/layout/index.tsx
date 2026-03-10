@@ -1,57 +1,67 @@
-import React, { Fragment, ReactNode } from "react";
-import Head from "next/head";
-import { Inter } from "next/font/google";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import React from "react";
+// Import original sections to keep them ready for launch
+// import Hero from "./hero";
+// import OurBlog from "./OurBlog";
+// import Programs from "./Programs";
+// import EventsPreviewSection from "./EventsPreviewSection";
+// import Testimonial from "./testimonial";
+// import GetTogetherSection from "./GetTogetherSection";
 
-interface ILayoutProps {
-  title?: string;
-  children: ReactNode;
-  className?: string;
-}
-
-const inter = Inter({ subsets: ["latin"] });
-
-const Layout = ({ title, children, className }: ILayoutProps) => {
+const Layout = () => {
   return (
-    <Fragment>
-    <Head>
-  {/* Primary SEO - Establishing Authority */}
-  <title>{title ? `${title} | Muslim In Tech (MusDev)` : "Muslim In Tech (MusDev) | #1 Muslim Tech Community in Nigeria"}</title>
-  <meta name="title" content="Muslim In Tech (MusDev) | Nigeria's #1 Muslim Tech Community" />
-  <meta name="description" content="The premier hub for Muslim tech professionals in Nigeria. Empowering developers, designers, and innovators through community, mentorship, and faith-driven excellence. Join the MusDev movement." />
-  
-  {/* Technical Essentials */}
-  <meta charSet="utf-8" />
-  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="MusDev Nigeria" />
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center relative overflow-hidden font-sans">
+      
+      {/* Background Decorative Elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-900/20 rounded-full blur-[120px]" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-800/10 rounded-full blur-[120px]" />
 
-  {/* Open Graph / Facebook (Social Sharing Pride) */}
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://musdev.org/" />
-  <meta property="og:title" content="Muslim In Tech (MusDev) | Nigeria's #1 Muslim Tech Community" />
-  <meta property="og:description" content="Bridging faith and innovation. Join thousands of Muslim techies across Nigeria building the future together." />
-  {/* Using your new Logo.PNG for the social share preview */}
-  <meta property="og:image" content="https://musdev.org/images/Logo.PNG" />
+      <div className="z-10 text-center px-6">
+        {/* Logo Branding */}
+        <div className="mb-8 animate-fade-in">
+          {/* <img 
+            src="/images/Logo.PNG" 
+            alt="MusDev Logo" 
+            className="h-20 mx-auto drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+          /> */}
+        </div>
 
-  {/* Twitter (X) Card */}
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://musdev.org/" />
-  <meta property="twitter:title" content="Muslim In Tech (MusDev) | #1 Muslim Tech Community in Nigeria" />
-  <meta property="twitter:description" content="Empowering the next generation of Muslim tech leaders. Community, Growth, and Impact." />
-  <meta property="twitter:image" content="https://musdev.org/images/Logo.PNG" />
+        {/* Main Content */}
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+          UNDER CONSTRUCTION: Something <span className="text-emerald-500">Exceptional</span> is Brewing
+        </h1>
+        
+        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+          Nigeria's #1 Muslim Tech Community is currently upgrading. 
+          We are fine-tuning our platform to better serve the ummah through innovation and excellence.
+        </p>
 
-  {/* Favicon */}
-  <link rel="icon" href="/favicon.ico" />
-</Head>
+        {/* Status Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-medium mb-12">
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          Phase: Final Polish & Optimization
+        </div>
 
-      <Navbar />
-      <main className={`section-full-screen mt-[95px] z-[1] ${className}`}>
-        {children}
-      </main>
-      <Footer />
-    </Fragment>
+        {/* Newsletter / Notification */}
+        {/* <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <input 
+            type="email" 
+            placeholder="Enter your email for early access" 
+            className="w-full md:w-80 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-all"
+          />
+          <button className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-900/20">
+            Notify Me
+          </button>
+        </div> */}
+      </div>
+
+      {/* Footer Branding */}
+      <div className="absolute bottom-8 text-gray-500 text-sm tracking-widest uppercase">
+        Built by the Ummah • For the Ummah
+      </div>
+    </div>
   );
 };
 
