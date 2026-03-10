@@ -22,7 +22,7 @@ const HomePage = () => {
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-800/10 rounded-full blur-[120px]" />
 
       <div className="z-10 text-center px-6">
-        {/* Logo Branding */}
+        {/* Logo Branding Logo*/}
         <div className="mb-8 animate-fade-in">
           {/* <img 
             src="/images/Logo.PNG" 
