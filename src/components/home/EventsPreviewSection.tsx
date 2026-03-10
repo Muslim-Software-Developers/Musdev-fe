@@ -13,7 +13,7 @@ const events = [
     time: "11:00 AM WAT",
     location: "JJT Park, Ikeja, Lagos",
     category: "Community",
-    image: "./images/prp.jpg", // Direct path to public/images/prp.jpg
+    image: "/images/prp.jpg", // Direct path to public/images/prp.jpg
   },
   {
     id: "musdev-annual-summit-2026",

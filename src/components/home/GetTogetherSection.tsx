@@ -35,7 +35,7 @@ export default function GetTogetherSection() {
           {/* Background Elements (Desktop) */}
           <div className="absolute inset-0 hidden lg:block">
             <Image
-              src="https://musdev.org/images/hero.png" // Direct path to publichttps://musdev.org/images/get-togther.png
+              src="/images/hero.png" // Direct path to public/images/get-togther.png
               alt="Muslim community gathering"
               fill
               className="object-cover object-right opacity-20 grayscale hover:grayscale-0 transition-all duration-700"
@@ -90,7 +90,7 @@ export default function GetTogetherSection() {
             {/* Mobile/Tablet Image (Visible only on smaller screens) */}
             <div className="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-400 mt-12 lg:hidden relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://musdev.org/images/hero1.png" 
+                src="/images/hero1.png" 
                 alt="Community Joy"
                 fill
                 className="object-cover"
