@@ -46,7 +46,7 @@ export default function HeroSection() {
         style={{ background: "linear-gradient(135deg, #0a5e5c 0%, #095957 45%, #00a751 100%)" }}
       >
         {/* Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/images/pattern.png')] bg-repeat" />
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://musdev.org/images/pattern.png')] bg-repeat" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
           <div className="text-left">
@@ -92,7 +92,7 @@ export default function HeroSection() {
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:block">
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
               <Image 
-                src="/images/hero1.png" 
+                src="https://musdev.orghttps://musdev.org/images/hero1.png" 
                 alt="Muslim In Tech Community" 
                 className="w-full object-cover" 
                 width={800}
@@ -121,7 +121,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-4 bg-emerald-500/10 rounded-[2.5rem] -rotate-3" />
               <Image 
-                src="/images/womanhijab.JPG" 
+                src="https://musdev.org/images/womanhijab.JPG" 
                 alt="Mission Driven" 
                 width={600}
                 height={500}

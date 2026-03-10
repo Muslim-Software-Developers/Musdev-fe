@@ -13,7 +13,7 @@ const events = [
     time: "11:00 AM WAT",
     location: "JJT Park, Ikeja, Lagos",
     category: "Community",
-    image: "/images/prp.jpg", // Direct path to public/images/prp.jpg
+    image: "https://musdev.org/images/prp.jpg", // Direct path to publichttps://musdev.org/images/prp.jpg
   },
   {
     id: "musdev-annual-summit-2026",
@@ -23,7 +23,7 @@ const events = [
     time: "9:00 AM WAT",
     location: "Eko Hotel, Lagos",
     category: "Conference",
-    image: "/images/mats.jpg", // Direct path to public/images/mats.jpg
+    image: "https://musdev.org/images/mats.jpg", // Direct path to publichttps://musdev.org/images/mats.jpg
   },
   {
     id: "muslim-devs-hackathon-2026",
@@ -33,7 +33,7 @@ const events = [
     time: "8:00 AM WAT",
     location: "CcHub, Yaba, Lagos",
     category: "Hackathon",
-    image: "/images/mdh.jpg", // Direct path to public/images/mdh.jpg
+    image: "https://musdev.org/images/mdh.jpg", // Direct path to publichttps://musdev.org/images/mdh.jpg
   },
 ];
 

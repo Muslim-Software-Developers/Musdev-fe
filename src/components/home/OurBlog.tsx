@@ -13,7 +13,7 @@ const posts = [
     author: "Abdullahi Musa",
     date: "Feb 28, 2026",
     readTime: "6 min read",
-    image: "/images/fintech.jpg" // Direct path to public/images/fintech.jpg
+    image: "https://musdev.org/images/fintech.jpg" // Direct path to publichttps://musdev.org/images/fintech.jpg
   },
   {
     id: "ai-arabic-nlp",
@@ -22,7 +22,7 @@ const posts = [
     excerpt: "Exploring machine learning's role in improving Arabic processing.",
     date: "Feb 15, 2026",
     readTime: "5 min read",
-    image: "/images/aiml.jpg" // Direct path to public/images/aiml.jpg
+    image: "https://musdev.org/images/aiml.jpg" // Direct path to publichttps://musdev.org/images/aiml.jpg
   },
   {
     id: "career-guide",
@@ -31,7 +31,7 @@ const posts = [
     excerpt: "Navigating prayer times and halal culture in top tech companies.",
     date: "Jan 30, 2026",
     readTime: "8 min read",
-    image: "/images/mdg.jpg" // Direct path to public/images/mdg.jpg
+    image: "https://musdev.org/images/mdg.jpg" // Direct path to publichttps://musdev.org/images/mdg.jpg
   },
   {
     id: "open-source",
@@ -40,7 +40,7 @@ const posts = [
     excerpt: "A curated list of projects built by and for the Ummah.",
     date: "Jan 12, 2026",
     readTime: "4 min read",
-    image: "/images/ops.jpg" // Direct path to public/images/ops.jpg
+    image: "https://musdev.org/images/ops.jpg" // Direct path to publichttps://musdev.org/images/ops.jpg
   }
 ];
 
