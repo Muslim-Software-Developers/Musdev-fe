@@ -91,13 +91,13 @@ export default function HeroSection() {
           {/* Hero Image Section */}
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:block">
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
-              <Image 
+              <img 
                 src="/images/hero1.png" 
                 alt="Muslim In Tech Community" 
                 className="w-full object-cover" 
                 width={800}
                 height={600}
-                priority 
+          
               />
             </div>
             {/* Floating Badge */}
@@ -120,7 +120,7 @@ export default function HeroSection() {
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 order-2 lg:order-1">
             <div className="relative">
               <div className="absolute -inset-4 bg-emerald-500/10 rounded-[2.5rem] -rotate-3" />
-              <Image 
+              <img
                 src="/images/womanhijab.JPG" 
                 alt="Mission Driven" 
                 width={600}
