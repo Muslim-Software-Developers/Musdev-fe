@@ -1,14 +1,48 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
-import Image from "next/image";
 import ArrowRightIcon from "../svgs/arrowRightIcon";
+import { getStrapiData, getFileUrl } from '@/utils/api';
 
-export default function HeroSection() {
+// Interface matching your Strapi Flattened Output
+interface MissionPoint {
+  title: string;
+  desc: string;
+}
+
+interface HeroData {
+  badgeText: string;
+  heading: string;
+  subHeading: string;
+  activeTechiesCount: string;
+  heroImage: { url: string };
+  missionImage: { url: string };
+  missionPoints: MissionPoint[];
+}
+
+export default function Hero() {
+  const [data, setData] = useState<HeroData | null>(null);
+  const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  // 1. Fetch Data from Strapi
   useEffect(() => {
+    getStrapiData('hero-section')
+      .then((res) => {
+        setData(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Hero Fetch Error:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  // 2. Intersection Observer for Animations
+  useEffect(() => {
+    if (loading || !data) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -28,14 +62,10 @@ export default function HeroSection() {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [loading, data]);
 
-  const missionPoints = [
-    { title: "Global Representation", desc: "Ensuring the Muslim Ummah is leading in the global tech landscape." },
-    { title: "Halal Innovation", desc: "Fostering Islamic practices through ethical and sustainable technology." },
-    { title: "Talent Pipeline", desc: "Connecting young talents to high-growth opportunities and mentorship." },
-    { title: "Digital Research", desc: "A hub for research and IT solutions tailored for the Ummah." }
-  ];
+  if (loading) return <div className="min-h-screen bg-[#0a5e5c]" />;
+  if (!data) return null;
 
   return (
     <div ref={sectionRef} className="bg-[#0a5e5c] overflow-hidden">
@@ -52,17 +82,19 @@ export default function HeroSection() {
           <div className="text-left">
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">Nigeria&apos;s #1 Muslim Tech Community</span>
+              <span className="text-white/90 text-xs font-semibold uppercase tracking-wider">
+                {data.badgeText}
+              </span>
             </div>
 
             <h1 className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-100 text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-              Shaping the Future <br />
-              <span className="text-emerald-300">of Technology</span>
+              {data.heading}
             </h1>
 
-            <p className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-200 text-white/80 text-lg md:text-xl mb-10 max-w-lg">
-              Join <strong>Muslims In Tech</strong> (Musdev), a vibrant community of innovators bridging the gap between faith and the global tech landscape.
-            </p>
+            <p 
+              className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-200 text-white/80 text-lg md:text-xl mb-10 max-w-lg"
+              dangerouslySetInnerHTML={{ __html: data.subHeading }}
+            />
 
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-4">
               <Link 
@@ -92,21 +124,22 @@ export default function HeroSection() {
           <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:block">
             <div className="relative z-20 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/10">
               <img 
-                src="/images/hero1.png" 
-                alt="Muslim In Tech Community" 
+                src={getFileUrl(data.heroImage?.url)} 
+                alt="Community Hero" 
                 className="w-full object-cover" 
                 width={800}
                 height={600}
-          
               />
             </div>
             {/* Floating Badge */}
             <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-2xl z-30 flex items-center gap-4">
               <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">2,500+</p>
+                <p className="text-2xl font-bold text-gray-900">{data.activeTechiesCount}</p>
                 <p className="text-sm text-gray-500 font-medium">Active Techies</p>
               </div>
             </div>
@@ -121,7 +154,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-4 bg-emerald-500/10 rounded-[2.5rem] -rotate-3" />
               <img
-                src="/images/womanhijab.JPG" 
+                src={getFileUrl(data.missionImage?.url)} 
                 alt="Mission Driven" 
                 width={600}
                 height={500}
@@ -137,7 +170,7 @@ export default function HeroSection() {
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {missionPoints.map((point, i) => (
+              {data.missionPoints?.map((point, i) => (
                 <div 
                   key={i} 
                   className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/50 transition-colors"

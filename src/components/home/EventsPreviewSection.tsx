@@ -1,46 +1,42 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
-import Image from "next/image";
+import { getStrapiData, getFileUrl } from '@/utils/api';
 
-const events = [
-  {
-    id: "musdev-post-ramadan-picnic-2026",
-    title: "MusDev Post Ramadan Picnic",
-    description: "Relax, connect, and recharge with the community! An afternoon of networking, outdoor games, and great food for Muslim techies and their families.",
-    date: "April 18, 2026",
-    time: "11:00 AM WAT",
-    location: "JJT Park, Ikeja, Lagos",
-    category: "Community",
-    image: "/images/prp.jpg", // Direct path to public/images/prp.jpg
-  },
-  {
-    id: "musdev-annual-summit-2026",
-    title: "MusDev Annual Tech Summit 2026",
-    description: "Join hundreds of Muslim tech professionals for a full-day summit featuring keynotes, workshops, and networking. Explore the theme: Faith, Code & Future.",
-    date: "April 12, 2026",
-    time: "9:00 AM WAT",
-    location: "Eko Hotel, Lagos",
-    category: "Conference",
-    image: "/images/mats.jpg", // Direct path to public/images/mats.jpg
-  },
-  {
-    id: "muslim-devs-hackathon-2026",
-    title: "Muslim Devs Hackathon 2026",
-    description: "A 48-hour hackathon challenging participants to build tech solutions addressing real problems in Muslim communities — from fintech to edtech.",
-    date: "May 3–4, 2026",
-    time: "8:00 AM WAT",
-    location: "CcHub, Yaba, Lagos",
-    category: "Hackathon",
-    image: "/images/mdh.jpg", // Direct path to public/images/mdh.jpg
-  },
-];
+interface EventItem {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  location: string;
+  category: string;
+  image: { url: string };
+  slug: string;
+}
 
 export default function EventsPreviewSection() {
+  const [events, setEvents] = useState<EventItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Fetch last 3 events, sorted by date
+    getStrapiData('events?sort=date:asc&pagination[limit]=3')
+      .then((res) => {
+        setEvents(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Events Fetch Error:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (loading || events?.length === 0) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -58,7 +54,19 @@ export default function EventsPreviewSection() {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [loading, events]);
+
+  // Date Formatting Helper
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
+  if (loading) return <div className="py-24 bg-neutral-50 min-h-[400px]" />;
+  if (events?.length === 0) return null;
 
   return (
     <section ref={sectionRef} className="py-24 bg-neutral-50 overflow-hidden" id="events">
@@ -85,22 +93,19 @@ export default function EventsPreviewSection() {
 
         {/* Event Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event) => (
+          {events?.map((event) => (
             <Link
               key={event.id}
-              href={`#`}
+               href={`/events/${event.slug}`}
               className="reveal-item opacity-0 translate-y-10 transition-all duration-700 group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
               {/* Image Container */}
-              <div className="relative h-52 w-full">
+              <div className="relative h-52 w-full bg-gray-200">
                 <img
-                  src={event.image} 
+                  src={getFileUrl(event.image?.url)} 
                   alt={event.title} 
-             
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover" 
+                  className="w-full h-full object-cover"
                 />
-                
                 <div className="absolute top-4 left-4">
                   <span className="bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg">
                     {event.category}
@@ -115,7 +120,7 @@ export default function EventsPreviewSection() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    {event.date}
+                    {formatDate(event.date)}
                   </span>
                   <div className="w-1 h-1 rounded-full bg-gray-200" />
                   <span>{event.time}</span>

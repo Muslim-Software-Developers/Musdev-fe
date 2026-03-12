@@ -11,10 +11,12 @@ import Logo from "@/assets/Logo.svg";
 import { TwitterIcon, LinkedInIcon } from "../svgs"; 
 
 const navLinks = [
-  { label: "About Us", href: "/#purpose" },
-  { label: "Membership", href: "/#hero" },
+
+  { label: "Membership", href: "/#membership" },
   { label: "Blog", href: "/#blog" },
   { label: "Learning", href: "/#blog" },
+  { label: "About Us", href: "/about" },
+  { label: "Innovate", href: "/#innovate" },
 ];
 
 const socialLinks = [
