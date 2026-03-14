@@ -1,4 +1,5 @@
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://musdev-strappi-backend-1.onrender.com";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://musdev-strappi-backend-1.onrender.com" || 'http://localhost:1337'; 
+// const STRAPI_URL = 'http://localhost:1337';
 const STRAPI_TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN || "e609a346fc754638bc09561a576f8b548076d10a74b23972bf9d06f82fe87b5cb9fac5f67edbdd975d071b5474cb51765a74c25b8613c31cd01b0900f1813e2edf0451f8ea465a397d40c21e0bb7ce51ed682fa531487eb280b45920daa414614e3e097ccb9c92d640895a636660b0496d264234dac3da6600f9e628f3cf0027";
 
 /**

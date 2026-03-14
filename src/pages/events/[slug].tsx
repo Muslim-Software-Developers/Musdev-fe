@@ -43,68 +43,64 @@ export default function EventDetailPage({ event }: EventPageProps) {
       </section>
 
       {/* Content */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl mb-10 border border-gray-100">
-              {event.image?.url ? (
-                <img
-                  src={getFileUrl(event.image.url)}
-                  alt={event.title}
-                  className="w-full h-auto object-cover"
-                />
-              ) : (
-                <div className="w-full h-64 bg-emerald-900 flex items-center justify-center text-white font-bold">
-                  MusDev
-                </div>
-              )}
-            </div>
-            <p className="text-gray-600 text-lg leading-relaxed whitespace-pre-wrap">
-              {event.description}
-            </p>
+    <section className="py-16">
+  <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+    {/* Left Column: Image & Description */}
+    <div className="lg:col-span-2">
+      <div className="rounded-[2.5rem] overflow-hidden shadow-2xl mb-10 border border-gray-100">
+        {event.image?.url ? (
+          <img
+            src={getFileUrl(event.image.url)}
+            alt={event.title}
+            className="w-full h-auto object-cover"
+          />
+        ) : (
+          <div className="w-full h-64 bg-emerald-900 flex items-center justify-center text-white font-bold">
+            MusDev
           </div>
+        )}
+      </div>
+      <p className="text-gray-600 text-lg leading-relaxed whitespace-pre-wrap">
+        {event.description}
+      </p>
+    </div>
 
-          <div className="lg:col-span-1">
-            <div className="sticky top-32 p-8 rounded-[2rem] bg-[#0a5e5c] text-white shadow-xl">
-              <h3 className="text-xl font-bold mb-4">Join Us</h3>
-              <p className="text-white/80 text-sm mb-8">Space is limited, so register early!</p>
-            <div className="lg:col-span-1">
-  <div className="sticky top-32 p-8 rounded-[2rem] bg-[#0a5e5c] text-white shadow-xl">
-    <h3 className="text-xl font-bold mb-4">Join Us</h3>
-    <p className="text-white/80 text-sm mb-8">
-      {event.event_googleform_url 
-        ? "Secure your spot by filling out the registration form below." 
-        : "Space is limited. Registration for this event will open shortly."}
-    </p>
-    
-    {event.event_googleform_url ? (
-      <a 
-        href={event.event_googleform_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full flex items-center justify-center gap-2 bg-white text-[#0a5e5c] font-bold px-6 py-4 rounded-xl hover:bg-emerald-50 transition-all group"
-      >
-        Register Now
-        <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
-      </a>
-    ) : (
-      <button 
-        disabled
-        className="w-full flex items-center justify-center gap-2 bg-white/20 text-white/50 font-bold px-6 py-4 rounded-xl cursor-not-allowed"
-      >
-        Registration Closed
-      </button>
-    )}
+    {/* Right Column: Sticky Sidebar (Cleaned up) */}
+    <div className="lg:col-span-1">
+      <div className="sticky top-32 p-8 rounded-[2rem] bg-[#0a5e5c] text-white shadow-xl">
+        <h3 className="text-xl font-bold mb-4">Join Us</h3>
+        <p className="text-white/80 text-sm mb-8">
+          {event.event_googleform_url 
+            ? "Secure your spot by filling out the registration form below." 
+            : "Space is limited. Registration for this event will open shortly."}
+        </p>
+        
+        {event.event_googleform_url ? (
+          <a 
+            href={event.event_googleform_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 bg-white text-[#0a5e5c] font-bold px-6 py-4 rounded-xl hover:bg-emerald-50 transition-all group"
+          >
+            Register Now
+            <ArrowRightIcon stroke1="#0a5e5c" stroke2="#0a5e5c" />
+          </a>
+        ) : (
+          <button 
+            disabled
+            className="w-full flex items-center justify-center gap-2 bg-white/20 text-white/50 font-bold px-6 py-4 rounded-xl cursor-not-allowed"
+          >
+            Registration Closed
+          </button>
+        )}
 
-    <p className="text-center text-[10px] text-white/50 mt-4">
-      {event.event_googleform_url ? "Links to an external Google Form" : "Check back later for updates"}
-    </p>
+        <p className="text-center text-[10px] text-white/50 mt-4">
+          {event.event_googleform_url ? "Link to registration portal" : "Check back later for updates"}
+        </p>
+      </div>
+    </div>
   </div>
-</div>
-            </div>
-          </div>
-        </div>
-      </section>
+</section>
     </main>
   );
 }

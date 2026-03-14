@@ -1,4 +1,6 @@
-import { GetServerSideProps } from 'next';
+"use client";
+
+import React, { useState, useEffect } from "react";
 import NextLink from "next/link";
 import { getStrapiData } from "@/utils/api";
 
@@ -12,26 +14,85 @@ interface BlogPost {
   published_date: string;
   is_featured: boolean;
   slug: string;
-  image: {
-    url: string;
-  };
+  image: { url: string };
 }
 
-interface BlogPageProps {
-  posts: BlogPost[];
-}
+export default function BlogArchive() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [pagination, setPagination] = useState({ page: 1, pageCount: 1 });
 
-export default function BlogArchive({ posts }: BlogPageProps) {
   const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://musdev-strappi-backend-1.onrender.com';
   
-  // Helper to handle both Cloudinary (absolute) and Strapi (relative) URLs
   const getImageUrl = (url: string) => {
     if (!url) return ""; 
     return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
   };
 
+  const fetchPosts = async (pageToFetch: number, isInitial: boolean = false) => {
+    try {
+      if (isInitial) setLoading(true);
+      else setLoadingMore(true);
+
+      // We use a pageSize of 7 for the first page (1 featured + 6 regular)
+      // and 6 for subsequent pages to keep the grid even.
+      const pageSize = 10; 
+      const endpoint = `blog-posts?sort=published_date:desc&pagination[page]=${pageToFetch}&pagination[pageSize]=${pageSize}`;
+      
+      const res = await getStrapiData(endpoint);
+      
+      // CAREFUL API MAPPING: Strapi v4/v5 data structure check
+      const rawData = res?.data || (Array.isArray(res) ? res : []);
+      const meta = res?.meta?.pagination || { page: 1, pageCount: 1 };
+
+      const formattedPosts = rawData.map((item: any) => {
+        const attr = item.attributes || item;
+        return {
+          id: item.id,
+          title: attr.title || "",
+          excerpt: attr.excerpt || "",
+          category: attr.category || "General",
+          author_name: attr.author_name || "Admin",
+          read_time: attr.read_time || "5 min",
+          published_date: attr.published_date || "",
+          is_featured: !!attr.is_featured,
+          slug: attr.slug || "",
+          image: {
+            url: attr.image?.data?.attributes?.url || attr.image?.url || ""
+          }
+        };
+      });
+
+      setPosts(prev => isInitial ? formattedPosts : [...prev, ...formattedPosts]);
+      setPagination(meta);
+    } catch (error) {
+      console.error("Error fetching blog archive:", error);
+    } finally {
+      setLoading(false);
+      setLoadingMore(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts(1, true);
+  }, []);
+
+  const handleLoadMore = () => {
+    if (pagination.page < pagination.pageCount) {
+      fetchPosts(pagination.page + 1);
+    }
+  };
+
+  // Logic to identify the featured post and separate regular ones
   const featuredPost = posts.find(p => p.is_featured) || posts[0];
   const regularPosts = posts.filter(p => p.id !== featuredPost?.id);
+
+  if (loading) return (
+    <div className="min-h-screen bg-white flex items-center justify-center font-quicksand text-emerald-600 font-bold">
+      Loading Insights...
+    </div>
+  );
 
   return (
     <main className="min-h-screen bg-white pb-24 font-quicksand">
@@ -43,16 +104,16 @@ export default function BlogArchive({ posts }: BlogPageProps) {
           <h1 className="text-5xl md:text-7xl font-black text-neutral-900 tracking-tight mb-6">
             Latest <span className="text-emerald-600">Insights.</span>
           </h1>
-         <p className="text-neutral-500 text-lg max-w-2xl leading-relaxed">
-  Exploring the intersection of Faith, Technology, and Innovation within the 
-  Nigerian Muslim tech ecosystem. Interested in contributing? Send your 
-  articles to <a href="mailto:info@musdev.org" className="text-emerald-500 hover:underline">info@musdev.org</a>.
-</p>
+          <p className="text-neutral-500 text-lg max-w-2xl leading-relaxed">
+            Exploring the intersection of Faith, Technology, and Innovation. 
+            Interested in contributing? Send your articles to <a href="mailto:info@musdev.org" className="text-emerald-500 hover:underline">info@musdev.org</a>.
+          </p>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16">
-        {featuredPost && (
+        {/* Only show featured section on the first page of results */}
+        {featuredPost && pagination.page >= 1 && (
           <NextLink href={`/blog/${featuredPost.slug}`} className="group block mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-7 relative aspect-[16/9] overflow-hidden rounded-[3rem] shadow-2xl transition-all duration-500 group-hover:shadow-emerald-900/10">
@@ -129,36 +190,20 @@ export default function BlogArchive({ posts }: BlogPageProps) {
             </NextLink>
           ))}
         </div>
+
+        {/* Load More Button Section */}
+        {pagination.page < pagination.pageCount && (
+          <div className="mt-24 flex justify-center">
+            <button
+              onClick={handleLoadMore}
+              disabled={loadingMore}
+              className="bg-neutral-900 text-white px-12 py-4 rounded-2xl font-bold hover:bg-emerald-600 transition-all flex items-center gap-3 disabled:opacity-50"
+            >
+              {loadingMore ? "Loading More..." : "Load More Insights"}
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const res = await getStrapiData('blog-posts?&sort=published_date:desc');
-    
-    // Safety check for data structure (Strapi v4 usually wraps in a 'data' array)
-    const rawPosts = res?.data || res || [];
-    
-    const posts = rawPosts.map((item: any) => {
-      const attributes = item.attributes || item;
-      
-      return {
-        id: item.id,
-        ...attributes,
-        // Drill deep to find the URL regardless of nesting
-        image: {
-          url: attributes.image?.data?.attributes?.url || attributes.image?.url || ""
-        }
-      };
-    });
-
-    return {
-      props: { posts: posts.length > 0 ? posts : [] },
-    };
-  } catch (error) {
-    console.error("Error fetching blog archive:", error);
-    return { props: { posts: [] } };
-  }
-};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { postStrapiData } from "@/utils/api"; // Path to your helper file
+import { postStrapiData } from "@/utils/api";
 
 const Innovate = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -10,7 +10,6 @@ const Innovate = () => {
 
     const formData = new FormData(e.currentTarget);
     
-    // Create a clean object from the form fields
     const payload = {
       full_name: formData.get("full_name"),
       email: formData.get("email"),
@@ -18,14 +17,17 @@ const Innovate = () => {
       project_name: formData.get("project_name"),
       project_link: formData.get("project_link"),
       portfolio_link: formData.get("portfolio_link"),
+      // Added the new description field
+      project_description: formData.get("project_description"),
+      slug:'',
+ 
     };
 
     try {
-      // Use the helper! It handles the URL, Token, and the { data: payload } wrap.
       await postStrapiData("innovation-submissions", payload);
-      
       setStatus("success");
       (e.target as HTMLFormElement).reset(); 
+      setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
       console.error("Submission failed:", err);
       setStatus("error");
@@ -64,46 +66,59 @@ const Innovate = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-1">
               <label className="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
-              <input name="full_name" required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="Yusuf Jimoh" />
+              <input name="full_name" required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="Name" />
             </div>
             <div className="md:col-span-1">
               <label className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-              <input name="email" required type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="info@musdev.org" />
+              <input name="email" required type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="email address" />
             </div>
             <div className="md:col-span-1">
               <label className="block text-sm font-medium text-gray-400 mb-2">Mobile Number</label>
-              <input name="mobile" required type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="+234..." />
+              <input name="mobile" required type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="+234..." />
             </div>
             <div className="md:col-span-1">
               <label className="block text-sm font-medium text-gray-400 mb-2">Project Name</label>
-              <input name="project_name" required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="MusDev Platform" />
+              <input name="project_name" required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="MusDev Platform" />
             </div>
+
+            {/* NEW: Project Description Field */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-300 mb-2">Project/Download Link</label>
-              <input name="project_link" type="url" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="https://app.com" />
+              <label className="block text-sm font-medium text-gray-300 mb-2">Tell us about your Innovation</label>
+              <textarea 
+                name="project_description" 
+                required 
+                rows={4} 
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all resize-none" 
+                placeholder="What problem are you solving? Who is it for? Share your vision..."
+              />
             </div>
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-300 mb-2">LinkedIn URL / Portfolio Link</label>
-              <input name="portfolio_link" required type="url" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="linkedin.com/in/username" />
+
+            <div className="md:col-span-1">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Project Link</label>
+              <input name="project_link" type="url" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="https://app.com" />
+            </div>
+            <div className="md:col-span-1">
+              <label className="block text-sm font-medium text-gray-300 mb-2">LinkedIn/Portfolio</label>
+              <input name="portfolio_link" required type="url" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-all" placeholder="linkedin.com/in/username" />
             </div>
             
             <div className="md:col-span-2 mt-4">
               <button 
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 active:scale-[0.98]"
               >
                 {status === "loading" ? "Submitting..." : "Submit for Spotlight"}
               </button>
 
               {status === "success" && (
-                <p className="mt-4 text-emerald-500 text-sm font-bold text-center">
+                <p className="mt-4 text-emerald-500 text-sm font-bold text-center animate-pulse">
                   Alhamdulillah! Your project has been submitted for review.
                 </p>
               )}
               {status === "error" && (
                 <p className="mt-4 text-red-500 text-sm font-bold text-center">
-                  Something went wrong. Please try again.
+                  Something went wrong. Please check your connection and try again.
                 </p>
               )}
             </div>

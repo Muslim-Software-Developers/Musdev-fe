@@ -15,11 +15,11 @@ import {
 } from "../svgs";
 
 const navLinks = [
-  { name: "About", url: "#" },
-  { name: "Mentorship", url: "#" },
-  { name: "Careers", url: "#", badge: "We're hiring!" },
-  { name: "Community", url: "#" },
-  { name: "Events", url: "#" },
+  { name: "About", url: "/about" },
+  { name: "Mentorship", url: "/#membership" },
+  { name: "Careers", url: "#", badge: "We're hiring soon!" },
+  { name: "Community", url: "/#membership" },
+  { name: "Events", url: "/events" },
 ];
 
 const programLinks = [
@@ -144,7 +144,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {programLinks.map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-neutral-600 hover:text-[#0a5e5c] text-sm font-medium transition-colors">
+                  <Link href="/events" className="text-neutral-600 hover:text-[#0a5e5c] text-sm font-medium transition-colors">
                     {item}
                   </Link>
                 </li>
