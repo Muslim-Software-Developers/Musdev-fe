@@ -11,7 +11,7 @@ interface Innovation {
   full_name: string;
   project_link: string;
   portfolio_link: string;
-  slug: string; // Ensure you add a slug field in Strapi for the detail page
+  slug: string;
 }
 
 export default function InnovationsPage() {
@@ -21,10 +21,10 @@ export default function InnovationsPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Only fetch approved projects
     const fetchApprovedProjects = async () => {
       try {
-        const res = await getStrapiData("innovation-submissions?filters[isApproved][$eq]=true");
+        // Updated sorting to createdAt:desc for newest first
+        const res = await getStrapiData("innovation-submissions?filters[isApproved][$eq]=true&sort=createdAt:asc");
         setProjects(res || []);
       } catch (err) {
         console.error("Failed to fetch innovations:", err);
@@ -35,7 +35,6 @@ export default function InnovationsPage() {
     fetchApprovedProjects();
   }, []);
 
-  // Reveal Animation
   useEffect(() => {
     if (loading) return;
     const observer = new IntersectionObserver(
@@ -95,7 +94,7 @@ export default function InnovationsPage() {
         </div>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
@@ -120,7 +119,6 @@ export default function InnovationsPage() {
                   <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Builder</p>
                   <p className="text-sm font-bold text-neutral-900">{project.full_name}</p>
                 </div>
-                {/* Adjust Link once you have individual pages set up */}
                 <Link 
                   href={`/innovations/${project.slug}`} 
                   className="bg-neutral-900 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-600 transition-all"
@@ -131,6 +129,30 @@ export default function InnovationsPage() {
             </div>
           ))}
         </div>
+
+        {/* Report Abuse Footer */}
+        <div className="reveal opacity-0 translate-y-10 transition-all duration-700 bg-neutral-50 rounded-[2rem] p-8 md:p-12 border border-neutral-100 border-dashed">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-2 mb-4">
+                <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <h4 className="text-lg font-bold text-neutral-900">Report Abuse</h4>
+              </div>
+              <p className="text-neutral-500 text-sm leading-relaxed">
+                If you find any startup or app on this page questionable, or if it is no longer pursuing a halal purpose, please report it to <a href="mailto:info@musdev.org" className="text-emerald-600 font-bold hover:underline">info@musdev.org</a> with compelling evidence. Following an investigation, verified entries will be promptly removed.
+              </p>
+            </div>
+            <a 
+              href="mailto:info@musdev.org" 
+              className="flex-shrink-0 border-2 border-neutral-900 text-neutral-900 px-8 py-3 rounded-2xl text-sm font-bold hover:bg-neutral-900 hover:text-white transition-all"
+            >
+              Contact Admin
+            </a>
+          </div>
+        </div>
+
       </div>
     </main>
   );
