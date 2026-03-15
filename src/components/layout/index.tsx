@@ -17,7 +17,7 @@ const Layout = ({ title, children, className }: ILayoutProps) => {
     <Fragment>
     <Head>
   {/* Primary SEO - Establishing Authority */}
-  <title>{title ? `${title} | Muslim In Tech (MusDev)` : "Muslim In Tech (MusDev) | #1 Muslim Tech Community in Nigeria"}</title>
+  <title>Muslim In Tech (MusDev) | #1 Muslim Tech Community in Nigeria</title>
   <meta name="title" content="Muslim In Tech (MusDev) | Nigeria's #1 Muslim Tech Community" />
   <meta name="description" content="The premier hub for Muslim tech professionals in Nigeria. Empowering developers, designers, and innovators through community, mentorship, and faith-driven excellence. Join the MusDev movement." />
   

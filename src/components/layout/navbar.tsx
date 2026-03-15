@@ -7,17 +7,16 @@ import { usePathname } from "next/navigation";
 
 // Assets & Icons
 import Logo from "@/assets/Logo.svg";
-// Import your icons here - adjusting path based on your footer imports
 import { TwitterIcon, LinkedInIcon } from "../svgs"; 
 
 const navLinks = [
-{ label: "Al Bait", href: "/" },
+  { label: "Al Bait", href: "/" },
   { label: "Membership", href: "/#membership" },
   { label: "Blog", href: "/#blog" },
   { label: "Learning", href: "/#blog" },
   { label: "About Us", href: "/about" },
   { label: "Innovate", href: "/#innovate" },
-    { label: "Ummah Builds", href: "/innovations" },
+  { label: "Ummah Builds", href: "/innovations" },
 ];
 
 const socialLinks = [
@@ -43,16 +42,18 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href;
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("/#")) {
-      const id = href.split("#")[1];
+  // Improved click handler to handle both scrolling and simple navigation closing
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") || (href.startsWith("#") && pathname === "/")) {
+      const id = href.includes("#") ? href.split("#")[1] : "";
       const element = document.getElementById(id);
       if (element) {
         e.preventDefault();
         element.scrollIntoView({ behavior: "smooth" });
-        setMenuOpen(false);
       }
     }
+    // ALWAYS close the menu when a link is clicked
+    setMenuOpen(false);
   };
 
   return (
@@ -65,19 +66,19 @@ export default function Navbar() {
         }`}
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
-          <Link href="/" className="relative z-50 flex items-center">
+          <Link href="/" className="relative z-50 flex items-center" onClick={() => setMenuOpen(false)}>
             <div className={`transition-all duration-300 ${!scrolled ? "brightness-0 invert" : ""}`}>
               <NextImage src={Logo} alt="MusDev Logo" width={120} height={32} priority />
             </div>
           </Link>
 
-          {/* Center Navigation */}
+          {/* Center Navigation (Desktop) */}
           <ul className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                     isActive(link.href)
                       ? scrolled ? "bg-[#0a5e5c] text-white" : "bg-white text-[#0a5e5c]"
@@ -90,7 +91,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Social Icons instead of Login/Signup */}
           <div className="hidden lg:flex items-center gap-3">
             {socialLinks.map((social, idx) => (
               <a
@@ -128,7 +128,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleScrollToSection(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-2xl font-black p-4 rounded-2xl transition-all ${isActive(link.href) ? "text-[#0a5e5c] bg-[#0a5e5c]/5" : "text-neutral-800"}`}
               >
                 {link.label}
@@ -136,7 +136,6 @@ export default function Navbar() {
             ))}
           </nav>
           
-          {/* Mobile Socials */}
           <div className="mt-auto flex gap-4 p-4 border-t border-neutral-100">
             {socialLinks.map((social, idx) => (
               <a 
@@ -144,6 +143,7 @@ export default function Navbar() {
                 href={social.href} 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
                 className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center text-[#0a5e5c]"
               >
                 {social.icon}

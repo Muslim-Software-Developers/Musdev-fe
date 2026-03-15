@@ -50,7 +50,7 @@ export default function InnovationsPage() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
