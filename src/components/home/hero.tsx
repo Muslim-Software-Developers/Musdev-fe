@@ -108,11 +108,8 @@ export default function Hero() {
               </Link>
 
               <Link 
-                href="#programs" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                href="/events" 
+                
                 className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all"
               >
                 Explore Events
