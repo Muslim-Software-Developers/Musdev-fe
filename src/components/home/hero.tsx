@@ -98,9 +98,7 @@ export default function Hero() {
 
             <div className="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-4">
               <Link 
-                href="https://forms.gle/xxt81k7r8U86XJP28" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/#membership"
                 className="flex items-center gap-2 bg-white text-[#0a5e5c] font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all shadow-xl group"
               >
                 Join Now

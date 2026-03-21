@@ -35,8 +35,6 @@ export default function InnovationsPage() {
       if (isInitial) setLoading(true);
       else setLoadingMore(true);
 
-      // Strapi query builder with search filters
-      // $containsi makes it case-insensitive
       let endpoint = `innovation-submissions?filters[isApproved][$eq]=true&sort=createdAt:asc&pagination[page]=${pageNum}&pagination[pageSize]=${pageSize}`;
       
       if (query.trim() !== "") {
@@ -62,7 +60,6 @@ export default function InnovationsPage() {
 
   /**
    * Debounced Search Implementation
-   * Prevents hammering the DB on every keystroke
    */
   const debouncedSearch = useCallback(
     debounce((nextValue: string) => {
@@ -90,7 +87,6 @@ export default function InnovationsPage() {
 
   /**
    * Reveal Animation Logic
-   * threshold 0.01 for mobile responsiveness
    */
   useEffect(() => {
     if (loading) return;
@@ -126,14 +122,27 @@ export default function InnovationsPage() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="mb-16 reveal opacity-0 translate-y-10 transition-all duration-700">
-          <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs mb-3 block">Showcase</span>
-          <h1 className="text-5xl lg:text-7xl font-bold text-neutral-900 mb-6">
-            The MusDev <span className="text-emerald-600">Forge.</span>
-          </h1>
-          <p className="text-lg text-neutral-500 max-w-2xl leading-relaxed">
-            Exploring the intersection of faith and technology through projects built by our community members.
-          </p>
+        <div className="mb-16 reveal opacity-0 translate-y-10 transition-all duration-700 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs mb-3 block">Showcase</span>
+            <h1 className="text-5xl lg:text-7xl font-bold text-neutral-900 mb-6">
+              The MusDev <span className="text-emerald-600">Forge.</span>
+            </h1>
+            <p className="text-lg text-neutral-500 leading-relaxed">
+              Exploring the intersection of faith and technology through projects built by our community members.
+            </p>
+          </div>
+          
+          {/* New CTA Link to Form */}
+          <Link 
+            href="/#innovate" 
+            className="flex-shrink-0 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-[#0a5e5c] transition-all shadow-lg shadow-emerald-600/20 flex items-center gap-2"
+          >
+            Submit Innovation
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+          </Link>
         </div>
 
         {/* Professional Search Input */}
@@ -209,7 +218,7 @@ export default function InnovationsPage() {
             <button
               onClick={handleLoadMore}
               disabled={loadingMore}
-              className="bg-neutral-900 text-white px-12 py-4 rounded-2xl font-bold hover:bg-emerald-600 transition-all disabled:opacity-50 flex items-center gap-3"
+              className="bg-neutral-900 text-white px-12 py-4 rounded-2xl font-bold hover:bg-emerald-600 transition-all disabled:opacity-50 flex items-center gap-3 shadow-xl"
             >
               {loadingMore ? "Fetching More..." : "Load More"}
             </button>

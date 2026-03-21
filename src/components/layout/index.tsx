@@ -43,7 +43,7 @@ const Layout = ({ title, children, className }: ILayoutProps) => {
   <meta property="twitter:image" content="https://musdev.org/images/Logo.PNG" />
 
   {/* Favicon */}
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/public/favicon.png" />
 </Head>
 
       <Navbar />

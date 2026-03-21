@@ -10,7 +10,7 @@ import Logo from "@/assets/Logo.svg";
 import { TwitterIcon, LinkedInIcon } from "../svgs"; 
 
 const navLinks = [
-  { label: "Al Bait", href: "/" },
+  { label: "Al-Bayt", href: "/" },
   { label: "Membership", href: "/#membership" },
   { label: "Blog", href: "/#blog" },
   { label: "Learning", href: "/#blog" },
